@@ -65,8 +65,8 @@ export default function Home() {
       <ProductVideoCarousel />
 
       {/* 3. WHITE LOAF WHOLESALE BRAND */}
-      <section id="white-loaf" className="bg-[#090909] text-[#f5f1ea] border-b border-[#2a2a2a]">
-        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <section id="white-loaf" className="text-[#f5f1ea] border-y border-[#2a2a2a]">
+        <div className="bg-[#090909] px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:gap-20 lg:grid-cols-[0.9fr_1.1fr] items-start lg:items-center">
               {/* Left Column - Logo and Intro */}

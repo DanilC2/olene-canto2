@@ -308,24 +308,18 @@ export default function HistorySection() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. FULL-SCREEN HERITAGE & PRODUCT BANNER                                  */}
+      {/* 2. HERITAGE & PRODUCT BANNER                                              */}
       {/* ========================================================================= */}
-      <div className="w-full h-[calc(100dvh-4.5rem)] min-h-[440px] max-h-[920px] bg-black relative flex items-center justify-center overflow-hidden border-t border-b border-zinc-900 px-2 sm:px-6">
-        {/* Subtle Warm Luxury Ambient Glows */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#d9b578]/[0.03] rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative w-full h-full max-w-7xl mx-auto flex items-center justify-center">
-          <div className="relative h-full w-full max-h-full aspect-square flex items-center justify-center">
-            <Image
-              src="/heritage-banner.jpg"
-              alt="Olene Canto - A Decade of Taste, Quality, and Tradition"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1024px"
-              className="object-contain w-full h-full"
-              priority
-            />
-          </div>
+      <div className="w-full bg-white flex items-center justify-center py-6 sm:py-10">
+        <div className="relative w-full max-w-[560px] sm:max-w-[660px] lg:max-w-[740px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 bg-black">
+          <Image
+            src="/heritage-banner.jpg"
+            alt="Olene Canto - A Decade of Taste, Quality, and Tradition"
+            fill
+            sizes="(max-width: 768px) 100vw, 740px"
+            className="object-contain w-full h-full"
+            priority
+          />
         </div>
       </div>
 
