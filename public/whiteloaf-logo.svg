@@ -1,0 +1,21 @@
+<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bread loaf silhouette -->
+  <path d="M 15 35 Q 20 15 30 12 Q 40 10 50 12 Q 55 14 58 35 L 58 42 Q 58 45 55 45 L 15 45 Q 12 45 12 42 Z" 
+        fill="#FFFFFF" stroke="#D4AF37" stroke-width="1.5"/>
+  
+  <!-- Score marks on bread -->
+  <line x1="25" y1="15" x2="25" y2="35" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+  <line x1="35" y1="12" x2="35" y2="38" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+  <line x1="45" y1="15" x2="45" y2="35" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Decorative line -->
+  <line x1="65" y1="22" x2="65" y2="38" stroke="#D4AF37" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Text: WHITE LOAF -->
+  <text x="75" y="28" font-family="Georgia, serif" font-size="16" font-weight="400" letter-spacing="1" fill="#FFFFFF">
+    WHITE
+  </text>
+  <text x="75" y="45" font-family="Georgia, serif" font-size="16" font-weight="300" letter-spacing="2" fill="#D4AF37">
+    LOAF
+  </text>
+</svg>
