@@ -66,68 +66,92 @@ export default function Home() {
 
       {/* 3. WHITE LOAF WHOLESALE BRAND */}
       <section id="white-loaf" className="bg-[#090909] text-[#f5f1ea] border-b border-[#2a2a2a]">
-        <div className="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-            <div className="space-y-7 text-center lg:text-left">
-              <div className="mx-auto flex w-full max-w-[22rem] items-center justify-center rounded-[1.25rem] bg-[#050505] p-5 lg:mx-0">
-                <Image
-                  src="/whieloaf2.png"
-                  alt="White Loaf Craft Bakers logo"
-                  width={2826}
-                  height={1504}
-                  className="h-auto w-full max-h-[220px] object-contain"
-                  style={{ backgroundColor: "#050505" }}
-                />
-              </div>
-              <div>
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#d9b578]">Olene Foods Wholesale</p>
-                <h2 className="font-serif-luxury text-4xl font-medium leading-tight text-[#f5f1ea] sm:text-5xl">
-                  Everyday baking, made better.
-                </h2>
-              </div>
-              <p className="mx-auto max-w-xl text-sm leading-7 text-[#d9d2ca] lg:mx-0 sm:text-base">
-                White Loaf is our dedicated wholesale bakery brand, bringing dependable, fresh bread and cookies to supermarkets, hypermarkets, and retail partners.
-              </p>
-            </div>
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:gap-20 lg:grid-cols-[0.9fr_1.1fr] items-start lg:items-center">
+              {/* Left Column - Logo and Intro */}
+              <div className="space-y-5 sm:space-y-6 md:space-y-7 text-center lg:text-left">
+                {/* Logo Container */}
+                <div className="flex w-full justify-center lg:justify-start">
+                  <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[22rem] rounded-lg sm:rounded-xl bg-[#050505] p-3 sm:p-4 md:p-5 flex items-center justify-center">
+                    <Image
+                      src="/whieloaf2.png"
+                      alt="White Loaf Craft Bakers logo"
+                      width={2826}
+                      height={1504}
+                      className="h-auto w-full max-h-[120px] sm:max-h-[160px] md:max-h-[200px] object-contain"
+                      style={{ backgroundColor: "#050505" }}
+                    />
+                  </div>
+                </div>
 
-            <div className="space-y-8">
-              <div className="border-l-2 border-[#d9b578] pl-6">
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#d9b578]">Our concept</p>
-                <h3 className="mt-2 font-serif-luxury text-3xl font-medium text-[#f5f1ea] sm:text-4xl">Specialized traditional bakery with a clearly defined value system.</h3>
-                <p className="mt-4 text-sm leading-7 text-[#d9d2ca] sm:text-base">
-                  We make accessible bakery staples with the care and consistency of an artisan kitchen, supporting retailers with reliable products, presentation, and service.
+                {/* Title and Description */}
+                <div>
+                  <p className="mb-2 sm:mb-3 text-[10px] sm:text-xs font-bold uppercase tracking-[0.24em] sm:tracking-[0.28em] text-[#d9b578]">
+                    Olene Foods Wholesale
+                  </p>
+                  <h2 className="font-serif-luxury text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#f5f1ea]">
+                    Everyday baking, made better.
+                  </h2>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm md:text-base leading-6 sm:leading-7 text-[#d9d2ca] max-w-xl mx-auto lg:mx-0">
+                  White Loaf is our dedicated wholesale bakery brand, bringing dependable, fresh bread and cookies to supermarkets, hypermarkets, and retail partners.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <div className="border-t border-[#3a312d] pt-4">
-                  <Store className="h-5 w-5 text-[#d9b578]" />
-                  <p className="mt-3 text-sm font-bold text-[#f5f1ea]">Retail ready</p>
-                  <p className="mt-1 text-xs leading-5 text-[#d9d2ca]">Products built for modern shelves and counters.</p>
+              {/* Right Column - Concept and Features */}
+              <div className="space-y-6 sm:space-y-8 lg:border-l-2 lg:border-[#d9b578] lg:pl-6">
+                {/* Concept Section */}
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.24em] text-[#d9b578]">
+                    Our concept
+                  </p>
+                  <h3 className="font-serif-luxury text-2xl sm:text-3xl md:text-4xl font-medium text-[#f5f1ea]">
+                    Specialized traditional bakery with a clearly defined value system.
+                  </h3>
+                  <p className="text-xs sm:text-sm md:text-base leading-6 sm:leading-7 text-[#d9d2ca]">
+                    We make accessible bakery staples with the care and consistency of an artisan kitchen, supporting retailers with reliable products, presentation, and service.
+                  </p>
                 </div>
-                <div className="border-t border-[#3a312d] pt-4">
-                  <Wheat className="h-5 w-5 text-[#d9b578]" />
-                  <p className="mt-3 text-sm font-bold text-[#f5f1ea]">Pure ingredients</p>
-                  <p className="mt-1 text-xs leading-5 text-[#d9d2ca]">Familiar recipes made with thoughtful sourcing.</p>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                  <div className="border-t border-[#3a312d] pt-4">
+                    <Store className="h-4 w-4 sm:h-5 sm:w-5 text-[#d9b578]" />
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-[#f5f1ea]">Retail ready</p>
+                    <p className="mt-1 text-[10px] sm:text-xs leading-5 text-[#d9d2ca]">Products built for modern shelves and counters.</p>
+                  </div>
+                  <div className="border-t border-[#3a312d] pt-4">
+                    <Wheat className="h-4 w-4 sm:h-5 sm:w-5 text-[#d9b578]" />
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-[#f5f1ea]">Pure ingredients</p>
+                    <p className="mt-1 text-[10px] sm:text-xs leading-5 text-[#d9d2ca]">Familiar recipes made with thoughtful sourcing.</p>
+                  </div>
+                  <div className="border-t border-[#3a312d] pt-4">
+                    <Truck className="h-4 w-4 sm:h-5 sm:w-5 text-[#d9b578]" />
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-bold text-[#f5f1ea]">Partner support</p>
+                    <p className="mt-1 text-[10px] sm:text-xs leading-5 text-[#d9d2ca]">Distribution and merchandising support for growth.</p>
+                  </div>
                 </div>
-                <div className="border-t border-[#3a312d] pt-4">
-                  <Truck className="h-5 w-5 text-[#d9b578]" />
-                  <p className="mt-3 text-sm font-bold text-[#f5f1ea]">Partner support</p>
-                  <p className="mt-1 text-xs leading-5 text-[#d9d2ca]">Distribution and merchandising support for growth.</p>
+
+                {/* CTA Button */}
+                <div className="pt-2 sm:pt-4">
+                  <Link
+                    href="/contact?type=wholesale"
+                    className="inline-flex items-center gap-2 bg-[#f5f1ea] px-4 sm:px-6 py-2 sm:py-3 text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-[#090909] transition-colors hover:bg-[#d9b578]"
+                  >
+                    Discuss wholesale partnership <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                  </Link>
                 </div>
               </div>
-
-              <Link
-                href="/contact?type=wholesale"
-                className="inline-flex items-center gap-2 bg-[#f5f1ea] px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-[#090909] transition-colors hover:bg-[#d9b578]"
-              >
-                Discuss wholesale partnership <ChevronRight className="h-4 w-4" />
-              </Link>
             </div>
           </div>
 
           {/* Dynamic Infinite Moving Retail Collaborations Marquee */}
-          <RetailNetworkMarquee />
+          <div className="mt-16 sm:mt-20 md:mt-24">
+            <RetailNetworkMarquee />
+          </div>
         </div>
       </section>
 

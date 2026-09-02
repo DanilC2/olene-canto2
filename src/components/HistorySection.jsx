@@ -160,8 +160,7 @@ export default function HistorySection() {
             <div className="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-amber-800/40 to-transparent mx-auto my-2" />
 
             <p className="text-zinc-600 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
-              Trace our evolution from early sourdough experimentation in 2014 to the Oges Group takeover, Reliance India partnership, Kozhikode Beach flagship salons, and global exports under Du Four.
-            </p>
+              Discover the journey behind Olene Canto—from our beginnings in 2014 to the milestones that continue to shape our story today.</p>
           </div>
 
           {/* Interactive Year Ribbon Bar */}
@@ -309,18 +308,24 @@ export default function HistorySection() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. FULL-WIDTH EDGE-TO-EDGE HERITAGE & PRODUCT BANNER (CANTYY.PNG)         */}
+      {/* 2. FULL-SCREEN HERITAGE & PRODUCT BANNER                                  */}
       {/* ========================================================================= */}
-      <div className="w-full bg-black relative overflow-hidden">
-        <div className="w-full relative aspect-[1967/800] sm:aspect-[1967/800] max-h-[92vh] flex items-center justify-center">
-          <Image
-            src="/cantyy.png"
-            alt="Olene Canto - A Decade of Taste, Quality, and Tradition"
-            fill
-            sizes="100vw"
-            className="object-cover sm:object-contain w-full h-full"
-            priority
-          />
+      <div className="w-full h-[calc(100dvh-4.5rem)] min-h-[440px] max-h-[920px] bg-black relative flex items-center justify-center overflow-hidden border-t border-b border-zinc-900 px-2 sm:px-6">
+        {/* Subtle Warm Luxury Ambient Glows */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#d9b578]/[0.03] rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative w-full h-full max-w-7xl mx-auto flex items-center justify-center">
+          <div className="relative h-full w-full max-h-full aspect-square flex items-center justify-center">
+            <Image
+              src="/heritage-banner.jpg"
+              alt="Olene Canto - A Decade of Taste, Quality, and Tradition"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1024px"
+              className="object-contain w-full h-full"
+              priority
+            />
+          </div>
         </div>
       </div>
 
