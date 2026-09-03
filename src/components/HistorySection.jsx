@@ -9,6 +9,7 @@ import {
   Maximize2,
   X,
 } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const MILESTONES = [
   {
@@ -145,7 +146,7 @@ export default function HistorySection() {
       id="history"
       className="pt-24 pb-0 bg-white text-zinc-900 relative border-b border-zinc-200"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ========================================================================= */}
         {/* 1. THE CHRONICLES OF OLENE CANTO & 12-YEAR TIMELINE                       */}
@@ -305,12 +306,12 @@ export default function HistorySection() {
 
         </div>
 
-      </div>
+      </ScrollReveal>
 
       {/* ========================================================================= */}
       {/* 2. HERITAGE & PRODUCT BANNER                                              */}
       {/* ========================================================================= */}
-      <div className="w-full bg-white flex items-center justify-center py-6 sm:py-10">
+      <ScrollReveal className="w-full bg-white flex items-center justify-center py-6 sm:py-10">
         <div className="relative w-full max-w-[560px] sm:max-w-[660px] lg:max-w-[740px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 bg-black">
           <Image
             src="/heritage-banner.jpg"
@@ -321,7 +322,7 @@ export default function HistorySection() {
             priority
           />
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Lightbox / Fullscreen Image Preview Modal */}
       {lightboxImage && (

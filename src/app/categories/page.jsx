@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
 import InquiryModal from "@/components/InquiryModal";
+import ScrollReveal from "@/components/ScrollReveal";
 import {
   Sparkles,
   Quote,
@@ -151,9 +152,8 @@ export default function CategoriesPage() {
       />
 
       {/* 1. MAIN HEADER SECTION */}
-      <section className="pt-20 sm:pt-24 lg:pt-28 pb-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-3">
-          
+      <section className="pt-20 sm:pt-24 lg:pt-28 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <ScrollReveal className="max-w-5xl mx-auto text-center space-y-3">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-serif-luxury leading-[1.08] font-normal tracking-tight text-zinc-950">
             Diverse Categories. One Trusted Name.
           </h1>
@@ -190,13 +190,13 @@ export default function CategoriesPage() {
               </button>
             ))}
           </div>
-
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* 3. CATEGORY CARDS GRID (INSPIRED BY REFERENCE IMAGE) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 overflow-hidden">
+        <ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           
           {filteredCategories.map((category) => (
             <div
@@ -239,15 +239,14 @@ export default function CategoriesPage() {
             </div>
           ))}
 
-        </div>
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* 4. TRUST & CERTIFICATION ACCREDITATION SECTION */}
-      <section className="bg-white py-16 sm:py-20 border-t border-zinc-200 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+      <section className="bg-white py-16 sm:py-20 border-t border-zinc-200 mt-12 overflow-hidden">
+        <ScrollReveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
             <div className="lg:col-span-6 space-y-4">
               <span className="text-xs font-bold uppercase tracking-[0.24em] text-[#9B1B22]">
                 Quality Assured &amp; Certified
@@ -290,10 +289,8 @@ export default function CategoriesPage() {
                 />
               </div>
             </div>
-
           </div>
-
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* 5. FOOTER */}

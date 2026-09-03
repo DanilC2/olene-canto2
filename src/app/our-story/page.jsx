@@ -6,6 +6,7 @@ import OurStoryIntro from "@/components/OurStoryIntro";
 import FounderMessageSection from "@/components/FounderMessageSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import DefiningQualitySection from "@/components/DefiningQualitySection";
+import ScrollReveal from "@/components/ScrollReveal";
 import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
 import Footer from "@/components/Footer";
@@ -49,13 +50,19 @@ export default function OurStoryPage() {
       <OurStoryIntro />
 
       {/* 2. FOUNDER & MANAGING DIRECTOR'S MESSAGE */}
-      <FounderMessageSection />
+      <ScrollReveal>
+        <FounderMessageSection />
+      </ScrollReveal>
 
       {/* 3. PURPOSE, VISION & MISSION */}
-      <VisionMissionSection />
+      <ScrollReveal>
+        <VisionMissionSection />
+      </ScrollReveal>
 
       {/* 4. DEFINING QUALITY & CERTIFICATIONS */}
-      <DefiningQualitySection />
+      <ScrollReveal>
+        <DefiningQualitySection />
+      </ScrollReveal>
 
       {/* Footer */}
       <Footer />

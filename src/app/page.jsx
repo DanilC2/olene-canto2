@@ -12,6 +12,7 @@ import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
 import Footer from "@/components/Footer";
 import RetailNetworkMarquee from "@/components/RetailNetworkMarquee";
+import ScrollReveal from "@/components/ScrollReveal";
 import { fetchMenu, fetchStory } from "@/lib/api";
 import { Sparkles, Quote, BookOpen, Briefcase, ChevronRight, Wheat, Store, Truck } from "lucide-react";
 
@@ -62,11 +63,13 @@ export default function Home() {
       {/* 2. HISTORY & COMPANY PROGRESS SECTION (DIRECTLY BELOW HERO) */}
       <HistorySection />
 
-      <ProductVideoCarousel />
+      <ScrollReveal>
+        <ProductVideoCarousel />
+      </ScrollReveal>
 
       {/* 3. WHITE LOAF WHOLESALE BRAND */}
-      <section id="white-loaf" className="text-[#f5f1ea] border-y border-[#2a2a2a]">
-        <div className="bg-[#090909] px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <section id="white-loaf" className="text-[#f5f1ea] border-y border-[#2a2a2a] bg-[#090909] overflow-hidden">
+        <ScrollReveal className="px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:gap-20 lg:grid-cols-[0.9fr_1.1fr] items-start lg:items-center">
               {/* Left Column - Logo and Intro */}
@@ -148,73 +151,44 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dynamic Infinite Moving Retail Collaborations Marquee */}
-          <div className="mt-16 sm:mt-20 md:mt-24">
-            <RetailNetworkMarquee />
-          </div>
-        </div>
+        </ScrollReveal>
+      </section>
+
+      {/* 3.1 RETAIL NETWORK MARQUEE */}
+      <section className="bg-white border-b border-zinc-200 overflow-hidden">
+        <ScrollReveal>
+          <RetailNetworkMarquee theme="light" />
+        </ScrollReveal>
       </section>
 
       {/* 3.5 FRANCHISE OPPORTUNITY SECTION */}
-      <section className="bg-white py-24 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="bg-[#090909] text-[#f5f1ea] py-24 px-6 sm:px-8 lg:px-12 overflow-hidden border-t border-[#2a2a2a]">
+        <ScrollReveal className="max-w-7xl mx-auto">
           <div className="mb-16 max-w-3xl">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.32em] text-[#d9b578]">Franchise opportunity</p>
-            <h3 className="font-serif-luxury text-4xl font-medium text-[#090909] sm:text-5xl">
+            <h3 className="font-serif-luxury text-4xl font-medium text-[#f5f1ea] sm:text-5xl">
               Partner with Canto — build a successful business with our proven brand.
             </h3>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-20">
+          <div className="grid gap-6 md:grid-cols-2 mb-16">
             {[
               { title: "Brand strength", text: "A trusted bakery name with growing retail reach, strong product recognition, and a loyal customer base." },
-              { title: "Demand", text: "Consumers increasingly seek convenient, premium, and culturally relevant bakery products with everyday appeal." },
-              { title: "Differentiators", text: "Signature recipes, premium ingredients, fresh-baked quality, and a retail-ready format built for repeat purchases." },
               { title: "Market opportunity", text: "A scalable business model designed for high-traffic retail zones, mixed-use communities, and urban demand centers." },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-gray-200 bg-gray-50 p-6 hover:shadow-lg transition-shadow">
+              <div key={item.title} className="rounded-2xl border border-white/10 bg-[#121212] p-6 hover:border-[#d9b578]/50 hover:bg-[#161616] hover:shadow-xl transition-all">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#d9b578]">{item.title}</p>
-                <p className="text-sm leading-6 text-gray-700">{item.text}</p>
+                <p className="text-sm leading-6 text-zinc-300">{item.text}</p>
               </div>
             ))}
           </div>
 
-          <div className="mb-20">
-            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-              <p className="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-[#d9b578]">Launch journey</p>
-              <div className="flex flex-col md:flex-row gap-4 md:gap-2 items-stretch md:items-center justify-between">
-                {[
-                  ["1", "Enquiry"],
-                  ["2", "Qualification"],
-                  ["3", "Discovery"],
-                  ["4", "Agreement"],
-                  ["5", "Training"],
-                  ["6", "Opening"],
-                ].map(([step, label], idx) => (
-                  <div key={step} className="flex items-center gap-3 flex-1">
-                    <div className="flex-shrink-0">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#d9b578] to-[#c9a56a] text-xs font-bold text-white shadow-md">
-                        {step}
-                      </div>
-                    </div>
-                    <div className="flex-grow">
-                      <p className="text-sm font-semibold text-gray-900">{label}</p>
-                    </div>
-                    {idx < 5 && (
-                      <div className="hidden md:block flex-shrink-0 text-gray-300 text-xl">→</div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 shadow-sm">
+          <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-xl text-zinc-900">
             <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
               <div>
                 <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#d9b578]">Get started today</p>
-                <h3 className="font-serif-luxury text-3xl font-medium text-gray-900 sm:text-4xl mb-4">Share Your Details</h3>
-                <p className="max-w-xl text-sm leading-6 text-gray-700">
+                <h3 className="font-serif-luxury text-3xl font-medium text-zinc-950 sm:text-4xl mb-4">Share Your Details</h3>
+                <p className="max-w-xl text-sm leading-6 text-zinc-600">
                   Tell us about your business vision and franchise interests. Our team will review your information and connect with you within 2 business days.
                 </p>
               </div>
@@ -222,39 +196,39 @@ export default function Home() {
               <form className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="block text-xs font-semibold text-gray-900 mb-2">Full Name*</label>
+                    <label className="block text-xs font-semibold text-zinc-800 mb-2">Full Name*</label>
                     <input 
                       type="text"
                       required
-                      className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                      className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
                       placeholder="Your name" 
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-900 mb-2">Phone*</label>
+                    <label className="block text-xs font-semibold text-zinc-800 mb-2">Phone*</label>
                     <input 
                       type="tel"
                       required
-                      className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                      className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
                       placeholder="Your phone" 
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-900 mb-2">Email*</label>
+                  <label className="block text-xs font-semibold text-zinc-800 mb-2">Email*</label>
                   <input 
                     type="email"
                     required
-                    className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
                     placeholder="your@email.com" 
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-900 mb-2">City / Country*</label>
+                  <label className="block text-xs font-semibold text-zinc-800 mb-2">City / Country*</label>
                   <input 
                     type="text"
                     required
-                    className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
                     placeholder="Your location" 
                   />
                 </div>
@@ -267,7 +241,7 @@ export default function Home() {
               </form>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {false && (
