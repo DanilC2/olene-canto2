@@ -165,15 +165,18 @@ export default function HistorySection() {
           </div>
 
           {/* Interactive Year Ribbon Bar */}
-          <div className="overflow-x-auto no-scrollbar pb-2">
-            <div className="flex items-center space-x-2 min-w-[760px] p-2 bg-zinc-100 rounded-2xl border border-zinc-200">
+          <div
+            className="overflow-x-auto no-scrollbar pb-2"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            <div className="inline-flex items-center space-x-2 min-w-full w-max p-2 bg-zinc-100 rounded-2xl border border-zinc-200">
               {MILESTONES.map((m) => {
                 const isSelected = activeYear === m.year;
                 return (
                   <button
                     key={m.year}
                     onClick={() => setActiveYear(m.year)}
-                    className={`flex-1 py-3 px-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center space-y-0.5 ${
+                    className={`shrink-0 sm:flex-1 min-w-[120px] py-3 px-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center space-y-0.5 ${
                       isSelected
                         ? "bg-black text-white font-bold shadow-lg scale-[1.02]"
                         : "text-zinc-600 hover:text-black hover:bg-zinc-200/80 font-medium"
@@ -181,7 +184,7 @@ export default function HistorySection() {
                   >
                     <span className="text-sm font-bold tracking-wider">{m.year}</span>
                     <span
-                      className={`text-[10px] uppercase truncate max-w-[90px] ${
+                      className={`text-[10px] uppercase truncate max-w-[110px] ${
                         isSelected ? "text-amber-300" : "text-zinc-500"
                       }`}
                     >

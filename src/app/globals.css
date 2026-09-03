@@ -157,3 +157,12 @@
 .font-sans-clean {
   font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
 }
+
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

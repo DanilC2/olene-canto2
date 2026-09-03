@@ -74,11 +74,6 @@ const FAQS = [
     answer:
       "Since our entry into the food industry in 2014, our motto as a true 'People's Bakery & Restaurant' has been rooted in clean, ethical eating. We believe authentic bakery excellence relies on slow natural fermentation, real butter, unbleached flour, and pure culinary craft—never synthetic chemical shortcuts to artificially extend shelf life.",
   },
-  {
-    question: "How early in advance should celebration gateaux or corporate bulk orders be placed?",
-    answer:
-      "For customized celebration gateaux or bulk pastry boxes (50+ units), we recommend placing orders at least 24 to 48 hours in advance. For large-scale corporate catering or institutional events, please reach out 3–5 days prior to guarantee custom packaging and timely logistics.",
-  },
 ];
 
 function getDepartmentFromType(typeParam) {
@@ -526,17 +521,17 @@ function ContactContent() {
       </section>
 
       {/* 3. FREQUENTLY ASKED QUESTIONS (FAQ) ACCORDION */}
-      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <ScrollReveal>
+      <section className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#09090b]">
+        <ScrollReveal className="max-w-4xl mx-auto">
           
           <div className="text-center max-w-xl mx-auto mb-12">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#9b722b] mb-1.5">
               Got Questions?
             </p>
-            <h2 className="font-serif-luxury text-3xl sm:text-4xl font-medium text-zinc-950">
+            <h2 className="font-serif-luxury text-3xl sm:text-4xl font-medium text-white">
               Frequently Asked Questions
             </h2>
-            <p className="mt-2 text-sm text-zinc-600">
+            <p className="mt-2 text-sm text-zinc-300">
               Quick answers regarding our wholesale network, franchise opportunities, and artisan baking craft.
             </p>
           </div>
