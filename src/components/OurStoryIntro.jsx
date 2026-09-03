@@ -2,20 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import { Quote, Building2, ChevronDown } from "lucide-react";
+import { Quote, Building2 } from "lucide-react";
 
-export default function OurStoryIntro({ onExploreClick }) {
-  const handleScrollDown = () => {
-    if (onExploreClick) {
-      onExploreClick();
-    } else {
-      const founderEl = document.getElementById("founder-message");
-      if (founderEl) {
-        founderEl.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
+export default function OurStoryIntro() {
   return (
     <section className="relative min-h-[100dvh] lg:h-screen w-full bg-white text-zinc-900 flex flex-col justify-between pt-24 pb-6 sm:pt-28 sm:pb-8 lg:pt-24 lg:pb-6 overflow-hidden border-b border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
@@ -33,9 +22,8 @@ export default function OurStoryIntro({ onExploreClick }) {
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-[2.65rem] xl:text-5xl font-serif-luxury font-medium text-black leading-[1.12]">
-                Where Tradition <br />
+                Crafted since 2014 <br />
                 <span className="italic text-amber-900 font-normal">
-                  Meets Craftsmanship
                 </span>
               </h1>
             </div>
@@ -46,7 +34,7 @@ export default function OurStoryIntro({ onExploreClick }) {
                 <Quote className="w-6 h-6 sm:w-7 sm:h-7 text-amber-800 shrink-0 mt-0.5" />
                 <div className="space-y-3">
                   <p className="text-sm sm:text-base font-serif-luxury italic text-zinc-800 leading-relaxed">
-                    &ldquo;From 2014, Olene Canto has been a beacon of artisanal excellence. Starting as a vision to bring authentic European baking craft to discerning palates, we have grown into a multi-brand powerhouse spanning luxury dining, wholesale supply, and international exports—all rooted in our unrelenting devotion to slow fermentation, premium ingredients, and the timeless art of boulangerie.&rdquo;
+                    &ldquo;From humble beginnings in 2014 in Northern Kerala, our journey evolved into Olene Canto—a true People’s Bakery and Restaurant spanning 8 outlets across Malappuram and Calicut. Built on uncompromising ethical standards, we say a strict NO to artificial flavours, synthetic colours, and chemical preservatives, delivering pure, wholesome craftsmanship since inception.&rdquo;
                   </p>
                   <p className="text-[10px] sm:text-xs font-bold tracking-wider uppercase text-amber-900">
                     — Olene Canto Heritage
@@ -88,29 +76,12 @@ export default function OurStoryIntro({ onExploreClick }) {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
-
-              {/* Bottom Caption */}
-              <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-5 text-white">
-                <p className="text-[10px] sm:text-xs font-bold tracking-[0.16em] uppercase drop-shadow-md">
-                  KOZHIKODE BEACH FLAGSHIP & RAMANATTUKARA ATELIER
-                </p>
-              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Bottom Scroll Prompt */}
-      <div
-        onClick={handleScrollDown}
-        className="mt-2 relative z-10 flex flex-col items-center justify-center space-y-1 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-      >
-        <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-zinc-500 font-bold">
-          DISCOVER OUR BAKING PHILOSOPHY
-        </span>
-        <ChevronDown className="w-4 h-4 text-zinc-500 animate-bounce" />
-      </div>
     </section>
   );
 }

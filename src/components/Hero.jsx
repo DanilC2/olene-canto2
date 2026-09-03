@@ -88,7 +88,7 @@ export default function Hero({ onExploreClick, onStoryClick }) {
         className="mt-6 sm:mt-8 relative z-10 flex flex-col items-center justify-center space-y-1 sm:space-y-1.5 cursor-pointer opacity-90 hover:opacity-100 transition-opacity"
       >
         <span className="text-[8px] sm:text-[10px] tracking-[0.3em] uppercase text-white font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-          EXPLORE OUR 12-YEAR JOURNEY
+          EXPLORE OUR JOURNEY
         </span>
         <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/50 flex items-center justify-center animate-bounce bg-black/35 backdrop-blur-md text-white shadow-md">
           <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />

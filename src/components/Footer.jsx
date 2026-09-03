@@ -49,7 +49,6 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="font-serif-luxury text-2xl font-medium text-zinc-950 leading-none">Olene Canto</h3>
-                <p className="text-[11px] text-zinc-500 mt-1">Artisan Bakery &amp; Pâtisserie</p>
               </div>
             </div>
 
@@ -91,12 +90,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/our-story" className="hover:text-black transition-colors">
-                  Our Story &amp; Heritage
+                  Our Story ; Heritage
                 </Link>
               </li>
               <li>
                 <Link href="/categories" className="hover:text-black transition-colors">
-                  Bakery &amp; Pâtisserie Menu
+                  
                 </Link>
               </li>
               <li>
@@ -177,7 +176,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* 3. Bottom Legal / Copyright Bar */}

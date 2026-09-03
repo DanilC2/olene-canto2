@@ -21,8 +21,8 @@ export default function FounderMessageSection() {
 
           {/* Left Column: Founder Portrait */}
           <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
-            <div className="relative w-full max-w-[520px] lg:max-w-[620px]">
-              <div className="relative h-[470px] sm:h-[540px] lg:h-[680px] w-full overflow-hidden bg-zinc-950">
+            <div className="relative w-full max-w-[420px] rounded-2xl border border-white/10 bg-zinc-950 p-3 shadow-xl">
+              <div className="relative h-[360px] sm:h-[440px] lg:h-[520px] w-full overflow-hidden rounded-xl bg-zinc-950">
                 <Image
                   src="/ashik-kv.jpg"
                   alt="Ashik K V - Managing Director of Olene Canto"
@@ -36,7 +36,7 @@ export default function FounderMessageSection() {
           </div>
 
           {/* Right Column: Managing Director's Message */}
-          <div className="lg:col-span-7 space-y-8 sm:space-y-10 order-2 lg:order-2 lg:pt-10">
+          <div className="lg:col-span-7 space-y-8 sm:space-y-10 order-2 lg:order-2 rounded-2xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8 lg:p-10 shadow-xl lg:pt-10">
             <div className="space-y-3">
               <div className="inline-flex items-center space-x-2 text-[#d9b578]">
                 <Quote className="w-5 h-5 text-[#d9b578]" />

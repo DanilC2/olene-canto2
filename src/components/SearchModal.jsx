@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Search, X, ArrowRight } from "lucide-react";
 
@@ -11,24 +11,16 @@ export default function SearchModal({
   onSelectItem,
 }) {
   const [query, setQuery] = useState("");
-  const [filtered, setFiltered] = useState(items);
-
-  useEffect(() => {
-    if (!query.trim()) {
-      setFiltered(items);
-    } else {
-      const q = query.toLowerCase();
-      setFiltered(
-        items.filter(
-          (item) =>
-            item.name.toLowerCase().includes(q) ||
-            item.description.toLowerCase().includes(q) ||
-            item.category.toLowerCase().includes(q) ||
-            item.ingredients.some((ing) => ing.toLowerCase().includes(q))
-        )
-      );
-    }
-  }, [query, items]);
+  const normalizedQuery = query.trim().toLowerCase();
+  const filtered = normalizedQuery
+    ? items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(normalizedQuery) ||
+          item.description.toLowerCase().includes(normalizedQuery) ||
+          item.category.toLowerCase().includes(normalizedQuery) ||
+          item.ingredients.some((ing) => ing.toLowerCase().includes(normalizedQuery))
+      )
+    : items;
 
   if (!isOpen) return null;
 
