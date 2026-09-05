@@ -8,7 +8,7 @@ export default function Hero({ onExploreClick, onStoryClick }) {
     <section className="relative min-h-screen w-full bg-zinc-950 text-white pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 flex flex-col justify-between overflow-hidden">
       {/* Background Video — Fully Responsive with Complete Visibility */}
       <video
-        src="/erasio_Staff_baking_and_packaging_cake_202608271633.mp4"
+        src="/olene.webm"
         autoPlay
         loop
         muted
