@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import OurStoryIntro from "@/components/OurStoryIntro";
+import HistorySection from "@/components/HistorySection";
 import FounderMessageSection from "@/components/FounderMessageSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import DefiningQualitySection from "@/components/DefiningQualitySection";
@@ -49,7 +50,10 @@ export default function OurStoryPage() {
       {/* 1. OUR STORY INTRO SECTION */}
       <OurStoryIntro />
 
-      {/* 2. FOUNDER & MANAGING DIRECTOR'S MESSAGE */}
+      {/* 2. THE CHRONICLES OF OLENE CANTO & 12-YEAR TIMELINE */}
+      <HistorySection />
+
+      {/* 3. FOUNDER & MANAGING DIRECTOR'S MESSAGE */}
       <ScrollReveal>
         <FounderMessageSection />
       </ScrollReveal>

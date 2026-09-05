@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HeritageBanner from "@/components/HeritageBanner";
 import ProductVideoCarousel from "@/components/ProductVideoCarousel";
-import HistorySection from "@/components/HistorySection";
-import StorySection from "@/components/StorySection";
 import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
 import Footer from "@/components/Footer";
@@ -17,6 +17,7 @@ import { fetchMenu, fetchStory } from "@/lib/api";
 import { Sparkles, Quote, BookOpen, Briefcase, ChevronRight, Wheat, Store, Truck } from "lucide-react";
 
 export default function Home() {
+  const router = useRouter();
   const [menuItems, setMenuItems] = useState([]);
   const selectedCategory = "all";
   const [story, setStory] = useState(null);
@@ -56,16 +57,21 @@ export default function Home() {
 
       {/* 1. FIRST SECTION: WHITE BACKGROUND HERO WITH AI BAKERY VIDEO */}
       <Hero
-        onExploreClick={() => handleScrollToSection("history")}
-        onStoryClick={() => handleScrollToSection("about")}
+        onExploreClick={() => handleScrollToSection("heritage-banner")}
+        onStoryClick={() => router.push("/our-story")}
       />
 
-      {/* 2. HISTORY & COMPANY PROGRESS SECTION (DIRECTLY BELOW HERO) */}
-      <HistorySection />
+      {/* 2. HERITAGE & PRODUCT BANNER ("A DECADE OF TASTE, QUALITY, AND TRADITION") */}
+      <div id="heritage-banner">
+        <HeritageBanner />
+      </div>
 
-      <ScrollReveal>
-        <ProductVideoCarousel />
-      </ScrollReveal>
+      {/* 3. PRODUCT VIDEO CAROUSEL SECTION */}
+      <section id="explore">
+        <ScrollReveal>
+          <ProductVideoCarousel />
+        </ScrollReveal>
+      </section>
 
       {/* 3. WHITE LOAF WHOLESALE BRAND */}
       <section id="white-loaf" className="text-[#f5f1ea] border-y border-[#2a2a2a] bg-[#090909] overflow-hidden">
