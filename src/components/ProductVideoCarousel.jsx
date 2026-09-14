@@ -6,31 +6,31 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const videos = [
   {
     id: 1,
-    title: "Butter Cookies",
-    src: "/Camera_orbiting_butter_cookies_c…_202608281632.mp4",
+    title: "Canto Butter",
+    src: "/canto butter (1).webm",
   },
   {
     id: 2,
-    title: "Cake & Tin",
-    src: "/Camera_orbiting_cake_and_tin_202608281644.mp4",
+    title: "Canto Tin",
+    src: "/canto tin (1).webm",
   },
   {
-    id: 3,
+    id: 4,
     title: "Orange Sweets",
     src: "/Camera_orbits_orange_sweets_show…_202608281633.mp4",
   },
   {
-    id: 4,
+    id: 5,
     title: "Cookie Tin",
     src: "/Canto_cookie_tin_product_showcase_202608281632.mp4",
   },
   {
-    id: 5,
+    id: 6,
     title: "Nutty Buddy",
     src: "/Nutty_Buddy_Cookies_canister_rot…_202608281632.mp4",
   },
   {
-    id: 6,
+    id: 7,
     title: "Milk Bread Package",
     src: "/Milk_bread_package_rotating_202609021547.mp4",
   },

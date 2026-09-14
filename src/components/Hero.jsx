@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
-export default function Hero({ onExploreClick, onStoryClick }) {
+export default function Hero({ onExploreClick, onStoryClick, onCategoryClick }) {
   return (
     <section className="relative min-h-screen w-full bg-zinc-950 text-white pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 flex flex-col justify-between overflow-hidden">
       {/* Background Video — Fully Responsive with Complete Visibility */}
@@ -62,20 +63,22 @@ export default function Hero({ onExploreClick, onStoryClick }) {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4 pt-2 sm:pt-3">
-              <button
-                onClick={onExploreClick}
+              <Link
+                href="/categories"
+                onClick={onCategoryClick}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black hover:bg-zinc-100 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm tracking-wider flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 group shadow-2xl transition-all active:scale-95 hover:shadow-white/20"
               >
                 <span>EXPLORE OUR CATEGORIES</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              </Link>
 
-              <button
+              <Link
+                href="/our-story"
                 onClick={onStoryClick}
                 className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 bg-black/40 border border-white/35 text-white hover:bg-white hover:text-black rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm tracking-wider flex items-center justify-center space-x-2 backdrop-blur-md transition-all active:scale-95"
               >
                 <span>OUR STORY</span>
-              </button>
+              </Link>
             </div>
           </div>
 

@@ -33,6 +33,13 @@ export const CATEGORIES_DATA = [
     description: "Basque burnt cheesecake, dark chocolate gianduja tart, and pistachio celebration gateaux",
     badge: "Special Occasions",
     count: "3 Items"
+  },
+  {
+    id: "biscuit-and-cookies",
+    name: "Biscuits & Artisan Cookies",
+    description: "Handcrafted butter fruit biscuits, vintage egg coin drops, roasted nut shortbread, and decadent cookies",
+    badge: "Heritage Bakes",
+    count: "10 Items"
   }
 ];
 
@@ -135,6 +142,126 @@ export const MENU_DATA = [
     image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=900&auto=format&fit=crop",
     ingredients: ["Almond Joconde Sponge", "Espresso Infusion", "Grand Cru Dark Ganache", "Gold Leaf"],
     calories: "310 kcal"
+  },
+  {
+    id: "item-9",
+    name: "Classic Tutti-Frutti Fruit Biscuits",
+    category: "biscuit-and-cookies",
+    price: "₹180",
+    description: "Hand-sliced artisan biscuits embedded with emerald and ruby candied fruits, infused with delicate cardamom and slow-baked to a melt-in-mouth crumb.",
+    badge: "Heritage Bestseller",
+    rating: 4.9,
+    image: "/products/tutti-frutti-slice-biscuits.jpg",
+    ingredients: ["Normandy Cultured Butter", "Candied Tutti Frutti", "Cardamom & Vanilla", "Stoneground Wheat"],
+    calories: "140 kcal / 2 pcs"
+  },
+  {
+    id: "item-10",
+    name: "Artisan Fruit Butter Cookies",
+    category: "biscuit-and-cookies",
+    price: "₹200",
+    description: "Golden-baked all-butter cookies loaded with generous bits of candied fruit medley, offering a rich buttery bite that pairs divinely with warm tea.",
+    badge: "Tea-Time Classic",
+    rating: 5.0,
+    image: "/products/tutti-frutti-cookies-bowl.jpg",
+    ingredients: ["Cultured Dairy Butter", "Candied Papaya & Cherries", "Vanilla Pod Essence", "Cane Sugar"],
+    calories: "150 kcal / 2 pcs"
+  },
+  {
+    id: "item-11",
+    name: "Traditional Egg Biscuits (Coin Biscuits)",
+    category: "biscuit-and-cookies",
+    price: "₹150",
+    description: "Beloved bakery heritage classic: miniature golden coin drops made with farm-fresh eggs and pure vanilla that dissolve effortlessly on the tongue.",
+    badge: "Nostalgic Favorite",
+    rating: 4.8,
+    image: "/products/classic-egg-coin-biscuits.jpg",
+    ingredients: ["Farm Fresh Eggs", "Madagascar Vanilla", "Wheat Flour", "Gentle Cane Sugar"],
+    calories: "110 kcal / serving"
+  },
+  {
+    id: "item-12",
+    name: "Golden Butter Crunch Cookies",
+    category: "biscuit-and-cookies",
+    price: "₹220",
+    description: "Rustic, crinkle-topped artisan butter cookies crafted with generous churns of pure cultured butter, toasted wheat aromas, and a delicate crunch.",
+    badge: "Artisan Reserve",
+    rating: 4.9,
+    image: "/products/golden-butter-crunch-cookies.jpg",
+    ingredients: ["100% Normandy Butter", "Caramelized Sugar Crumb", "Fleur de Sel", "Slow-Roasted Flour"],
+    calories: "160 kcal / 2 pcs"
+  },
+  {
+    id: "item-13",
+    name: "Decadent Choco-Chip Cookies",
+    category: "biscuit-and-cookies",
+    price: "₹240",
+    description: "Richly baked cookies with deep cocoa undertones, lavishly studded with premium dark chocolate chips for an irresistible crunch and molten chocolate richness.",
+    badge: "Chef's Signature",
+    rating: 5.0,
+    image: "/products/belgian-choco-chip-cookies.jpg",
+    ingredients: ["Belgian Dark Chocolate 60%", "Dutch Processed Cocoa", "Pure Creamery Butter", "Brown Cane Sugar"],
+    calories: "175 kcal / cookie"
+  },
+  {
+    id: "item-14",
+    name: "Roasted Nut Butter Biscuits",
+    category: "biscuit-and-cookies",
+    price: "₹210",
+    description: "Thick-cut rectangular shortbread biscuits packed with golden roasted peanuts and crushed cashews for a rich, savory-sweet crunch.",
+    badge: "Nutty Crunch",
+    rating: 4.9,
+    image: "/products/roasted-nut-butter-biscuits.jpg",
+    ingredients: ["Roasted Peanuts & Cashews", "Normandy Butter", "Stoneground Wheat", "Cane Sugar"],
+    calories: "165 kcal / 2 pcs"
+  },
+  {
+    id: "item-15",
+    name: "Pistachio Pinwheel Swirl Cookies",
+    category: "biscuit-and-cookies",
+    price: "₹250",
+    description: "Dual-tone pinwheel cookies featuring alternating spirals of pure pistachio butter dough and sweet Madagascar vanilla.",
+    badge: "Atelier Festive",
+    rating: 5.0,
+    image: "/products/pista-pinwheel-swirl-cookies.jpg",
+    ingredients: ["Sicilian Pistachio Paste", "Cultured Butter", "Madagascar Vanilla", "Unbleached Flour"],
+    calories: "145 kcal / 2 pcs"
+  },
+  {
+    id: "item-16",
+    name: "Malabar Nankhatai Butter Drops",
+    category: "biscuit-and-cookies",
+    price: "₹190",
+    description: "Traditional Indian shortbread cookies baked to a golden dome with tender melt-in-mouth texture and green cardamom warmth.",
+    badge: "Heritage Classic",
+    rating: 4.9,
+    image: "/products/malabar-nankhatai-butter-drops.jpg",
+    ingredients: ["Pure Clarified Ghee & Butter", "Roasted Gram Flour", "Green Cardamom", "Fine Semolina"],
+    calories: "135 kcal / 2 pcs"
+  },
+  {
+    id: "item-17",
+    name: "Sugar-Glazed Tea Shortbread Biscuits",
+    category: "biscuit-and-cookies",
+    price: "₹170",
+    description: "Classic tea-room shortbread rounds pressed with signature fork ridges and dusted with sparkling crystalline sugar.",
+    badge: "Tea-Time Favorite",
+    rating: 4.8,
+    image: "/products/sugar-crystal-tea-biscuits.jpg",
+    ingredients: ["Normandy Cultured Butter", "Crystalline Sugar Glaze", "Fine Wheat Flour", "Sea Salt"],
+    calories: "130 kcal / 2 pcs"
+  },
+  {
+    id: "item-18",
+    name: "Black Sesame Artisan Butter Biscuits",
+    category: "biscuit-and-cookies",
+    price: "₹200",
+    description: "Crisp round butter biscuits speckled with toasted black sesame seeds pairing earthy nuttiness with dairy butter.",
+    badge: "Aromatic Crunch",
+    rating: 4.9,
+    image: "/products/black-sesame-butter-biscuits.jpg",
+    ingredients: ["Toasted Black Sesame Seeds", "Cultured Creamery Butter", "Stoneground Wheat", "Raw Cane Sugar"],
+    calories: "140 kcal / 2 pcs"
   }
 ];
 

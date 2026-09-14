@@ -12,6 +12,7 @@ import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
 import Footer from "@/components/Footer";
 import RetailNetworkMarquee from "@/components/RetailNetworkMarquee";
+import InstagramReelsCarousel from "@/components/InstagramReelsCarousel";
 import ScrollReveal from "@/components/ScrollReveal";
 import { fetchMenu, fetchStory } from "@/lib/api";
 import { Sparkles, Quote, BookOpen, Briefcase, ChevronRight, Wheat, Store, Truck } from "lucide-react";
@@ -164,6 +165,13 @@ export default function Home() {
       <section className="bg-white border-b border-zinc-200 overflow-hidden">
         <ScrollReveal>
           <RetailNetworkMarquee theme="light" />
+        </ScrollReveal>
+      </section>
+
+      {/* 3.2 INSTAGRAM REELS CAROUSEL */}
+      <section id="instagram-reels" className="bg-[#faf8f5] border-b border-zinc-200 overflow-hidden">
+        <ScrollReveal>
+          <InstagramReelsCarousel />
         </ScrollReveal>
       </section>
 
