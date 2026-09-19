@@ -1,127 +1,56 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
 import {
   Calendar,
-  CheckCircle2,
   Maximize2,
   X,
   ShieldCheck,
   Award,
   Target,
   TrendingUp,
-  Quote,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const MILESTONES = [
   {
     year: "2014",
-    title: "Entered into Food Industry",
-    subtitle: "A Humble Beginning in Northern Kerala",
+    title: "From a Shop & Restaurant to a Growing Food Journey",
     description:
-      "Our first outlet in 2014 was a humble beginning with a modest initial vision of what a good restaurant and bakery were. Driven by a genuine passion for food and community service, this first step laid the ethical foundation for everything we would build.",
-    achievements: [
-      "Inaugural restaurant and bakery outlet opened in Northern Kerala",
-      "Crafted early batches of traditional breads, daily tea snacks, and confections",
-      "Built initial customer trust through welcoming service and pure recipes",
-    ],
+      "Olene Canto began its journey in 2014 with a shop and restaurant, creating a strong foundation through a passion for good food, quality ingredients and customer satisfaction. What started as a customer-focused food business became the first step toward building a larger food enterprise.",
     image: "/history3.jpeg",
-    imageCaption: "2014: The humble beginning with our very first outlet in Northern Kerala",
+    imageCaption: "2014: From a shop and restaurant to a growing food journey",
     badge: "The Beginning",
   },
   {
-    year: "2016",
-    title: "Oges Group Acquisition",
-    subtitle: "Backed by Manufacturing Pedigree (Est. 1970)",
-    description:
-      "Founded in 1970, the renowned Oges Group took over operations with a singular, transformative vision: to establish a truly premium bakery brand. Backed by multi-decade manufacturing discipline, the organization upgraded production infrastructure, instituted rigorous hygiene protocols, and set long-term growth in motion.",
-    achievements: [
-      "Backed by Oges Group's multi-decade manufacturing pedigree (Est. 1970)",
-      "Strategic transition from a local eatery into a structured bakery organization",
-      "Major investments in specialized baking machinery and professional talent",
-    ],
-    image: "/history2.jpeg",
-    imageCaption: "2016: Elevating production infrastructure under the guidance of Oges Group",
-    badge: "Oges Group Takeover",
-  },
-  {
-    year: "2017",
-    title: "Re-branded to Olene Canto & Incorporated",
-    subtitle: "The Birth of the Ethical 'People's Bakery'",
-    description:
-      "As part of our organic growth, the brand adopted a more befitting avatar—'Olene Canto'—and was formally incorporated as Olene Foods Pvt. Ltd. We committed firmly to the motto of being a healthy, ethical, fast 'People's Bakery', taking a principled stand against conventional unethical industry practices, with zero tolerance for compromises on quality.",
-    achievements: [
-      "Officially incorporated as Olene Foods Pvt. Ltd.",
-      "Unveiled 'Olene Canto' brand with the motto of being an ethical People's Bakery",
-      "Strict company-wide pledge: zero tolerance for unethical additives or chemical compromises",
-      "Established an in-house R&D system where master bakers use the best local authentic ingredients",
-    ],
-    image: "/history4.jpeg",
-    imageCaption: "2017: Official incorporation and birth of the Olene Canto brand identity",
-    badge: "Olene Foods Pvt. Ltd.",
-  },
-  {
     year: "2020",
-    title: "Bakery Production Focus & 'White Loaf' Wholesale Launch",
-    subtitle: "Spreading Healthy Food Culture to Supermarkets",
+    title: "Expanding from Retail to Production",
     description:
-      "Following the lockdown, dine-in restaurant operations were strategically put on hold to channel 100% of our focus onto specialized bakery production. To share our healthier food culture with a wider public, we launched 'White Loaf'—our dedicated wholesale and retail support division exclusively for established supermarkets and hypermarkets.",
-    achievements: [
-      "Strategic pivot from restaurant operations to 100% specialized bakery manufacturing",
-      "Created and launched 'White Loaf' wholesale brand for daily breads and cookies",
-      "Formulated pure, healthy confectioneries tailored for high-traffic supermarket shelves",
-    ],
+      "In 2020, Olene Canto expanded into bakery production and wholesale, moving beyond direct customer service to supplying products to a wider network of businesses and customers. This marked an important step toward developing stronger production capabilities and a broader distribution network.",
     image: "/whieloaf2.png",
-    imageCaption: "2020: Dedicated bakery production and wholesale expansion under White Loaf",
-    badge: "White Loaf Launch",
-  },
-  {
-    year: "2021",
-    title: "Associated with Top Brand Companies in Kerala",
-    subtitle: "Statewide Retail Alliances with Leading Hypermarkets",
-    description:
-      "White Loaf established strategic supply partnerships with Kerala's foremost supermarket and hypermarket giants, including LuLu Hypermarket, Nesto, Smart, Kalyan, and AB Grand Hyper. We backed our products with comprehensive retail support, visual merchandising, and active counter management to guarantee peak freshness daily.",
-    achievements: [
-      "Supply partnerships signed with LuLu, Nesto, Kalyan, Smart, and premier retail chains",
-      "Deployed White Loaf dedicated retail support system, counter management, and merchandising",
-      "Earning widespread customer loyalty for ethical, fresh daily bakery staples",
-    ],
-    image: "/canto-shelf.png",
-    imageCaption: "2021: Statewide retail presence across Kerala's premier hypermarkets and supermarkets",
-    badge: "Retail Alliances",
+    imageCaption: "2020: Expanding from retail to dedicated bakery production and wholesale",
+    badge: "Bakery & Wholesale",
   },
   {
     year: "2022",
-    title: "Reliance Agreement, Beach Flagships & 'Du Four' Export",
-    subtitle: "10 Outlets Across Malabar & International Expansion",
+    title: "Taking Our Products Beyond Borders",
     description:
-      "A landmark milestone year: an agreement was entered into with Reliance India Pvt., and two scenic destination branches opened at Kozhikode Beach and Ramanattukara, growing our retail presence to 10 outlets spread across Malabar. Recognizing the universal appeal of our rich cookie pantry, we launched 'Du Four' to promote high-quality bakery exports globally.",
-    achievements: [
-      "Landmark supply agreement entered into with Reliance India Pvt.",
-      "Opened destination branches at Kozhikode Beach and Ramanattukara (10 outlets across Malabar)",
-      "Launched 'Du Four' export brand to share signature cookies with global markets",
-    ],
+      "In 2022, Olene Canto entered the food export market, opening opportunities to reach customers beyond its home market. This expansion strengthened the company's focus on product quality, packaging, consistency and reliable supply while introducing its food products to new markets.",
     image: "/olene-canto-building.jpg",
-    imageCaption: "2022: Flagship seaside outlet at Kozhikode Beach and international export launch",
-    badge: "Reliance & Du Four",
+    imageCaption: "2022: Taking our products beyond borders into international food export markets",
+    badge: "Food Exports",
   },
   {
     year: "Today",
-    title: "A Decade of Taste, Quality, and Tradition",
-    subtitle: "The Three Pillars: Olene Canto • White Loaf • Du Four",
+    title: "Building a Scalable Food Production Company",
     description:
-      "Today, Olene Foods stands as a flourishing, ethical food organization. Guided by our core values—Faith & Trust, Competency, Discipline, and Growth—we serve thousands of loyal patrons across three dedicated verticals: Olene Canto retail bakeries, White Loaf wholesale distribution, and Du Four global exports.",
-    achievements: [
-      "Retail: Olene Canto (The Bakery in Supermarket, Bakes & Treats with Café, Expresso Franchise)",
-      "Wholesale: White Loaf (Exclusive bread & cookies in established supermarkets statewide)",
-      "Export: Du Four (Sharing our pantry of premium cookies with international markets)",
-      "Uncompromising zero-tolerance policy against unethical food practices and artificial shortcuts",
-    ],
-    image: "/canto restaurant.jpg.jpeg",
-    imageCaption: "Today: A decade of ethical craftsmanship, community trust, and organic growth",
-    badge: "Our Ethos Today",
+      "Today, Olene Canto is moving toward a production-focused food business, with greater emphasis on manufacturing capabilities, product development, quality standards and distribution. The focus is on creating products that can reach more customers while building long-term relationships with retailers, wholesalers and business partners.",
+    closingQuote:
+      "From a single shop and restaurant to a growing food production business — our journey continues with the same commitment to quality, consistency and good food.",
+    image: "/today-selection-showcase.jpg",
+    imageCaption: "Today: Building a scalable, production-focused food company",
+    badge: "Production Focus",
   },
 ];
 
@@ -172,14 +101,14 @@ export default function HistorySection() {
         <div className="space-y-12 pb-16">
           <div className="text-center max-w-3xl mx-auto space-y-4 pt-2">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif-luxury font-normal text-black leading-tight">
-              A Decade of <br className="hidden sm:inline" />
-              <span className="italic font-normal text-amber-900">Ethical Taste & Heritage</span>
+              A Journey Built on <br className="hidden sm:inline" />
+              <span className="italic font-normal text-amber-900">Taste, Trust &amp; Growth</span>
             </h2>
 
             <div className="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-amber-800/40 to-transparent mx-auto my-2" />
 
             <p className="text-zinc-600 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
-              From our humble beginning in 2014 to Malabar’s beloved People’s Bakery, statewide wholesale with White Loaf, and global exports with Du Four — discovered through an uncompromising commitment to healthy food culture.
+              From our humble beginning in 2014 to Malabar’s beloved People’s Bakery, statewide wholesale with White Loaf, and global exports — discovered through an uncompromising commitment to healthy food culture.
             </p>
           </div>
 
@@ -188,23 +117,23 @@ export default function HistorySection() {
             className="overflow-x-auto no-scrollbar pb-2"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            <div className="inline-flex items-center space-x-2 min-w-full w-max p-2 bg-zinc-100 rounded-2xl border border-zinc-200">
+            <div className="flex items-center space-x-2 sm:space-x-3 w-full min-w-[560px] p-2 bg-zinc-100 rounded-2xl border border-zinc-200">
               {MILESTONES.map((m) => {
                 const isSelected = activeYear === m.year;
                 return (
                   <button
                     key={m.year}
                     onClick={() => setActiveYear(m.year)}
-                    className={`shrink-0 sm:flex-1 min-w-[120px] py-3 px-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center space-y-0.5 ${
+                    className={`flex-1 py-3 px-3 rounded-xl transition-all duration-300 flex flex-col items-center justify-center space-y-1 ${
                       isSelected
                         ? "bg-black text-white font-bold shadow-lg scale-[1.02]"
                         : "text-zinc-600 hover:text-black hover:bg-zinc-200/80 font-medium"
                     }`}
                   >
-                    <span className="text-sm font-bold tracking-wider">{m.year}</span>
+                    <span className="text-sm sm:text-base font-bold tracking-wider">{m.year}</span>
                     <span
-                      className={`text-[10px] uppercase truncate max-w-[110px] ${
-                        isSelected ? "text-amber-300" : "text-zinc-500"
+                      className={`text-[10px] sm:text-[11px] uppercase tracking-wider text-center whitespace-nowrap ${
+                        isSelected ? "text-amber-300 font-semibold" : "text-zinc-500"
                       }`}
                     >
                       {m.badge}
@@ -267,33 +196,25 @@ export default function HistorySection() {
                 <h3 className="text-2xl sm:text-3xl font-serif-luxury font-medium text-black leading-snug">
                   {currentMilestone.title}
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-amber-900 tracking-wider uppercase">
-                  {currentMilestone.subtitle}
-                </p>
+                {currentMilestone.subtitle && (
+                  <p className="text-xs sm:text-sm font-semibold text-amber-900 tracking-wider uppercase">
+                    {currentMilestone.subtitle}
+                  </p>
+                )}
               </div>
 
               <p className="text-zinc-700 text-sm sm:text-base font-light leading-relaxed">
                 {currentMilestone.description}
               </p>
 
-              <div className="space-y-2.5 pt-3 border-t border-zinc-200">
-                <p className="text-xs uppercase tracking-wider font-bold text-zinc-500">
-                  Key Achievements in this Era:
-                </p>
-                <div className="space-y-2">
-                  {currentMilestone.achievements.map((item, idx) => (
-                    <div key={idx} className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-sm text-zinc-800 font-normal leading-relaxed">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
+              {currentMilestone.closingQuote && (
+                <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200/70 text-amber-950 text-xs sm:text-sm font-medium italic leading-relaxed">
+                  &ldquo;{currentMilestone.closingQuote}&rdquo;
                 </div>
-              </div>
+              )}
 
               {/* Navigation Controls */}
-              <div className="flex items-center justify-between pt-4">
+              <div className="flex items-center justify-between pt-6 border-t border-zinc-200">
                 <button
                   disabled={MILESTONES.findIndex((m) => m.year === activeYear) === 0}
                   onClick={() => {

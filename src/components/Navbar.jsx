@@ -4,14 +4,12 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Globe, Mail, Search, Menu as MenuIcon, X, ChevronRight } from "lucide-react";
+import { Mail, Search, Menu as MenuIcon, X, ChevronRight } from "lucide-react";
 
 export default function Navbar({ onOpenSearch, onOpenInquiry }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [langDropdown, setLangDropdown] = useState(false);
-  const [currentLang, setCurrentLang] = useState("EN");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +19,8 @@ export default function Navbar({ onOpenSearch, onOpenInquiry }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHome = pathname === "/";
-  const isLightNav = !isHome || isScrolled;
+  const isDarkHero = pathname === "/" || pathname === "/our-story";
+  const isLightNav = !isDarkHero || isScrolled;
 
   const navLinks = [
     { name: "BUSINESS", href: "/" },
@@ -101,37 +99,6 @@ export default function Navbar({ onOpenSearch, onOpenInquiry }) {
 
             {/* Right: Action Icons */}
             <div className="hidden sm:flex items-center space-x-2.5">
-              {/* Language Selector */}
-              <div className="relative">
-                <button
-                  onClick={() => setLangDropdown(!langDropdown)}
-                  className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all shadow-sm ${
-                    isLightNav
-                      ? "border-zinc-300 bg-white hover:bg-zinc-100 text-zinc-900 shadow-sm"
-                      : "border-white/30 bg-black/40 hover:bg-white hover:text-black text-white backdrop-blur-md"
-                  }`}
-                  aria-label="Language Selector"
-                >
-                  <Globe className="w-4 h-4" />
-                </button>
-                {langDropdown && (
-                  <div className="absolute right-0 mt-2 w-32 bg-white border border-zinc-200 rounded-xl shadow-xl py-2 z-50 text-xs">
-                    {["EN (English)", "FR (Français)", "DE (Deutsch)", "IT (Italiano)"].map((lang) => (
-                      <button
-                        key={lang}
-                        onClick={() => {
-                          setCurrentLang(lang.substring(0, 2));
-                          setLangDropdown(false);
-                        }}
-                        className="w-full text-left px-3 py-2 text-zinc-700 hover:text-black hover:bg-zinc-100 transition-colors font-medium"
-                      >
-                        {lang}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
               {/* Search */}
               <button
                 onClick={onOpenSearch}

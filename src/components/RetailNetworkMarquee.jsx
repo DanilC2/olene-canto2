@@ -6,41 +6,41 @@ import { Handshake } from "lucide-react";
 
 const partnerLogos = [
   {
-    id: "lulu",
-    name: "LuLu Hypermarket",
-    category: "Hypermarket Network",
-    logo: "/partners/lulu.jpg",
+    id: "jacme",
+    name: "Jacme",
+    category: "Retail & Distribution",
+    logo: "/partners/jacme.png",
+  },
+  {
+    id: "6daymate",
+    name: "6 Day Mate",
+    category: "Retail Network",
+    logo: "/partners/6daymate.png",
+  },
+  {
+    id: "malabar-treats",
+    name: "Malabar Treats",
+    category: "Retail & Food Partner",
+    logo: "/partners/malabar-treats.png",
   },
   {
     id: "bismi",
     name: "Bismi",
     category: "Supermarket & Hypermarket",
-    logo: "/partners/bismi.png",
+    logo: "/partners/bismi-text.png",
   },
   {
-    id: "nesto",
-    name: "Nesto Hypermarket",
-    category: "International Retail Chain",
-    logo: "/partners/nesto.png",
-  },
-  {
-    id: "carrefresh",
-    name: "Carrefresh",
-    category: "Hypermart & Fresh Retail",
-    logo: "/partners/carrefresh.jpg",
-  },
-  {
-    id: "aak",
-    name: "AAK Middle East",
-    category: "Distribution & Retail",
-    logo: "/partners/aak.jpg",
+    id: "nellara",
+    name: "Nellara",
+    category: "Food Products & Distribution",
+    logo: "/partners/nellara.png",
   },
 ];
 
 export default function RetailNetworkMarquee({
-  title = "Collaborating with Leading Retailers",
-  subtitle = "Our bakery and wholesale products are proudly supplied and partnered across premier retail and hypermarket networks.",
-  badge = "Trusted Retail Collaborations",
+  title = "Collaborating with Leading Partners",
+  subtitle = "Our bakery and wholesale products are proudly supplied and partnered across premier retail and distribution networks.",
+  badge = "Trusted Collaborations",
   theme = "light",
 }) {
   // Multiply the partners list to create a seamless, uninterrupted loop

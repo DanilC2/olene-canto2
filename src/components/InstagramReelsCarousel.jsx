@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 function InstagramIcon({ className = "w-4 h-4" }) {
@@ -73,6 +73,8 @@ const reelsData = [
   },
 ];
 
+const emptySubscribe = () => () => {};
+
 export default function InstagramReelsCarousel() {
   const trackRef = useRef(null);
   const scrollPosRef = useRef(0);
@@ -80,7 +82,7 @@ export default function InstagramReelsCarousel() {
   const isHoveredRef = useRef(false);
   const resumeTimeoutRef = useRef(null);
   const singleSetWidthRef = useRef(2000);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   // Single active playing video state
   const [activePlayingKey, setActivePlayingKey] = useState(null);
@@ -166,7 +168,6 @@ export default function InstagramReelsCarousel() {
   }, []);
 
   useEffect(() => {
-    setMounted(true);
     const container = trackRef.current;
     if (!container) return;
 
@@ -280,22 +281,22 @@ export default function InstagramReelsCarousel() {
   };
 
   return (
-    <div className="w-full bg-[#faf8f5] py-5 sm:py-6 lg:py-8 flex flex-col justify-center select-none relative overflow-hidden">
+    <div className="w-full bg-black py-8 sm:py-10 lg:py-12 flex flex-col justify-center select-none relative overflow-hidden text-white">
       {/* Compact Section Header with Navigation Arrows positioned in header (NOT pointing/covering the video) */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-4 sm:mb-5 w-full">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
           {/* Header Left: Badge, Title & Subtitle */}
           <div>
-            <div className="inline-flex items-center gap-1.5 mb-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-[#c59a54]/30 bg-[#fbf6ed] text-[#9b722b]">
-              <InstagramIcon className="w-3 h-3 text-[#9b722b]" />
-              <span>Community & Social Reels</span>
+            <div className="inline-flex items-center gap-1.5 mb-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-amber-500/30 bg-amber-500/10 text-amber-300 backdrop-blur-sm">
+              <InstagramIcon className="w-3 h-3 text-amber-400" />
+              <span>Community &amp; Social Reels</span>
             </div>
 
-            <h3 className="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight text-zinc-950">
+            <h3 className="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight text-white">
               Moments from the Oven to the World
             </h3>
 
-            <p className="mt-1 text-xs sm:text-sm text-zinc-600 max-w-xl leading-relaxed">
+            <p className="mt-1 text-xs sm:text-sm text-zinc-300 max-w-xl leading-relaxed">
               Watch our latest reels, behind-the-scenes bakery craft, retail collaborations, and tasting stories directly from Instagram.
             </p>
           </div>
@@ -308,19 +309,19 @@ export default function InstagramReelsCarousel() {
                 type="button"
                 aria-label="Scroll Instagram reels left"
                 onClick={() => scrollByCards("prev")}
-                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#d9b578]/70 bg-white text-zinc-900 shadow-sm transition-all duration-200 hover:scale-105 hover:bg-[#fbf7f0] hover:border-[#c59a54] active:scale-95 cursor-pointer"
+                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-white shadow-sm transition-all duration-200 hover:scale-105 hover:bg-zinc-800 hover:border-amber-400 active:scale-95 cursor-pointer"
                 title="Previous reels"
               >
-                <ChevronLeft className="h-5 w-5 text-zinc-900" />
+                <ChevronLeft className="h-5 w-5 text-zinc-200" />
               </button>
               <button
                 type="button"
                 aria-label="Scroll Instagram reels right"
                 onClick={() => scrollByCards("next")}
-                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#d9b578]/70 bg-white text-zinc-900 shadow-sm transition-all duration-200 hover:scale-105 hover:bg-[#fbf7f0] hover:border-[#c59a54] active:scale-95 cursor-pointer"
+                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-white shadow-sm transition-all duration-200 hover:scale-105 hover:bg-zinc-800 hover:border-amber-400 active:scale-95 cursor-pointer"
                 title="Next reels"
               >
-                <ChevronRight className="h-5 w-5 text-zinc-900" />
+                <ChevronRight className="h-5 w-5 text-zinc-200" />
               </button>
             </div>
 
@@ -328,7 +329,7 @@ export default function InstagramReelsCarousel() {
               href="https://www.instagram.com/olenecanto/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-900 hover:bg-[#a4542d] text-white text-xs font-semibold tracking-wider transition-colors duration-200 shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white hover:bg-amber-400 text-black text-xs font-semibold tracking-wider transition-colors duration-200 shadow-sm"
             >
               <InstagramIcon className="w-3.5 h-3.5" />
               <span>Follow @olenecanto</span>
@@ -363,8 +364,8 @@ export default function InstagramReelsCarousel() {
         }}
       >
         {/* Subtle Edge Fades */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-[#faf8f5] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-[#faf8f5] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-black to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-black to-transparent" />
 
         {/* Scrollable Cards Track */}
         <div
@@ -402,7 +403,7 @@ export default function InstagramReelsCarousel() {
                 className={`group/card relative shrink-0 overflow-hidden rounded-[20px] transition-all duration-300 ${
                   isActive
                     ? "border-2 border-[#c59a54] ring-4 ring-[#c59a54]/30 shadow-[0_16px_36px_rgba(197,154,84,0.28)] scale-[1.02] z-20"
-                    : "border border-[#e5dcd1] bg-black shadow-[0_8px_24px_rgba(74,54,40,0.1)] hover:shadow-[0_16px_36px_rgba(74,54,40,0.18)] hover:border-[#d9b578]"
+                    : "border border-zinc-800 bg-zinc-950 shadow-[0_8px_24px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_36px_rgba(217,181,120,0.15)] hover:border-amber-400/60"
                 } ${
                   isSquare
                     ? "w-[280px] sm:w-[325px] h-[280px] sm:h-[325px]"

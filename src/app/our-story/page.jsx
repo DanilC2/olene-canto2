@@ -7,6 +7,7 @@ import HistorySection from "@/components/HistorySection";
 import FounderMessageSection from "@/components/FounderMessageSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import DefiningQualitySection from "@/components/DefiningQualitySection";
+import WhiteLoafWholesaleSection from "@/components/WhiteLoafWholesaleSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
@@ -58,12 +59,15 @@ export default function OurStoryPage() {
         <FounderMessageSection />
       </ScrollReveal>
 
-      {/* 3. PURPOSE, VISION & MISSION */}
+      {/* 4. WHITE LOAF WHOLESALE SECTION */}
+      <WhiteLoafWholesaleSection />
+
+      {/* 5. PURPOSE, VISION & MISSION */}
       <ScrollReveal>
         <VisionMissionSection />
       </ScrollReveal>
 
-      {/* 4. DEFINING QUALITY & CERTIFICATIONS */}
+      {/* 6. DEFINING QUALITY & CERTIFICATIONS */}
       <ScrollReveal>
         <DefiningQualitySection />
       </ScrollReveal>

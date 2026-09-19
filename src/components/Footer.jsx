@@ -35,45 +35,21 @@ export default function Footer() {
         {/* 2. Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-14 border-b border-zinc-200">
           
-          {/* Column 1: Brand & Locations */}
+          {/* Column 1: Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative h-12 w-12 flex items-center justify-center">
+            <div className="flex items-center gap-4">
+              <div className="relative h-20 w-20 flex items-center justify-center sm:h-24 sm:w-24">
                 <Image
                   src="/logo.jpg"
                   alt="Olene Canto"
-                  width={100}
-                  height={100}
+                  width={140}
+                  height={140}
                   className="h-full w-full object-contain rounded-full mix-blend-multiply"
                 />
               </div>
               <div>
-                <h3 className="font-serif-luxury text-2xl font-medium text-zinc-950 leading-none">Olene Canto</h3>
+                <h3 className="font-serif-luxury text-2xl font-medium text-zinc-950 leading-none sm:text-3xl">Olene Canto</h3>
               </div>
-            </div>
-
-            <div className="pt-3">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#9b722b] mb-2.5">
-                Our Locations
-              </p>
-              <ul className="space-y-1.5 text-xs text-zinc-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#d9b578]" />
-                  <span>Manjeri - Malappuram</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#d9b578]" />
-                  <span>Perinthalmanna</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#d9b578]" />
-                  <span>Calicut</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#d9b578]" />
-                  <span>Ramanattukara</span>
-                </li>
-              </ul>
             </div>
           </div>
 
