@@ -63,6 +63,7 @@ export default function CategoriesPage() {
             {CATEGORIES_SHOWCASE.map((category) => (
               <Link
                 key={category.id}
+                id={category.id}
                 href={`/categories/${category.id}`}
                 className="group bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl hover:border-zinc-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
               >

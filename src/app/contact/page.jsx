@@ -23,7 +23,6 @@ import {
   ArrowRight,
   Sparkles,
   ExternalLink,
-  ShieldCheck,
   RefreshCw,
 } from "lucide-react";
 import { submitInquiry } from "@/lib/api";
@@ -68,11 +67,6 @@ const FAQS = [
     question: "What are the requirements to open an Olene Canto franchise outlet?",
     answer:
       "We seek passionate entrepreneurs with prime retail or high-footfall commercial spaces (typically 400 to 1,200 sq.ft.). We provide complete turnkey support including kitchen/store architectural design, barista & bakery staff training, centralized ingredient supply, and branded marketing launch campaigns.",
-  },
-  {
-    question: "Why does Olene Canto strictly say NO to artificial flavours, colours, and preservatives?",
-    answer:
-      "Since our entry into the food industry in 2014, our motto as a true 'People's Bakery & Restaurant' has been rooted in clean, ethical eating. We believe authentic bakery excellence relies on slow natural fermentation, real butter, unbleached flour, and pure culinary craft—never synthetic chemical shortcuts to artificially extend shelf life.",
   },
 ];
 
@@ -498,20 +492,6 @@ function ContactContent() {
                     </a>
                   </div>
                 </div>
-              </div>
-
-              {/* Quality & Clean Eating Pledge */}
-              <div className="bg-[#111111] text-[#f5f1ea] rounded-3xl p-6 sm:p-8 shadow-md">
-                <div className="flex items-center gap-2 text-[#d9b578] text-xs font-bold uppercase tracking-wider mb-2">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>The Olene Canto Promise</span>
-                </div>
-                <h4 className="font-serif-luxury text-xl font-medium text-white mb-2">
-                  Zero Preservatives, Zero Compromises
-                </h4>
-                <p className="text-xs text-zinc-300 leading-relaxed">
-                  We say a strict NO to artificial flavours, synthetic colours, and chemical preservatives. Our entire range is crafted fresh daily with wholesome ingredients and uncompromising ethical standards.
-                </p>
               </div>
 
             </div>

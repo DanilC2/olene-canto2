@@ -66,7 +66,7 @@ export default function Home() {
       <IngredientRevealSection onOpenInquiry={handleOpenInquiry} />
 
       {/* 2. PRODUCT CAMPAIGN COLLAGE */}
-      <ProductCampaignCollage onOpenInquiry={handleOpenInquiry} />
+      <ProductCampaignCollage />
 
       {/* 3. PRODUCT VIDEO CAROUSEL SECTION */}
       <section id="explore">

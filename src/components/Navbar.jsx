@@ -39,7 +39,7 @@ export default function Navbar({ onOpenSearch, onOpenInquiry }) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between min-h-[44px]">
             {/* Left: Brand Logo */}
             <Link
               href="/"
@@ -97,8 +97,8 @@ export default function Navbar({ onOpenSearch, onOpenInquiry }) {
               })}
             </nav>
 
-            {/* Right: Action Icons */}
-            <div className="hidden sm:flex items-center space-x-2.5">
+            {/* Desktop Action Icons */}
+            <div className="hidden lg:flex items-center space-x-2.5">
               {/* Search */}
               <button
                 onClick={onOpenSearch}
@@ -112,28 +112,29 @@ export default function Navbar({ onOpenSearch, onOpenInquiry }) {
               >
                 <Search className="w-4 h-4" />
               </button>
-
             </div>
 
-            {/* Mobile Menu Toggle */}
-            <div className="flex sm:hidden items-center space-x-2">
+            {/* Responsive Actions (Search + Mobile Menu Toggle) */}
+            <div className="flex lg:hidden items-center space-x-2 ml-auto z-20">
               <button
                 onClick={onOpenSearch}
-                className={`w-9 h-9 rounded-full border flex items-center justify-center ${
+                className={`w-9 h-9 rounded-full border flex items-center justify-center transition-all ${
                   isLightNav
-                    ? "border-zinc-300 bg-white text-zinc-900 shadow-sm"
-                    : "border-white/30 bg-black/40 text-white"
+                    ? "border-zinc-300 bg-white text-zinc-900 shadow-sm hover:bg-zinc-100"
+                    : "border-white/30 bg-black/40 text-white hover:bg-white/20"
                 }`}
+                aria-label="Search"
               >
                 <Search className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`w-9 h-9 rounded-full border flex items-center justify-center ${
+                className={`w-9 h-9 rounded-full border flex items-center justify-center transition-all ${
                   isLightNav
-                    ? "border-zinc-300 bg-white text-zinc-900 shadow-sm"
-                    : "border-white/30 bg-black/40 text-white"
+                    ? "border-zinc-300 bg-white text-zinc-900 shadow-sm hover:bg-zinc-100"
+                    : "border-white/30 bg-black/40 text-white hover:bg-white/20"
                 }`}
+                aria-label="Toggle Menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
               </button>

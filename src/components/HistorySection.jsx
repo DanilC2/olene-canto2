@@ -3,9 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import {
-  Calendar,
-  Maximize2,
-  X,
   ShieldCheck,
   Award,
   Target,
@@ -83,7 +80,6 @@ const CORE_VALUES = [
 
 export default function HistorySection() {
   const [activeYear, setActiveYear] = useState("Today");
-  const [lightboxImage, setLightboxImage] = useState(null);
 
   const currentMilestone =
     MILESTONES.find((m) => m.year === activeYear) || MILESTONES[MILESTONES.length - 1];
@@ -148,37 +144,21 @@ export default function HistorySection() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center pt-2">
             
             {/* Visual Photo for the Year */}
-            <div
-              className="lg:col-span-6 relative h-80 sm:h-[400px] w-full rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-200 shadow-md cursor-pointer group"
-              onClick={() =>
-                setLightboxImage({
-                  url: currentMilestone.image,
-                  caption: currentMilestone.imageCaption,
-                })
-              }
-            >
+            <div className={`lg:col-span-6 relative w-full aspect-[1024/682] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200 shadow-md flex items-center justify-center ${
+              currentMilestone.image.includes("whieloaf") ? "bg-white p-6 sm:p-8" : "bg-zinc-950"
+            }`}>
               <Image
                 src={currentMilestone.image}
                 alt={currentMilestone.title}
                 fill
+                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105 filter brightness-95"
+                className={`rounded-2xl sm:rounded-3xl filter brightness-95 ${
+                  currentMilestone.image.includes("whieloaf")
+                    ? "object-contain"
+                    : "object-contain object-center"
+                }`}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-
-              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-bold tracking-wider flex items-center gap-2">
-                <Calendar className="w-3.5 h-3.5 text-amber-300" />
-                <span>{currentMilestone.year} MILESTONE</span>
-              </div>
-
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
-                <p className="text-xs sm:text-sm font-light text-zinc-200 max-w-sm line-clamp-2">
-                  {currentMilestone.imageCaption}
-                </p>
-                <span className="p-2 rounded-full bg-white/20 backdrop-blur-md hover:bg-white hover:text-black transition-colors text-white">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </span>
-              </div>
             </div>
 
             {/* Narrative & Milestone Checklist */}
@@ -297,43 +277,6 @@ export default function HistorySection() {
 
       </ScrollReveal>
 
-      {/* Lightbox / Fullscreen Image Preview Modal */}
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
-          onClick={() => setLightboxImage(null)}
-        >
-          <div
-            className="relative max-w-6xl w-full max-h-[90vh] h-full flex flex-col justify-between p-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between text-white pb-3 border-b border-white/20">
-              <p className="text-sm font-serif-luxury italic text-zinc-200">
-                {lightboxImage.caption}
-              </p>
-              <button
-                onClick={() => setLightboxImage(null)}
-                className="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="relative flex-1 my-4 rounded-2xl overflow-hidden bg-black flex items-center justify-center">
-              <Image
-                src={lightboxImage.url}
-                alt="Enlarged Photo"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            <p className="text-center text-xs text-zinc-400">
-              Click anywhere outside or close to return
-            </p>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
