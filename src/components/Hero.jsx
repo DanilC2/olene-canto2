@@ -7,9 +7,8 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 export default function Hero({ onExploreClick, onStoryClick, onCategoryClick }) {
   return (
     <section className="relative min-h-screen w-full bg-zinc-950 text-white pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 flex flex-col justify-between overflow-hidden">
-      {/* Background Video — Fully Responsive with Complete Visibility */}
       <video
-        src="/olene.webm"
+        src="/hero%20section%20ai%20video.mp4"
         autoPlay
         loop
         muted
@@ -17,8 +16,6 @@ export default function Hero({ onExploreClick, onStoryClick, onCategoryClick }) 
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
-
-      {/* Light, Soft Directional Scrim — Only on Left Behind Text, keeping the Video Crisp & Visible */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/40 pointer-events-none" />
 

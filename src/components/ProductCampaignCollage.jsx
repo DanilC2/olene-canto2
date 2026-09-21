@@ -39,13 +39,14 @@ export default function ProductCampaignCollage() {
               className="group relative w-full aspect-[1024/670] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-2xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
               title="Explore White Loaf Cookies"
             >
-              <Image
-                src="/campaign-cookies-crunch.jpg"
-                alt="White Loaf Masala Cookies & American Gold Cookies - Crunch in Every Bite"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+              <video
+                src="/Creating_luxury_bakery_product_v…_20260921163349.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Luxury bakery product showcase"
+                className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]"
               />
               <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none" />
             </Link>

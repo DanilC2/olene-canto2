@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import InitialPageLoader from "@/components/InitialPageLoader";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -45,7 +46,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${jakarta.variable} scroll-smooth`}>
       <body className="bg-white text-zinc-900 min-h-screen flex flex-col font-sans-clean antialiased selection:bg-black selection:text-white">
-        {children}
+        <InitialPageLoader>{children}</InitialPageLoader>
       </body>
     </html>
   );
