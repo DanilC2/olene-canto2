@@ -75,17 +75,20 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
-      <section className="w-full bg-black">
-        <div className="relative h-[92vh] min-h-[420px] w-full overflow-hidden">
+      {/* 3. PRODUCT SHOWCASE VIDEO BANNER */}
+      <section className="w-full bg-black overflow-hidden flex items-center justify-center">
+        <div className="relative w-full max-w-[1920px] mx-auto aspect-video">
           <video
             src="/erasio_Creating_bakery_product_showcase…_1080p_20260919120418.mp4"
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
+            aria-label="Olene Canto Cheese Cookies Artisanal Showcase"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
         </div>
       </section>
 

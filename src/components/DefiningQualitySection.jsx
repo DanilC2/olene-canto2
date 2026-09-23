@@ -20,8 +20,8 @@ export default function DefiningQualitySection({ theme = "light" }) {
           <Image
             src={isDark ? "/defining-quality-dark.png" : "/defining-quality.png"}
             alt="Defining Quality - ISO 9001-2015, ISO 22000, HACCP, Halal India Certified"
-            width={isDark ? 1000 : 1400}
-            height={isDark ? 450 : 600}
+            width={isDark ? 1000 : 1024}
+            height={isDark ? 450 : 501}
             className={`w-full h-auto object-contain ${
               isDark
                 ? "max-h-[260px] sm:max-h-[340px] drop-shadow-[0_4px_24px_rgba(255,255,255,0.06)]"
