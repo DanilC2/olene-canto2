@@ -154,17 +154,37 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* 3. Bottom Legal / Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <p>© {new Date().getFullYear()} Olene Foods Pvt. Ltd. All rights reserved.</p>
-          <a
-            href="https://www.olenecanto.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-600 hover:text-black font-medium transition-colors"
-          >
-            www.olenecanto.com
-          </a>
+        {/* 3. Bottom Legal / Copyright & Credits Bar */}
+        <div className="pt-8 border-t border-zinc-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-zinc-500">
+          {/* Left: Copyright & Website */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6 text-zinc-500">
+            <p>© {new Date().getFullYear()} Olene Foods Pvt. Ltd. All rights reserved.</p>
+            <span className="hidden sm:inline text-zinc-300">•</span>
+            <a
+              href="https://www.olenecanto.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-600 hover:text-black font-medium transition-colors"
+            >
+              www.olenecanto.com
+            </a>
+          </div>
+
+          {/* Bottom Right End Corner: Developed by Visca Creations */}
+          <div className="flex items-center gap-2 select-none self-end sm:self-auto">
+            <span className="text-[11px] sm:text-xs text-zinc-500 font-normal tracking-wide">
+              Developed by
+            </span>
+            <div className="inline-flex items-center">
+              <Image
+                src="/visca-logo.png"
+                alt="Visca Creations"
+                width={188}
+                height={64}
+                className="h-5 sm:h-5.5 w-auto object-contain mix-blend-multiply"
+              />
+            </div>
+          </div>
         </div>
 
       </ScrollReveal>
