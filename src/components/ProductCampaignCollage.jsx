@@ -15,7 +15,7 @@ export default function ProductCampaignCollage() {
           <div className="md:col-span-7 flex flex-col">
             <Link
               href="/categories/whiteloaf-snacks"
-              className="group relative w-full flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-2xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
+              className="group relative w-full flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_24px_55px_rgba(0,0,0,0.62)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
               title="Explore White Loaf Snacks"
             >
               <Image
@@ -36,7 +36,7 @@ export default function ProductCampaignCollage() {
             {/* Top Right: White Loaf Cookies Poster -> Whiteloaf Cookies */}
             <Link
               href="/categories/whiteloaf-cookies"
-              className="group relative w-full aspect-[1024/670] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-2xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
+              className="group relative w-full aspect-[1024/670] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_20px_50px_rgba(0,0,0,0.6)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
               title="Explore White Loaf Cookies"
             >
               <Image
@@ -53,7 +53,7 @@ export default function ProductCampaignCollage() {
             {/* Bottom Right: From Everyday Snacks to Festive Feasts Banner -> Whiteloaf Snacks */}
             <Link
               href="/categories/whiteloaf-snacks"
-              className="group relative w-full aspect-[1024/629] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-2xl ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
+              className="group relative w-full aspect-[1024/629] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_18px_44px_rgba(0,0,0,0.55)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
               title="Explore White Loaf Snacks"
             >
               <Image
