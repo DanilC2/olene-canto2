@@ -65,16 +65,6 @@ export default function Home() {
       {/* 1.5 INTERACTIVE FRAMER MASK REVEAL: INGREDIENTS INSIDE THE TIN */}
       <IngredientRevealSection onOpenInquiry={handleOpenInquiry} />
 
-      {/* 2. PRODUCT CAMPAIGN COLLAGE */}
-      <ProductCampaignCollage />
-
-      {/* 3. PRODUCT VIDEO CAROUSEL SECTION */}
-      <section id="explore">
-        <ScrollReveal>
-          <ProductVideoCarousel />
-        </ScrollReveal>
-      </section>
-
       {/* 3. PRODUCT SHOWCASE VIDEO BANNER */}
       <section className="w-full bg-black overflow-hidden flex items-center justify-center">
         <div className="relative w-full max-w-[1920px] mx-auto aspect-video">
@@ -91,6 +81,16 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
         </div>
       </section>
+
+      {/* 3. PRODUCT VIDEO CAROUSEL SECTION */}
+      <section id="explore">
+        <ScrollReveal>
+          <ProductVideoCarousel />
+        </ScrollReveal>
+      </section>
+
+      {/* 2. PRODUCT CAMPAIGN COLLAGE */}
+      <ProductCampaignCollage />
 
       {/* 3.1 RETAIL NETWORK MARQUEE */}
       <section className="bg-white border-b border-zinc-200 overflow-hidden">

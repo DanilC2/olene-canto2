@@ -127,7 +127,7 @@ export default function ProductVideoCarousel() {
               Product stories
             </p>
             <h2 className="font-serif-luxury text-[1.8rem] leading-none text-[#1d1513] sm:text-[2.4rem] lg:text-[3rem]">
-              See the products in motion
+              Explore the products
             </h2>
           </div>
 
