@@ -40,6 +40,13 @@ export const metadata = {
   icons: {
     icon: "/logo.jpg",
   },
+  openGraph: {
+    title: "Olene Canto | Haute Boulangerie & Pâtisserie",
+    description:
+      "Artisanal slow-fermented breads, 27-layer Normandy butter viennoiserie, and sculptured French pâtisserie. A decade of bakery heritage and craft.",
+    siteName: "Olene Canto",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

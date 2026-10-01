@@ -166,3 +166,24 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Mobile: bigger hit area for small text links on touch screens (no layout change) */
+@media (pointer: coarse) {
+  .tap-target {
+    position: relative;
+  }
+  .tap-target::after {
+    content: "";
+    position: absolute;
+    inset: -6px -4px;
+  }
+}
+
+/* Mobile: iPhone Safari zooms the page when a field under 16px is focused */
+@media (max-width: 767px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}

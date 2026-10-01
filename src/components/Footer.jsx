@@ -60,32 +60,32 @@ export default function Footer() {
             </p>
             <ul className="space-y-2.5 text-xs text-zinc-600">
               <li>
-                <Link href="/" className="hover:text-black transition-colors">
+                <Link href="/" className="tap-target hover:text-black transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/our-story" className="hover:text-black transition-colors">
+                <Link href="/our-story" className="tap-target hover:text-black transition-colors">
                   Our Story ; Heritage
                 </Link>
               </li>
               <li>
-                <Link href="/categories" className="hover:text-black transition-colors">
-                  
+                <Link href="/categories" className="tap-target hover:text-black transition-colors">
+                  Categories
                 </Link>
               </li>
               <li>
-                <Link href="/#white-loaf" className="hover:text-black transition-colors">
+                <Link href="/our-story#white-loaf" className="tap-target hover:text-black transition-colors">
                   White Loaf Wholesale
                 </Link>
               </li>
               <li>
-                <Link href="/#franchise" className="hover:text-black transition-colors">
+                <Link href="/#franchise" className="tap-target hover:text-black transition-colors">
                   Franchise Opportunities
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-black transition-colors">
+                <Link href="/contact" className="tap-target hover:text-black transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -114,7 +114,7 @@ export default function Footer() {
                   href="https://www.olenecanto.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-600 hover:text-black transition-colors font-medium"
+                  className="tap-target text-zinc-600 hover:text-black transition-colors font-medium"
                 >
                   www.olenecanto.com
                 </a>
@@ -133,7 +133,7 @@ export default function Footer() {
                 <p className="text-zinc-500 font-medium mb-1">Corporate Sales:</p>
                 <a
                   href="mailto:admin@olenecanto.com"
-                  className="inline-flex items-center gap-2 text-zinc-950 font-medium hover:text-[#9b722b] transition-colors"
+                  className="tap-target inline-flex items-center gap-2 text-zinc-950 font-medium hover:text-[#9b722b] transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
                   <span>admin@olenecanto.com</span>
@@ -144,7 +144,7 @@ export default function Footer() {
                 <p className="text-zinc-500 font-medium mb-1">Other Inquiries:</p>
                 <a
                   href="mailto:admin@olenecanto.com"
-                  className="inline-flex items-center gap-2 text-zinc-950 font-medium hover:text-[#9b722b] transition-colors"
+                  className="tap-target inline-flex items-center gap-2 text-zinc-950 font-medium hover:text-[#9b722b] transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
                   <span>admin@olenecanto.com</span>
@@ -164,7 +164,7 @@ export default function Footer() {
               href="https://www.olenecanto.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-black font-medium transition-colors"
+              className="tap-target text-zinc-600 hover:text-black font-medium transition-colors"
             >
               www.olenecanto.com
             </a>

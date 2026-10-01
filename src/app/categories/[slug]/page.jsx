@@ -3,12 +3,11 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
-import ScrollReveal from "@/components/ScrollReveal";
 import {
   CATEGORIES_SHOWCASE,
   getCategoryById,
@@ -19,12 +18,8 @@ import {
   ChevronRight,
   ArrowLeft,
   Search,
-  Sparkles,
   ShoppingBag,
-  Eye,
-  CheckCircle2,
   Wheat,
-  Clock,
   Award,
   X,
   ShieldCheck,
@@ -33,7 +28,6 @@ import {
 
 export default function CategoryDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const slug = params?.slug;
 
   const category = useMemo(() => getCategoryById(slug), [slug]);
@@ -69,7 +63,7 @@ export default function CategoryDetailPage() {
   // If category is not found in database
   if (!category) {
     return (
-      <main className="min-h-screen bg-[#FCFAF6] text-zinc-900 flex flex-col justify-between">
+      <main className="min-h-screen bg-white text-zinc-900 flex flex-col justify-between">
         <Navbar
           onOpenSearch={() => setIsSearchModalOpen(true)}
           onOpenInquiry={() => handleOpenInquiry()}
@@ -98,7 +92,7 @@ export default function CategoryDetailPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FCFAF6] text-zinc-900 selection:bg-[#9B1B22] selection:text-white flex flex-col justify-between">
+    <main className="min-h-screen bg-white text-zinc-900 selection:bg-[#9B1B22] selection:text-white flex flex-col justify-between">
       {/* Top Navbar */}
       <Navbar
         onOpenSearch={() => setIsSearchModalOpen(true)}
@@ -109,11 +103,11 @@ export default function CategoryDetailPage() {
         {/* 1. BREADCRUMBS BAR */}
         <section className="pt-24 sm:pt-28 pb-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <nav className="flex items-center space-x-2 text-xs text-zinc-500 font-medium">
-            <Link href="/" className="hover:text-zinc-900 transition-colors">
+            <Link href="/" className="tap-target hover:text-zinc-900 transition-colors">
               Home
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
-            <Link href="/categories" className="hover:text-zinc-900 transition-colors">
+            <Link href="/categories" className="tap-target hover:text-zinc-900 transition-colors">
               Categories
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
@@ -222,6 +216,8 @@ export default function CategoryDetailPage() {
               />
               {searchQuery && (
                 <button
+                  type="button"
+                  aria-label="Clear search"
                   onClick={() => setSearchQuery("")}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700"
                 >
@@ -249,30 +245,37 @@ export default function CategoryDetailPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+            <div
+              className={`grid gap-3.5 sm:gap-6 lg:gap-8 ${
+                category.id === "savouries" && filteredProducts.length >= 5
+                  ? "grid-cols-2 md:grid-cols-3 xl:grid-cols-5"
+                  : "grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              }`}
+            >
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
                   onClick={() => setSelectedProduct(product)}
-                  className="group bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl hover:border-zinc-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
-                  {/* Product Image — Fully fits image without cropping, completely text-free */}
-                  <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center overflow-hidden p-2 sm:p-3">
+                  {/* 1. Pristine Product Photo — Completely text-free, un-obscured with soft hover zoom */}
+                  <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center p-3 sm:p-5 lg:p-6 overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.name || "Product Image"}
                       fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                      unoptimized
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                   </div>
-                  <div className="border-t border-zinc-100 p-2.5 sm:px-4 sm:py-3 flex-1 flex flex-col justify-between">
-                    <h3 className="text-xs sm:text-sm font-semibold text-zinc-900 line-clamp-2 leading-snug">
+
+                  {/* 2. Prominent & Attractive Product Name and Gold Accent Line Only */}
+                  <div className="py-4 sm:py-6 px-3 sm:px-4 bg-white border-t border-zinc-100 flex flex-col items-center justify-center text-center">
+                    <h3 className="text-sm sm:text-lg lg:text-xl font-serif-luxury font-medium tracking-wide text-zinc-950 group-hover:text-[#9B1B22] transition-colors duration-300 line-clamp-2">
                       {product.name}
                     </h3>
-                    <p className="mt-1 text-[10px] sm:text-xs text-zinc-500 line-clamp-1 sm:line-clamp-2 leading-tight">
-                      {product.tagline}
-                    </p>
+                    <div className="w-6 sm:w-8 h-[2px] bg-[#C59B4B]/80 group-hover:w-12 sm:group-hover:w-16 group-hover:bg-[#9B1B22] transition-all duration-300 rounded-full mt-2 sm:mt-2.5" />
                   </div>
                 </div>
               ))}
@@ -283,8 +286,8 @@ export default function CategoryDetailPage() {
         {/* 4. ASSURANCE & QUALITY STRIP */}
         <section className="bg-white border-t border-zinc-200 py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-[#FCFAF6] border border-zinc-100">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF6EF] text-[#9B1B22] flex items-center justify-center shrink-0">
+            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-100 text-[#9B1B22] flex items-center justify-center shrink-0">
                 <Wheat className="w-5 h-5" />
               </div>
               <div>
@@ -293,8 +296,8 @@ export default function CategoryDetailPage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-[#FCFAF6] border border-zinc-100">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF6EF] text-[#9B1B22] flex items-center justify-center shrink-0">
+            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-100 text-[#9B1B22] flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
@@ -303,8 +306,8 @@ export default function CategoryDetailPage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-[#FCFAF6] border border-zinc-100">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF6EF] text-[#9B1B22] flex items-center justify-center shrink-0">
+            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-100 text-[#9B1B22] flex items-center justify-center shrink-0">
                 <Award className="w-5 h-5" />
               </div>
               <div>
@@ -313,8 +316,8 @@ export default function CategoryDetailPage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-[#FCFAF6] border border-zinc-100">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF6EF] text-[#9B1B22] flex items-center justify-center shrink-0">
+            <div className="flex items-center space-x-3 p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-100 text-[#9B1B22] flex items-center justify-center shrink-0">
                 <Store className="w-5 h-5" />
               </div>
               <div>
@@ -335,6 +338,8 @@ export default function CategoryDetailPage() {
           <div className="relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl animate-scaleUp my-8 overflow-hidden text-zinc-900">
             {/* Close Button */}
             <button
+              type="button"
+              aria-label="Close product details"
               onClick={() => setSelectedProduct(null)}
               className="absolute top-5 right-5 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center transition-colors z-20"
             >

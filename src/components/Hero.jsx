@@ -3,16 +3,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import ViewportVideo from "@/components/ViewportVideo";
+import { useIntroStarted } from "@/lib/loaderSignal";
 
 export default function Hero({ onExploreClick, onStoryClick, onCategoryClick }) {
+  // The hero sits behind the intro loader; let the intro video download first.
+  const introStarted = useIntroStarted();
+
   return (
     <section className="relative min-h-screen w-full bg-zinc-950 text-white pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 flex flex-col justify-between overflow-hidden">
-      <video
-        src="/hero%20section%20ai%20video.mp4"
-        autoPlay
+      <ViewportVideo
+        src="/hero-section-ai-video.mp4"
+        rootMargin="0px"
+        enabled={introStarted}
+        preload={introStarted ? "auto" : "none"}
+        poster={introStarted ? "/posters/hero.jpg" : undefined}
         loop
-        muted
-        playsInline
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
@@ -87,7 +93,7 @@ export default function Hero({ onExploreClick, onStoryClick, onCategoryClick }) 
         onClick={onExploreClick}
         className="mt-6 sm:mt-8 relative z-10 flex flex-col items-center justify-center space-y-1 sm:space-y-1.5 cursor-pointer opacity-90 hover:opacity-100 transition-opacity"
       >
-        <span className="text-[8px] sm:text-[10px] tracking-[0.3em] uppercase text-white font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+        <span className="text-[10px] tracking-[0.3em] uppercase text-white font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
           EXPLORE OUR JOURNEY
         </span>
         <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/50 flex items-center justify-center animate-bounce bg-black/35 backdrop-blur-md text-white shadow-md">

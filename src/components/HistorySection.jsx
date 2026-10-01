@@ -151,7 +151,6 @@ export default function HistorySection() {
                 src={currentMilestone.image}
                 alt={currentMilestone.title}
                 fill
-                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className={`rounded-2xl sm:rounded-3xl filter brightness-95 ${
                   currentMilestone.image.includes("whieloaf")
@@ -201,7 +200,7 @@ export default function HistorySection() {
                     const idx = MILESTONES.findIndex((m) => m.year === activeYear);
                     if (idx > 0) setActiveYear(MILESTONES[idx - 1].year);
                   }}
-                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg border border-zinc-300 text-zinc-700 hover:bg-zinc-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="px-3 sm:px-4 py-2 whitespace-nowrap text-xs font-semibold uppercase tracking-wider rounded-lg border border-zinc-300 text-zinc-700 hover:bg-zinc-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   ← PREVIOUS ERA
                 </button>
@@ -217,7 +216,7 @@ export default function HistorySection() {
                     const idx = MILESTONES.findIndex((m) => m.year === activeYear);
                     if (idx < MILESTONES.length - 1) setActiveYear(MILESTONES[idx + 1].year);
                   }}
-                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-black text-white hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="px-3 sm:px-4 py-2 whitespace-nowrap text-xs font-semibold uppercase tracking-wider rounded-lg bg-black text-white hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   NEXT ERA →
                 </button>

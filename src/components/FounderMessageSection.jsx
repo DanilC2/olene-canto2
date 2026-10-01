@@ -29,7 +29,6 @@ export default function FounderMessageSection() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 40vw"
                   className="object-cover object-top"
-                  priority
                 />
               </div>
             </div>

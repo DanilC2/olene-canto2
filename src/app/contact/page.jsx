@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -21,7 +20,6 @@ import {
   Truck,
   Handshake,
   ArrowRight,
-  Sparkles,
   ExternalLink,
   RefreshCw,
 } from "lucide-react";
@@ -156,7 +154,7 @@ function ContactContent() {
           
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#9b722b] mb-4">
-            <Link href="/" className="hover:text-black transition-colors">Home</Link>
+            <Link href="/" className="tap-target hover:text-black transition-colors">Home</Link>
             <span>/</span>
             <span className="text-zinc-400">Contact &amp; Inquiries</span>
           </div>
@@ -178,7 +176,7 @@ function ContactContent() {
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-wider font-bold text-zinc-400">Corporate Sales</p>
-                <a href="mailto:admin@olenecanto.com" className="text-xs sm:text-sm font-semibold text-zinc-900 hover:text-[#9b722b] transition-colors">
+                <a href="mailto:admin@olenecanto.com" className="tap-target text-xs sm:text-sm font-semibold text-zinc-900 hover:text-[#9b722b] transition-colors">
                   admin@olenecanto.com
                 </a>
               </div>
@@ -276,7 +274,7 @@ function ContactContent() {
                       Thank You, {fullName || "Partner"}!
                     </h3>
                     <p className="mt-1 text-xs sm:text-sm text-emerald-800 leading-relaxed max-w-md mx-auto">
-                      Your inquiry has been received and routed to our team under reference number:
+                      Your inquiry has been received and routed directly to our corporate email at <strong className="font-semibold text-emerald-950">admin@olenecanto.com</strong> (www.olenecanto.com) under reference number:
                     </p>
                     <div className="mt-3 inline-block font-mono text-sm font-bold text-emerald-900 bg-white px-4 py-1.5 rounded-lg border border-emerald-300 shadow-sm">
                       {refCode}
@@ -285,15 +283,22 @@ function ContactContent() {
                   <p className="text-xs text-emerald-700 max-w-md mx-auto">
                     A representative from Olene Foods Pvt. Ltd. will review your information and respond via email or phone within 1–2 business days.
                   </p>
-                  <div className="pt-2">
+                  <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl transition-colors"
+                      className="inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl transition-colors cursor-pointer"
                     >
                       <RefreshCw className="w-3.5 h-3.5" />
                       <span>Submit Another Inquiry</span>
                     </button>
+                    <a
+                      href={`mailto:admin@olenecanto.com?subject=Website%20Inquiry%20from%20${encodeURIComponent(fullName)}&body=Name:%20${encodeURIComponent(fullName)}%0APhone:%20${encodeURIComponent(phone)}%0AEmail:%20${encodeURIComponent(email)}%0ASubject:%20${encodeURIComponent(subject)}%0AMessage:%20${encodeURIComponent(message)}%0ARef:%20${encodeURIComponent(refCode)}`}
+                      className="inline-flex items-center gap-1.5 bg-white border border-emerald-300 hover:border-emerald-400 text-emerald-900 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-emerald-700" />
+                      <span>Open in Mail App</span>
+                    </a>
                   </div>
                 </div>
               ) : (
@@ -470,7 +475,7 @@ function ContactContent() {
                 <div className="space-y-4 text-xs sm:text-sm">
                   <div className="pb-3 border-b border-zinc-100">
                     <p className="text-[10px] uppercase font-bold text-zinc-400">Corporate &amp; Wholesale Desk</p>
-                    <a href="mailto:admin@olenecanto.com" className="font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
+                    <a href="mailto:admin@olenecanto.com" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
                       <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
                       <span>admin@olenecanto.com</span>
                     </a>
@@ -478,7 +483,7 @@ function ContactContent() {
 
                   <div className="pb-3 border-b border-zinc-100">
                     <p className="text-[10px] uppercase font-bold text-zinc-400">General &amp; Guest Inquiries</p>
-                    <a href="mailto:admin@olenecanto.com" className="font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
+                    <a href="mailto:admin@olenecanto.com" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
                       <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
                       <span>admin@olenecanto.com</span>
                     </a>
@@ -486,7 +491,7 @@ function ContactContent() {
 
                   <div>
                     <p className="text-[10px] uppercase font-bold text-zinc-400">Official Web Domain</p>
-                    <a href="https://www.olenecanto.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
+                    <a href="https://www.olenecanto.com" target="_blank" rel="noopener noreferrer" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
                       <Globe className="w-3.5 h-3.5 text-[#9b722b]" />
                       <span>www.olenecanto.com</span>
                     </a>

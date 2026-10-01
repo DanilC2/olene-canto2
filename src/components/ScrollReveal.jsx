@@ -1,7 +1,26 @@
 "use client";
 
-import React from "react";
+import React, { useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+
+// On phones many sections are taller than the screen, so "22% visible" can mean
+// scrolling through a blank area first. Below 768px, reveal as soon as a sliver shows.
+const SMALL_SCREEN_QUERY = "(max-width: 767px)";
+const SMALL_SCREEN_THRESHOLD = 0.04;
+
+function subscribeToScreenSize(callback) {
+  const mq = window.matchMedia(SMALL_SCREEN_QUERY);
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
+function useIsSmallScreen() {
+  return useSyncExternalStore(
+    subscribeToScreenSize,
+    () => window.matchMedia(SMALL_SCREEN_QUERY).matches,
+    () => false
+  );
+}
 
 /**
  * ScrollReveal Component
@@ -25,6 +44,7 @@ export default function ScrollReveal({
   once = true,
 }) {
   const shouldReduceMotion = useReducedMotion();
+  const isSmallScreen = useIsSmallScreen();
 
   if (shouldReduceMotion) {
     return <div className={className}>{children}</div>;
@@ -34,7 +54,7 @@ export default function ScrollReveal({
     <motion.div
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, amount: threshold }}
+      viewport={{ once, amount: isSmallScreen ? Math.min(threshold, SMALL_SCREEN_THRESHOLD) : threshold }}
       transition={{
         duration,
         delay,

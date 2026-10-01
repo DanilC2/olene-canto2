@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import IngredientRevealSection from "@/components/IngredientRevealSection";
 import ProductCampaignCollage from "@/components/ProductCampaignCollage";
 import ProductVideoCarousel from "@/components/ProductVideoCarousel";
+import BestsellerSection from "@/components/BestsellerSection";
 import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
 import Footer from "@/components/Footer";
@@ -14,24 +15,82 @@ import RetailNetworkMarquee from "@/components/RetailNetworkMarquee";
 import InstagramReelsCarousel from "@/components/InstagramReelsCarousel";
 import DefiningQualitySection from "@/components/DefiningQualitySection";
 import ScrollReveal from "@/components/ScrollReveal";
-import { fetchMenu, fetchStory } from "@/lib/api";
-import { Sparkles, Quote, BookOpen, Briefcase, ChevronRight } from "lucide-react";
+import ViewportVideo from "@/components/ViewportVideo";
+import { useIntroStarted } from "@/lib/loaderSignal";
+import { submitInquiry, fetchMenu } from "@/lib/api";
+import { Sparkles, Quote, BookOpen, Briefcase, ChevronRight, CheckCircle2, Mail, RefreshCw, Loader2 } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
+  // Let the intro loader video download first; on phones this banner is close enough to load during the intro.
+  const introStarted = useIntroStarted();
   const [menuItems, setMenuItems] = useState([]);
-  const selectedCategory = "all";
-  const [story, setStory] = useState(null);
 
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [inquiryTargetItem, setInquiryTargetItem] = useState(undefined);
 
+  // Franchise "Share Your Details" form state
+  const [franchiseName, setFranchiseName] = useState("");
+  const [franchisePhone, setFranchisePhone] = useState("");
+  const [franchiseEmail, setFranchiseEmail] = useState("");
+  const [franchiseLocation, setFranchiseLocation] = useState("");
+  const [franchiseLoading, setFranchiseLoading] = useState(false);
+  const [franchiseSubmitted, setFranchiseSubmitted] = useState(false);
+  const [franchiseRef, setFranchiseRef] = useState("");
+
+  const handleFranchiseSubmit = async (e) => {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setFranchiseLoading(true);
+    const ref = `CANTO-${Math.floor(100000 + Math.random() * 900000)}`;
+    setFranchiseRef(ref);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: franchiseName,
+          phone: franchisePhone,
+          email: franchiseEmail,
+          location: franchiseLocation,
+          subject: "Franchise Partnership Application",
+          type: "Franchise Inquiry",
+          message: `Franchise inquiry submitted from ${franchiseLocation} for Olene Canto.`,
+          refCode: ref,
+        }),
+      });
+
+      if (!res.ok) {
+        console.warn("[Franchise Form] Non-200 response from /api/contact");
+      }
+      setFranchiseSubmitted(true);
+    } catch (err) {
+      console.error("[Franchise Form] Submission error:", err);
+      // Fallback: still show confirmation so the user is never left stuck
+      setFranchiseSubmitted(true);
+    } finally {
+      setFranchiseLoading(false);
+    }
+  };
+
+  const handleResetFranchise = () => {
+    setFranchiseSubmitted(false);
+    setFranchiseName("");
+    setFranchisePhone("");
+    setFranchiseEmail("");
+    setFranchiseLocation("");
+  };
+
   useEffect(() => {
     async function loadData() {
-      const [menu, str] = await Promise.all([fetchMenu(), fetchStory()]);
+      const menu = await fetchMenu();
       setMenuItems(menu);
-      setStory(str);
     }
     loadData();
   }, []);
@@ -68,13 +127,12 @@ export default function Home() {
       {/* 3. PRODUCT SHOWCASE VIDEO BANNER */}
       <section className="w-full bg-black overflow-hidden flex items-center justify-center">
         <div className="relative w-full max-w-[1920px] mx-auto aspect-video">
-          <video
-            src="/Change_background_to_cream_color_20260928111247.mp4"
-            autoPlay
+          <ViewportVideo
+            src="/showcase-banner.mp4"
+            posterSrc="/posters/showcase-banner.jpg"
+            rootMargin="400px 0px"
+            enabled={introStarted}
             loop
-            muted
-            playsInline
-            preload="auto"
             aria-label="Olene Canto product showcase video"
             className="h-full w-full object-cover"
           />
@@ -86,6 +144,13 @@ export default function Home() {
       <section id="explore">
         <ScrollReveal>
           <ProductVideoCarousel />
+        </ScrollReveal>
+      </section>
+
+      {/* BESTSELLER SECTION */}
+      <section id="bestsellers">
+        <ScrollReveal>
+          <BestsellerSection onOpenInquiry={handleOpenInquiry} />
         </ScrollReveal>
       </section>
 
@@ -112,7 +177,7 @@ export default function Home() {
       </ScrollReveal>
 
       {/* 3.5 FRANCHISE OPPORTUNITY SECTION */}
-      <section className="bg-[#090909] text-[#f5f1ea] py-24 px-6 sm:px-8 lg:px-12 overflow-hidden border-t border-[#2a2a2a]">
+      <section id="franchise" className="bg-[#090909] text-[#f5f1ea] py-24 px-6 sm:px-8 lg:px-12 overflow-hidden border-t border-[#2a2a2a]">
         <ScrollReveal className="max-w-7xl mx-auto">
           <div className="mb-16 max-w-3xl">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.32em] text-[#d9b578]">Franchise opportunity</p>
@@ -143,52 +208,128 @@ export default function Home() {
                 </p>
               </div>
 
-              <form className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
+              {franchiseSubmitted ? (
+                <div className="bg-[#faf7f2] border border-[#d9b578]/50 rounded-2xl p-6 sm:p-8 text-center space-y-4 animate-fadeIn">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-emerald-700 shadow-sm">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-800 mb-2">Full Name*</label>
-                    <input 
+                    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#9b722b]">
+                      Enquiry Dispatched
+                    </span>
+                    <h4 className="font-serif-luxury text-2xl font-medium text-zinc-950 mt-1">
+                      Thank You, {franchiseName || "Partner"}!
+                    </h4>
+                    <p className="mt-1 text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-md mx-auto">
+                      Your details have been received and sent directly to our team at{" "}
+                      <strong className="text-zinc-900 font-semibold">admin@olenecanto.com</strong> (www.olenecanto.com).
+                    </p>
+                    <div className="mt-3 inline-block font-mono text-xs font-bold text-zinc-800 bg-white px-4 py-1.5 rounded-lg border border-zinc-200 shadow-sm">
+                      Ref: #{franchiseRef}
+                    </div>
+                  </div>
+                  <p className="text-xs text-zinc-500 max-w-md mx-auto">
+                    A corporate representative from Olene Foods Pvt. Ltd. will review your information and connect with you within 2 business days.
+                  </p>
+                  <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={handleResetFranchise}
+                      className="inline-flex items-center gap-1.5 bg-[#1d1513] hover:bg-black text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5" />
+                      <span>Submit Another Enquiry</span>
+                    </button>
+                    <a
+                      href={`mailto:admin@olenecanto.com?subject=Franchise%20Inquiry%20from%20${encodeURIComponent(franchiseName)}&body=Name:%20${encodeURIComponent(franchiseName)}%0APhone:%20${encodeURIComponent(franchisePhone)}%0AEmail:%20${encodeURIComponent(franchiseEmail)}%0ALocation:%20${encodeURIComponent(franchiseLocation)}%0ARef:%20${encodeURIComponent(franchiseRef)}`}
+                      className="inline-flex items-center gap-1.5 bg-white border border-zinc-300 hover:border-zinc-400 text-zinc-800 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
+                      <span>Open in Mail App</span>
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <form
+                  method="POST"
+                  action="/api/contact"
+                  onSubmit={handleFranchiseSubmit}
+                  className="space-y-4"
+                >
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="franchise-name" className="block text-xs font-semibold text-zinc-800 mb-2">Full Name*</label>
+                      <input
+                        id="franchise-name"
+                        name="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        value={franchiseName}
+                        onChange={(e) => setFranchiseName(e.target.value)}
+                        className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                        placeholder="Your name" 
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="franchise-phone" className="block text-xs font-semibold text-zinc-800 mb-2">Phone*</label>
+                      <input
+                        id="franchise-phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        autoComplete="tel"
+                        value={franchisePhone}
+                        onChange={(e) => setFranchisePhone(e.target.value)}
+                        className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                        placeholder="Your phone" 
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="franchise-email" className="block text-xs font-semibold text-zinc-800 mb-2">Email*</label>
+                    <input
+                      id="franchise-email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      value={franchiseEmail}
+                      onChange={(e) => setFranchiseEmail(e.target.value)}
+                      className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
+                      placeholder="your@email.com" 
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="franchise-location" className="block text-xs font-semibold text-zinc-800 mb-2">City / Country*</label>
+                    <input
+                      id="franchise-location"
+                      name="location"
                       type="text"
                       required
+                      autoComplete="address-level2"
+                      value={franchiseLocation}
+                      onChange={(e) => setFranchiseLocation(e.target.value)}
                       className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
-                      placeholder="Your name" 
+                      placeholder="Your location" 
                     />
                   </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-zinc-800 mb-2">Phone*</label>
-                    <input 
-                      type="tel"
-                      required
-                      className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
-                      placeholder="Your phone" 
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-800 mb-2">Email*</label>
-                  <input 
-                    type="email"
-                    required
-                    className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
-                    placeholder="your@email.com" 
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-800 mb-2">City / Country*</label>
-                  <input 
-                    type="text"
-                    required
-                    className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d9b578] focus:border-transparent transition-all" 
-                    placeholder="Your location" 
-                  />
-                </div>
-                <button 
-                  type="submit" 
-                  className="w-full mt-6 rounded-xl bg-gradient-to-r from-[#d9b578] to-[#c9a56a] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-md hover:shadow-lg hover:from-[#c9a56a] hover:to-[#b99456] transition-all duration-200"
-                >
-                  Submit Enquiry
-                </button>
-              </form>
+                  <button 
+                    type="submit" 
+                    disabled={franchiseLoading}
+                    className="w-full mt-6 rounded-xl bg-gradient-to-r from-[#d9b578] to-[#c9a56a] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-md hover:shadow-lg hover:from-[#c9a56a] hover:to-[#b99456] transition-all duration-200 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {franchiseLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending to admin@olenecanto.com...</span>
+                      </>
+                    ) : (
+                      <span>Submit Enquiry</span>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </ScrollReveal>

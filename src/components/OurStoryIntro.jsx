@@ -62,7 +62,7 @@ export default function OurStoryIntro() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] text-amber-300">Flagship Atelier</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-300">Flagship Atelier</span>
                 <p className="font-serif-luxury text-base sm:text-lg font-medium mt-0.5 text-white">Olene Canto Architecture &amp; Craftsmanship</p>
               </div>
             </div>

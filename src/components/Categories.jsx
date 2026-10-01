@@ -10,12 +10,21 @@ const getCategoryIcon = (id) => {
     case "artisanal-breads":
       return <Wheat className="w-5 h-5 sm:w-6 sm:h-6" />;
     case "haute-patisserie":
+    case "cakes":
+    case "cake":
       return <CakeSlice className="w-5 h-5 sm:w-6 sm:h-6" />;
     case "bespoke-cakes":
       return <PartyPopper className="w-5 h-5 sm:w-6 sm:h-6" />;
+    case "cookies":
+    case "cookie":
+    case "whiteloaf-cookies":
     case "biscuit-and-cookies":
     case "artisan-biscuits":
       return <Cookie className="w-5 h-5 sm:w-6 sm:h-6" />;
+    case "rusk":
+    case "rusks":
+    case "toast":
+      return <Wheat className="w-5 h-5 sm:w-6 sm:h-6" />;
     default:
       return <Layers className="w-5 h-5 sm:w-6 sm:h-6" />;
   }

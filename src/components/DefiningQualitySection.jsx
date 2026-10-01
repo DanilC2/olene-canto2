@@ -27,7 +27,6 @@ export default function DefiningQualitySection({ theme = "light" }) {
                 ? "max-h-[260px] sm:max-h-[340px] drop-shadow-[0_4px_24px_rgba(255,255,255,0.06)]"
                 : "max-h-[360px] sm:max-h-[460px] lg:max-h-[520px]"
             }`}
-            priority
           />
         </div>
       </div>

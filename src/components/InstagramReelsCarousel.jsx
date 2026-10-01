@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import useInView from "@/lib/useInView";
 
 function InstagramIcon({ className = "w-4 h-4" }) {
   return (
@@ -83,6 +84,13 @@ export default function InstagramReelsCarousel() {
   const resumeTimeoutRef = useRef(null);
   const singleSetWidthRef = useRef(2000);
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
+
+  // Instagram embeds are heavy: only create them once the section is near the viewport,
+  // and only for cards near the visible part of the track. Auto-scroll pauses while off screen.
+  const sectionRef = useRef(null);
+  const sectionInView = useInView(sectionRef, { rootMargin: "200px 0px" });
+  const hasApproached = useInView(sectionRef, { rootMargin: "800px 0px", once: true });
+  const [nearCardKeys, setNearCardKeys] = useState(() => new Set());
 
   // Single active playing video state
   const [activePlayingKey, setActivePlayingKey] = useState(null);
@@ -191,6 +199,27 @@ export default function InstagramReelsCarousel() {
     scrollPosRef.current = initialPos;
     container.scrollLeft = initialPos;
 
+    // Listen for blur event when focus moves into an iframe
+    const handleBlur = () => {
+      setTimeout(checkActiveIframe, 30);
+      setTimeout(checkActiveIframe, 150);
+    };
+
+    window.addEventListener("blur", handleBlur);
+    window.addEventListener("focusin", checkActiveIframe);
+
+    return () => {
+      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("focusin", checkActiveIframe);
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    };
+  }, [checkActiveIframe]);
+
+  // Continuous auto-scroll and active-reel polling, only while the section is on screen
+  useEffect(() => {
+    const container = trackRef.current;
+    if (!container || !sectionInView) return;
+
     let animationFrameId;
     let lastTime = performance.now();
 
@@ -218,25 +247,38 @@ export default function InstagramReelsCarousel() {
     };
 
     animationFrameId = requestAnimationFrame(animate);
-
-    // Listen for blur event when focus moves into an iframe
-    const handleBlur = () => {
-      setTimeout(checkActiveIframe, 30);
-      setTimeout(checkActiveIframe, 150);
-    };
-
-    window.addEventListener("blur", handleBlur);
-    window.addEventListener("focusin", checkActiveIframe);
     const intervalId = setInterval(checkActiveIframe, 120);
 
     return () => {
-      window.removeEventListener("blur", handleBlur);
-      window.removeEventListener("focusin", checkActiveIframe);
       clearInterval(intervalId);
       cancelAnimationFrame(animationFrameId);
-      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
-  }, [checkActiveIframe]);
+  }, [checkActiveIframe, sectionInView]);
+
+  // Mark cards that come within reach of the visible track so their embeds can load
+  useEffect(() => {
+    const container = trackRef.current;
+    if (!container || !hasApproached) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const newlyNear = entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => entry.target.dataset.cardKey);
+        if (newlyNear.length === 0) return;
+        setNearCardKeys((prev) => {
+          if (newlyNear.every((key) => prev.has(key))) return prev;
+          const next = new Set(prev);
+          newlyNear.forEach((key) => next.add(key));
+          return next;
+        });
+      },
+      { root: container, rootMargin: "0px 1200px" }
+    );
+
+    container.querySelectorAll("[data-reel-card]").forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [hasApproached]);
 
   const pauseTemporarily = (duration = 2000) => {
     isPausedRef.current = true;
@@ -281,7 +323,7 @@ export default function InstagramReelsCarousel() {
   };
 
   return (
-    <div className="w-full bg-black py-8 sm:py-10 lg:py-12 flex flex-col justify-center select-none relative overflow-hidden text-white">
+    <div ref={sectionRef} className="w-full bg-black py-8 sm:py-10 lg:py-12 flex flex-col justify-center select-none relative overflow-hidden text-white">
       {/* Compact Section Header with Navigation Arrows positioned in header (NOT pointing/covering the video) */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-4 sm:mb-5 w-full">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
@@ -329,7 +371,7 @@ export default function InstagramReelsCarousel() {
               href="https://www.instagram.com/olenecanto/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white hover:bg-amber-400 text-black text-xs font-semibold tracking-wider transition-colors duration-200 shadow-sm"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full bg-white hover:bg-amber-400 text-black text-xs font-semibold tracking-wider transition-colors duration-200 shadow-sm"
             >
               <InstagramIcon className="w-3.5 h-3.5" />
               <span>Follow @olenecanto</span>
@@ -438,7 +480,7 @@ export default function InstagramReelsCarousel() {
                   - Bottom likes, comments, and 'View more on Instagram' are cropped off by container overflow
                 */}
                 <div className="relative w-full h-full overflow-hidden rounded-[20px] bg-black">
-                  {mounted && (
+                  {mounted && nearCardKeys.has(cardKey) && (
                     <iframe
                       key={`${cardKey}-${resetCounters[cardKey] || 0}`}
                       data-reel-iframe="true"

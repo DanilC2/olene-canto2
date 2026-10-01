@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import OurStoryIntro from "@/components/OurStoryIntro";
 import HistorySection from "@/components/HistorySection";
@@ -12,32 +12,15 @@ import ScrollReveal from "@/components/ScrollReveal";
 import InquiryModal from "@/components/InquiryModal";
 import SearchModal from "@/components/SearchModal";
 import Footer from "@/components/Footer";
-import { fetchStory } from "@/lib/api";
 
 export default function OurStoryPage() {
-  const [story, setStory] = useState(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [inquiryTargetItem, setInquiryTargetItem] = useState(undefined);
 
-  useEffect(() => {
-    async function loadData() {
-      const str = await fetchStory();
-      setStory(str);
-    }
-    loadData();
-  }, []);
-
   const handleOpenInquiry = (itemTitle) => {
     setInquiryTargetItem(itemTitle);
     setIsInquiryOpen(true);
-  };
-
-  const handleScrollToSection = (sectionId) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
   };
 
   return (

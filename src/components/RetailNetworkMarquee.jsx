@@ -115,7 +115,6 @@ export default function RetailNetworkMarquee({
                   fill
                   sizes="(max-width: 640px) 200px, (max-width: 1024px) 260px, 300px"
                   className="object-contain mix-blend-multiply"
-                  priority={index < 5}
                 />
               </div>
             </div>

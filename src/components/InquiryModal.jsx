@@ -52,6 +52,8 @@ export default function InquiryModal({
         
         {/* Close Button */}
         <button
+          type="button"
+          aria-label="Close"
           onClick={onClose}
           className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10 flex items-center justify-center transition-colors"
         >

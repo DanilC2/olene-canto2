@@ -2,37 +2,46 @@
 
 import { useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import ViewportVideo from "@/components/ViewportVideo";
+import useInView from "@/lib/useInView";
+import { useIntroStarted } from "@/lib/loaderSignal";
 
 const videos = [
   {
     id: 1,
     title: "Canto Butter",
-    src: "/canto butter (1).webm",
+    src: "/canto-butter.webm",
+    poster: "/posters/canto-butter.jpg",
   },
   {
     id: 2,
     title: "Canto Tin",
-    src: "/canto tin (1).webm",
+    src: "/canto-tin.webm",
+    poster: "/posters/canto-tin.jpg",
   },
   {
     id: 4,
     title: "Orange Sweets",
-    src: "/Camera_orbits_orange_sweets_show…_202608281633.mp4",
+    src: "/orange-sweets-orbit.mp4",
+    poster: "/posters/orange-sweets-orbit.jpg",
   },
   {
     id: 5,
     title: "Cookie Tin",
     src: "/Canto_cookie_tin_product_showcase_202608281632.mp4",
+    poster: "/posters/cookie-tin.jpg",
   },
   {
     id: 6,
     title: "Nutty Buddy",
-    src: "/Nutty_Buddy_Cookies_canister_rot…_202608281632.mp4",
+    src: "/nutty-buddy-cookies-orbit.mp4",
+    poster: "/posters/nutty-buddy-cookies-orbit.jpg",
   },
   {
     id: 7,
     title: "Milk Bread Package",
     src: "/Milk_bread_package_rotating_202609021547.mp4",
+    poster: "/posters/milk-bread.jpg",
   },
 ];
 
@@ -41,10 +50,18 @@ export default function ProductVideoCarousel() {
   const isPausedRef = useRef(false);
   const isHoveredRef = useRef(false);
   const resumeTimeoutRef = useRef(null);
+  const sectionRef = useRef(null);
+  // Auto-scroll and video playback only run while the carousel is on (or near) screen.
+  const sectionInView = useInView(sectionRef, { rootMargin: "300px 0px" });
+  // Show each card's first frame (poster) well before the carousel scrolls into view, so cards never appear blank.
+  // Waits for the intro video so it doesn't compete with it on slow connections.
+  const hasApproached = useInView(sectionRef, { rootMargin: "1200px 0px", once: true });
+  const introStarted = useIntroStarted();
+  const showPosters = hasApproached && introStarted;
 
   useEffect(() => {
     const container = trackRef.current;
-    if (!container) return;
+    if (!container || !sectionInView) return;
 
     let animationFrameId;
     let lastTime = 0;
@@ -67,8 +84,11 @@ export default function ProductVideoCarousel() {
     };
 
     animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [sectionInView]);
+
+  useEffect(() => {
     return () => {
-      cancelAnimationFrame(animationFrameId);
       if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
   }, []);
@@ -119,7 +139,7 @@ export default function ProductVideoCarousel() {
   };
 
   return (
-    <section className="bg-white py-8 sm:py-10 lg:py-14 select-none">
+    <section ref={sectionRef} className="bg-white py-8 sm:py-10 lg:py-14 select-none">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
         <div className="mb-6 lg:mb-8 flex items-end justify-between">
           <div>
@@ -174,12 +194,13 @@ export default function ProductVideoCarousel() {
                   className="group relative h-[290px] w-[220px] shrink-0 overflow-hidden rounded-[24px] border border-[#ebdfd2] bg-[#f8f4ee] shadow-[0_12px_28px_rgba(74,54,40,0.08)] sm:h-[330px] sm:w-[270px] lg:h-[360px] lg:w-[300px] block transition-transform duration-300 hover:scale-[1.02]"
                 >
                   <div className="h-full w-full overflow-hidden rounded-[24px]">
-                    <video
+                    <ViewportVideo
                       src={video.src}
-                      autoPlay
+                      rootRef={trackRef}
+                      rootMargin="0px 600px"
+                      enabled={sectionInView}
+                      poster={showPosters ? video.poster : undefined}
                       loop
-                      muted
-                      playsInline
                       disablePictureInPicture
                       controls={false}
                       className="h-full w-full object-cover pointer-events-none"
