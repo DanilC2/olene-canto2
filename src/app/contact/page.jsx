@@ -119,7 +119,7 @@ function ContactContent() {
         refCode: generatedRef,
       });
       setSubmitted(true);
-    } catch (err) {
+    } catch {
       setSubmitted(true);
     } finally {
       setLoading(false);
@@ -176,8 +176,8 @@ function ContactContent() {
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-wider font-bold text-zinc-400">Corporate Sales</p>
-                <a href="mailto:admin@olenecanto.com" className="tap-target text-xs sm:text-sm font-semibold text-zinc-900 hover:text-[#9b722b] transition-colors">
-                  admin@olenecanto.com
+                <a href="mailto:info@olenecanto.com" className="tap-target text-xs sm:text-sm font-semibold text-zinc-900 hover:text-[#9b722b] transition-colors">
+                  info@olenecanto.com
                 </a>
               </div>
             </div>
@@ -274,7 +274,7 @@ function ContactContent() {
                       Thank You, {fullName || "Partner"}!
                     </h3>
                     <p className="mt-1 text-xs sm:text-sm text-emerald-800 leading-relaxed max-w-md mx-auto">
-                      Your inquiry has been received and routed directly to our corporate email at <strong className="font-semibold text-emerald-950">admin@olenecanto.com</strong> (www.olenecanto.com) under reference number:
+                      Your inquiry has been received and routed directly to our corporate email at <strong className="font-semibold text-emerald-950">info@olenecanto.com</strong> (www.olenecanto.com) under reference number:
                     </p>
                     <div className="mt-3 inline-block font-mono text-sm font-bold text-emerald-900 bg-white px-4 py-1.5 rounded-lg border border-emerald-300 shadow-sm">
                       {refCode}
@@ -293,7 +293,7 @@ function ContactContent() {
                       <span>Submit Another Inquiry</span>
                     </button>
                     <a
-                      href={`mailto:admin@olenecanto.com?subject=Website%20Inquiry%20from%20${encodeURIComponent(fullName)}&body=Name:%20${encodeURIComponent(fullName)}%0APhone:%20${encodeURIComponent(phone)}%0AEmail:%20${encodeURIComponent(email)}%0ASubject:%20${encodeURIComponent(subject)}%0AMessage:%20${encodeURIComponent(message)}%0ARef:%20${encodeURIComponent(refCode)}`}
+                      href={`mailto:info@olenecanto.com?subject=Website%20Inquiry%20from%20${encodeURIComponent(fullName)}&body=Name:%20${encodeURIComponent(fullName)}%0APhone:%20${encodeURIComponent(phone)}%0AEmail:%20${encodeURIComponent(email)}%0ASubject:%20${encodeURIComponent(subject)}%0AMessage:%20${encodeURIComponent(message)}%0ARef:%20${encodeURIComponent(refCode)}`}
                       className="inline-flex items-center gap-1.5 bg-white border border-emerald-300 hover:border-emerald-400 text-emerald-900 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
                     >
                       <Mail className="w-3.5 h-3.5 text-emerald-700" />
@@ -475,17 +475,17 @@ function ContactContent() {
                 <div className="space-y-4 text-xs sm:text-sm">
                   <div className="pb-3 border-b border-zinc-100">
                     <p className="text-[10px] uppercase font-bold text-zinc-400">Corporate &amp; Wholesale Desk</p>
-                    <a href="mailto:admin@olenecanto.com" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
+                    <a href="mailto:info@olenecanto.com" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
                       <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
-                      <span>admin@olenecanto.com</span>
+                      <span>info@olenecanto.com</span>
                     </a>
                   </div>
 
                   <div className="pb-3 border-b border-zinc-100">
                     <p className="text-[10px] uppercase font-bold text-zinc-400">General &amp; Guest Inquiries</p>
-                    <a href="mailto:admin@olenecanto.com" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
+                    <a href="mailto:info@olenecanto.com" className="tap-target font-semibold text-zinc-950 hover:text-[#9b722b] transition-colors flex items-center gap-1.5 mt-0.5">
                       <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
-                      <span>admin@olenecanto.com</span>
+                      <span>info@olenecanto.com</span>
                     </a>
                   </div>
 

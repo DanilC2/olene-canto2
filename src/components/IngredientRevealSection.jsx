@@ -11,7 +11,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 
-export default function IngredientRevealSection({ onOpenInquiry }) {
+export default function IngredientRevealSection() {
   const boxRef = useRef(null);
   const bottomImgRef = useRef(null);
   const hasInteractedRef = useRef(false);

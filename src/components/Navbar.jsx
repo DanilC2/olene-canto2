@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Mail, Search, Menu as MenuIcon, X, ChevronRight } from "lucide-react";
 
-export default function Navbar({ onOpenSearch, onOpenInquiry }) {
+export default function Navbar({ onOpenSearch }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -99,7 +99,6 @@ export default function Navbar({ onOpenSearch, onOpenInquiry }) {
 
             {/* Desktop Action Icons */}
             <div className="hidden lg:flex items-center space-x-2.5">
-              {/* Search */}
               <button
                 onClick={onOpenSearch}
                 className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all shadow-sm ${

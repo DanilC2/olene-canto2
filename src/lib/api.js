@@ -139,8 +139,8 @@ export async function submitInquiry(payload) {
 
   return {
     success: true,
-    message: "Thank you. Your inquiry has been received and routed to admin@olenecanto.com.",
-    recipient: "admin@olenecanto.com",
+    message: "Thank you. Your inquiry has been received and routed to info@olenecanto.com.",
+    recipient: "info@olenecanto.com",
     data: {
       id: `bake-inq-${Date.now()}`,
       ...payload,

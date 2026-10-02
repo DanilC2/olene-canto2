@@ -6,7 +6,6 @@ import { Star, Sparkles, Plus, Eye, X, Play, Flame } from "lucide-react";
 
 export default function MenuSection({
   items,
-  selectedCategory,
   onOpenInquiry,
 }) {
   const [selectedItem, setSelectedItem] = useState(null);

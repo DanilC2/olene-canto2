@@ -35,6 +35,8 @@ export default function CategoriesPage() {
 
       {/* CATEGORY CARDS GRID — Clean Luxury Showcase with Professional Naming */}
       <section className="pt-28 sm:pt-32 lg:pt-36 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pb-12 sm:pb-16 overflow-hidden bg-white">
+        {/* Page heading for search engines and screen readers; visually hidden so the design is unchanged */}
+        <h1 className="sr-only">Categories</h1>
         <ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
             {CATEGORIES_SHOWCASE.map((category) => (

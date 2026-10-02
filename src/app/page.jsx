@@ -17,7 +17,7 @@ import DefiningQualitySection from "@/components/DefiningQualitySection";
 import ScrollReveal from "@/components/ScrollReveal";
 import ViewportVideo from "@/components/ViewportVideo";
 import { useIntroStarted } from "@/lib/loaderSignal";
-import { submitInquiry, fetchMenu } from "@/lib/api";
+import { fetchMenu } from "@/lib/api";
 import { Sparkles, Quote, BookOpen, Briefcase, ChevronRight, CheckCircle2, Mail, RefreshCw, Loader2 } from "lucide-react";
 
 export default function Home() {
@@ -222,7 +222,7 @@ export default function Home() {
                     </h4>
                     <p className="mt-1 text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-md mx-auto">
                       Your details have been received and sent directly to our team at{" "}
-                      <strong className="text-zinc-900 font-semibold">admin@olenecanto.com</strong> (www.olenecanto.com).
+                      <strong className="text-zinc-900 font-semibold">info@olenecanto.com</strong> (www.olenecanto.com).
                     </p>
                     <div className="mt-3 inline-block font-mono text-xs font-bold text-zinc-800 bg-white px-4 py-1.5 rounded-lg border border-zinc-200 shadow-sm">
                       Ref: #{franchiseRef}
@@ -241,7 +241,7 @@ export default function Home() {
                       <span>Submit Another Enquiry</span>
                     </button>
                     <a
-                      href={`mailto:admin@olenecanto.com?subject=Franchise%20Inquiry%20from%20${encodeURIComponent(franchiseName)}&body=Name:%20${encodeURIComponent(franchiseName)}%0APhone:%20${encodeURIComponent(franchisePhone)}%0AEmail:%20${encodeURIComponent(franchiseEmail)}%0ALocation:%20${encodeURIComponent(franchiseLocation)}%0ARef:%20${encodeURIComponent(franchiseRef)}`}
+                      href={`mailto:info@olenecanto.com?subject=Franchise%20Inquiry%20from%20${encodeURIComponent(franchiseName)}&body=Name:%20${encodeURIComponent(franchiseName)}%0APhone:%20${encodeURIComponent(franchisePhone)}%0AEmail:%20${encodeURIComponent(franchiseEmail)}%0ALocation:%20${encodeURIComponent(franchiseLocation)}%0ARef:%20${encodeURIComponent(franchiseRef)}`}
                       className="inline-flex items-center gap-1.5 bg-white border border-zinc-300 hover:border-zinc-400 text-zinc-800 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
                     >
                       <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
@@ -322,7 +322,7 @@ export default function Home() {
                     {franchiseLoading ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Sending to admin@olenecanto.com...</span>
+                        <span>Sending to info@olenecanto.com...</span>
                       </>
                     ) : (
                       <span>Submit Enquiry</span>

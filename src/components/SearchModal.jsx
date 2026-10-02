@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Search, X, ArrowRight } from "lucide-react";
 import { getAllProducts } from "@/lib/categoriesData";
@@ -12,25 +12,31 @@ export default function SearchModal({
   onSelectItem,
 }) {
   const [query, setQuery] = useState("");
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
 
-  // Reset search query when modal opens or closes
-  useEffect(() => {
+  if (prevIsOpen !== isOpen) {
+    setPrevIsOpen(isOpen);
     if (!isOpen) {
       setQuery("");
     }
-  }, [isOpen]);
+  }
+
+  const handleClose = useCallback(() => {
+    setQuery("");
+    onClose();
+  }, [onClose]);
 
   // Dismiss on ESC key
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        handleClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [isOpen, handleClose]);
 
   if (!isOpen) return null;
 
@@ -57,7 +63,7 @@ export default function SearchModal({
 
   return (
     <div
-      onClick={onClose}
+      onClick={handleClose}
       className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-start justify-center p-4 pt-20 sm:pt-28 overflow-y-auto"
     >
       <div
@@ -89,7 +95,7 @@ export default function SearchModal({
           <button
             type="button"
             aria-label="Close search"
-            onClick={onClose}
+            onClick={handleClose}
             className="w-8 h-8 rounded-full bg-white/5 text-zinc-400 hover:text-white flex items-center justify-center transition-colors shrink-0 cursor-pointer"
           >
             <X className="w-4 h-4" />
@@ -99,22 +105,10 @@ export default function SearchModal({
         {/* Results or Initial Clean State */}
         <div className="mt-4 max-h-96 overflow-y-auto space-y-3 pr-1">
           {!normalizedQuery ? (
-            <div className="py-10 text-center space-y-4">
+            <div className="py-10 text-center">
               <p className="text-sm text-zinc-400 font-light">
                 Type a product name, category, or ingredient to search...
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-2 pt-2 max-w-md mx-auto">
-                {["Plum Cake", "Murukku", "Kaju Katli", "Butter Cookies", "Badusha", "Banana Chips", "Rusk"].map((tag) => (
-                  <button
-                    key={tag}
-                    type="button"
-                    onClick={() => setQuery(tag)}
-                    className="text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 transition-all cursor-pointer"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
             </div>
           ) : filtered.length === 0 ? (
             <div className="text-center py-12 text-zinc-500 font-serif-luxury text-base">
@@ -126,7 +120,7 @@ export default function SearchModal({
                 key={item.id}
                 onClick={() => {
                   onSelectItem(item);
-                  onClose();
+                  handleClose();
                 }}
                 className="group flex items-center justify-between p-3 rounded-2xl bg-white/[0.03] hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all cursor-pointer"
               >

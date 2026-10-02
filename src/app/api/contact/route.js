@@ -37,7 +37,7 @@ export async function POST(request) {
     const contactMessage = message || "New inquiry submitted via website form.";
     const reference = refCode || `CANTO-${Math.floor(100000 + Math.random() * 900000)}`;
 
-    const recipient = process.env.RECIPIENT_EMAIL || "admin@olenecanto.com";
+    const recipient = process.env.RECIPIENT_EMAIL || "info@olenecanto.com";
 
     console.log("=================================================");
     console.log(`[OLENE CANTO] Form Submission Received (${reference})`);
@@ -134,7 +134,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to process inquiry. Please try again or reach out to admin@olenecanto.com.",
+        error: "Failed to process inquiry. Please try again or reach out to info@olenecanto.com.",
       },
       { status: 500 }
     );

@@ -4,10 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { markIntroStarted } from "@/lib/loaderSignal";
 
 const FADE_DURATION_MS = 650;
-// How long the intro video is shown once it is actually playing.
-const MAX_LOADER_DURATION_MS = 3000;
-// Safety net: if the video cannot start at all (very slow network, autoplay blocked), reveal the site anyway.
-const LOADER_TIMEOUT_MS = 5000;
+// Show about 3 seconds of the intro video, measured by the video itself so slow starts still get seen.
+const INTRO_SHOW_SECONDS = 2.9;
+// Never block the site longer than this, even if the video is slow or cannot play.
+const LOADER_TIMEOUT_MS = 4500;
 
 // Once the loader is gone, stop the rest of its video from downloading so it
 // doesn't compete with the hero video and the rest of the page.
@@ -29,22 +29,25 @@ export default function InitialPageLoader({ children }) {
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
   const videoRef = useRef(null);
-  const playTimerRef = useRef(null);
+  const isFadingRef = useRef(false);
 
   const dismissLoader = useCallback(() => {
-    if (isFading) return;
-
+    if (isFadingRef.current) return;
+    isFadingRef.current = true;
+    markIntroStarted();
     setIsFading(true);
     window.setTimeout(() => setIsVisible(false), FADE_DURATION_MS);
-  }, [isFading]);
+  }, []);
 
-  // Start the 3-second countdown from when the intro video is really on screen,
-  // so slow connections still see it instead of a blank white screen.
-  const handleIntroPlaying = useCallback(() => {
-    markIntroStarted();
-    if (playTimerRef.current) return;
-    playTimerRef.current = window.setTimeout(dismissLoader, MAX_LOADER_DURATION_MS);
-  }, [dismissLoader]);
+  // Driven by the video's own clock (works even if playback started before React hydrated).
+  const handleIntroProgress = useCallback(
+    (event) => {
+      const video = event.currentTarget;
+      if (video.currentTime > 0) markIntroStarted();
+      if (video.currentTime >= INTRO_SHOW_SECONDS) dismissLoader();
+    },
+    [dismissLoader]
+  );
 
   const attachVideo = useCallback((video) => {
     videoRef.current = video;
@@ -58,25 +61,15 @@ export default function InitialPageLoader({ children }) {
     document.body.style.overflow = "hidden";
     const timeoutId = window.setTimeout(dismissLoader, LOADER_TIMEOUT_MS);
 
-    // The video may already be playing before React hydrated and attached onPlaying.
+    // The video may already be playing before React hydrated.
     const video = videoRef.current;
-    if (video && !video.paused && video.currentTime > 0) handleIntroPlaying();
+    if (video && video.currentTime > 0) markIntroStarted();
 
     return () => {
       window.clearTimeout(timeoutId);
       document.body.style.overflow = previousOverflow;
     };
-  }, [dismissLoader, handleIntroPlaying, isVisible]);
-
-  useEffect(() => {
-    if (isFading) markIntroStarted();
-  }, [isFading]);
-
-  useEffect(() => {
-    return () => {
-      if (playTimerRef.current) window.clearTimeout(playTimerRef.current);
-    };
-  }, []);
+  }, [dismissLoader, isVisible]);
 
   return (
     <>
@@ -95,10 +88,13 @@ export default function InitialPageLoader({ children }) {
             muted
             playsInline
             preload="auto"
-            onPlaying={handleIntroPlaying}
+            onPlaying={markIntroStarted}
+            onTimeUpdate={handleIntroProgress}
             onEnded={dismissLoader}
             onError={dismissLoader}
-            className="block h-auto max-h-[100dvh] w-auto max-w-[100vw] object-contain brightness-[1.06] mix-blend-multiply"
+            width={1920}
+            height={1080}
+            className="block aspect-video h-auto w-[min(1920px,100vw,177.78dvh)] max-h-[100dvh] max-w-[100vw] object-contain brightness-[1.06] mix-blend-multiply"
           />
         </div>
       )}

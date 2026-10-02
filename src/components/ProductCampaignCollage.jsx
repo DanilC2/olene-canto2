@@ -35,7 +35,7 @@ export default function ProductCampaignCollage() {
 
             {/* Top Right: White Loaf Cookies Poster -> Whiteloaf Cookies */}
             <Link
-              href="/categories/whiteloaf-cookies"
+              href="/categories/cookies"
               className="group relative w-full aspect-[1024/670] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_20px_50px_rgba(0,0,0,0.6)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
               title="Explore White Loaf Cookies"
             >

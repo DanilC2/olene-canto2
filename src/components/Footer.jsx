@@ -132,22 +132,22 @@ export default function Footer() {
               <div>
                 <p className="text-zinc-500 font-medium mb-1">Corporate Sales:</p>
                 <a
-                  href="mailto:admin@olenecanto.com"
+                  href="mailto:info@olenecanto.com"
                   className="tap-target inline-flex items-center gap-2 text-zinc-950 font-medium hover:text-[#9b722b] transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
-                  <span>admin@olenecanto.com</span>
+                  <span>info@olenecanto.com</span>
                 </a>
               </div>
 
               <div className="pt-1">
                 <p className="text-zinc-500 font-medium mb-1">Other Inquiries:</p>
                 <a
-                  href="mailto:admin@olenecanto.com"
+                  href="mailto:info@olenecanto.com"
                   className="tap-target inline-flex items-center gap-2 text-zinc-950 font-medium hover:text-[#9b722b] transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#9b722b]" />
-                  <span>admin@olenecanto.com</span>
+                  <span>info@olenecanto.com</span>
                 </a>
               </div>
             </div>

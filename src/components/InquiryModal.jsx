@@ -33,7 +33,7 @@ export default function InquiryModal({
       const res = await submitInquiry(formData);
       setSubmitted(true);
       setResponseMsg(res.message || "Your inquiry has been successfully received.");
-    } catch (err) {
+    } catch {
       setSubmitted(true);
       setResponseMsg("Your inquiry has been registered with the concierge.");
     } finally {

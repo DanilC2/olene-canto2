@@ -273,7 +273,7 @@ export default function InstagramReelsCarousel() {
           return next;
         });
       },
-      { root: container, rootMargin: "0px 1200px" }
+      { root: container, rootMargin: "0px 300px" }
     );
 
     container.querySelectorAll("[data-reel-card]").forEach((card) => observer.observe(card));
