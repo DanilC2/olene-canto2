@@ -259,7 +259,7 @@ export default function CategoryDetailPage() {
                   className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl hover:border-zinc-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* 1. Pristine Product Photo — Completely text-free, un-obscured with soft hover zoom */}
-                  <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center p-3 sm:p-5 lg:p-6 overflow-hidden">
+                  <div className="relative w-full aspect-[4/5] bg-white flex items-center justify-center p-3 sm:p-5 lg:p-6 overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.name || "Product Image"}

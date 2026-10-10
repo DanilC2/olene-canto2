@@ -273,7 +273,7 @@ export default function BestsellerSection({ onOpenInquiry }) {
                 }`}
               >
                 {/* Product Image Frame */}
-                <div className="relative w-full aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-white flex items-center justify-center p-2 sm:p-3 mb-2.5 sm:mb-3">
+                <div className="relative w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-white flex items-center justify-center p-2 sm:p-3 mb-2.5 sm:mb-3">
                   <Image
                     src={product.image}
                     alt={product.name}

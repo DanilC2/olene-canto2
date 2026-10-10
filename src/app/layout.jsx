@@ -28,13 +28,12 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Olene Canto | Haute Boulangerie & Pâtisserie",
+  title: "Olene Canto",
   description:
     "Artisanal slow-fermented breads, 27-layer Normandy butter viennoiserie, and sculptured French pâtisserie. A decade of bakery heritage and craft.",
   keywords: [
     "Olene Canto",
     "Olene Foods",
-    "Haute Boulangerie",
     "French Patisserie",
     "Sourdough Bakery",
     "Du Four Export",
@@ -48,7 +47,7 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Olene Canto | Haute Boulangerie & Pâtisserie",
+    title: "Olene Canto",
     description:
       "Artisanal slow-fermented breads, 27-layer Normandy butter viennoiserie, and sculptured French pâtisserie. A decade of bakery heritage and craft.",
     url: "/",
@@ -59,7 +58,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Olene Canto | Haute Boulangerie & Pâtisserie",
+    title: "Olene Canto",
     description:
       "Artisanal slow-fermented breads, 27-layer Normandy butter viennoiserie, and sculptured French pâtisserie. A decade of bakery heritage and craft.",
     images: [DEFAULT_OG_IMAGE.url],
