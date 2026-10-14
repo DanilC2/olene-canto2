@@ -233,7 +233,7 @@ export default function BestsellerSection({ onOpenInquiry }) {
 
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20 border-t border-b border-zinc-200">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1440px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
@@ -257,10 +257,10 @@ export default function BestsellerSection({ onOpenInquiry }) {
 
         {/* 
           Grid Layout:
-          - Responsive view (mobile): 2 products in a row (grid-cols-2), 4 items initially
-          - Desktop view: 4 products in a row, giving exactly 2 rows with 4 products each (md:grid-cols-4)
+          - Responsive view (mobile & tablet): 2 products in a row (grid-cols-2), 4 items initially with toggle
+          - Desktop view: 4 products in a row, giving exactly 2 rows with 4 products each (lg:grid-cols-4)
         */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 lg:gap-6">
           {BESTSELLER_PRODUCTS.map((product, index) => {
             const isHiddenOnMobile = !showAllMobile && index >= 4;
 
@@ -268,29 +268,29 @@ export default function BestsellerSection({ onOpenInquiry }) {
               <div
                 key={product.id}
                 onClick={() => setSelectedProduct(product)}
-                className={`group flex-col justify-between rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-white p-3 sm:p-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] hover:border-[#d9b578] transition-all duration-300 cursor-pointer ${
-                  isHiddenOnMobile ? "hidden md:flex" : "flex"
+                className={`group flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-white p-2 sm:p-3 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] hover:border-[#d9b578] transition-all duration-300 cursor-pointer ${
+                  isHiddenOnMobile ? "hidden lg:flex" : "flex"
                 }`}
               >
-                {/* Product Image Frame */}
-                <div className="relative w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-white flex items-center justify-center p-2 sm:p-3 mb-2.5 sm:mb-3">
+                {/* Product Image Frame - Optimized 4:3 aspect ratio fills frame without excessive whitespace */}
+                <div className="relative w-full aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-white flex items-center justify-center p-0.5 sm:p-1 mb-2 sm:mb-2.5">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
                     unoptimized
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 300px"
-                    className="object-contain object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 360px"
+                    className="object-contain object-center scale-[1.04] transition-transform duration-500 ease-out group-hover:scale-110"
                   />
 
                   {/* Floating Bestseller Badge */}
-                  <span className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 px-2 sm:px-2.5 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider bg-[#1d1513] text-white shadow-sm">
+                  <span className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 px-2 sm:px-2.5 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider bg-[#1d1513] text-white shadow-sm z-10">
                     {product.badge}
                   </span>
                 </div>
 
                 {/* Product Name Only Below Image */}
-                <div className="pt-2 pb-1 text-center">
+                <div className="pt-1.5 pb-1 text-center">
                   <h3 className="font-serif-luxury text-sm sm:text-base lg:text-lg font-medium text-zinc-900 group-hover:text-[#a4542d] transition-colors leading-snug">
                     {product.name}
                   </h3>
@@ -300,9 +300,9 @@ export default function BestsellerSection({ onOpenInquiry }) {
           })}
         </div>
 
-        {/* Mobile See More / See Less Toggle Button */}
+        {/* Mobile & Tablet See More / See Less Toggle Button */}
         {BESTSELLER_PRODUCTS.length > 4 && (
-          <div className="mt-6 flex justify-center md:hidden">
+          <div className="mt-6 flex justify-center lg:hidden">
             <button
               type="button"
               onClick={() => {
@@ -314,7 +314,7 @@ export default function BestsellerSection({ onOpenInquiry }) {
                 }
                 setShowAllMobile((prev) => !prev);
               }}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-zinc-300 bg-white text-zinc-900 text-xs font-bold uppercase tracking-wider hover:border-[#a4542d] hover:text-[#a4542d] active:scale-95 transition-all duration-200 shadow-sm"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-zinc-300 bg-white text-zinc-900 text-xs font-bold uppercase tracking-wider hover:border-[#a4542d] hover:text-[#a4542d] active:scale-95 transition-all duration-200 shadow-sm cursor-pointer"
               aria-expanded={showAllMobile}
             >
               <span>{showAllMobile ? "See Less" : "See More"}</span>
@@ -368,7 +368,7 @@ export default function BestsellerSection({ onOpenInquiry }) {
                   alt={selectedProduct.name}
                   fill
                   unoptimized
-                  className="object-contain object-center"
+                  className="object-contain object-center scale-[1.04]"
                 />
                 <span className="absolute top-3 left-3 px-2.5 sm:px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-zinc-900 shadow-md">
                   {selectedProduct.modalBadge || selectedProduct.badge}

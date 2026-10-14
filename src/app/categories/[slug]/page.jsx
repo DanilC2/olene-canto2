@@ -153,12 +153,6 @@ export default function CategoryDetailPage() {
 
               {/* Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => handleOpenInquiry(category.title)}
-                  className="px-6 py-2.5 rounded-full bg-[#9B1B22] hover:bg-[#85161c] text-white text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
-                >
-                  Enquire Range
-                </button>
                 <Link
                   href="/categories"
                   className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 text-xs font-semibold tracking-wider transition-all inline-flex items-center gap-1.5"
@@ -259,15 +253,17 @@ export default function CategoryDetailPage() {
                   className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl hover:border-zinc-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* 1. Pristine Product Photo — Completely text-free, un-obscured with soft hover zoom */}
-                  <div className="relative w-full aspect-[4/5] bg-white flex items-center justify-center p-3 sm:p-5 lg:p-6 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name || "Product Image"}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                    />
+                  <div className="relative w-full aspect-[4/5] bg-white flex items-center justify-center p-2 sm:p-3 lg:p-4 overflow-hidden">
+                    <div className="relative h-[90%] w-[88%] max-w-[290px] sm:h-[92%] sm:w-[90%] lg:h-[94%] lg:w-[92%]">
+                      <Image
+                        src={product.image}
+                        alt={product.name || "Product Image"}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-contain object-center group-hover:scale-[1.06] transition-transform duration-500 ease-out"
+                      />
+                    </div>
                   </div>
 
                   {/* 2. Prominent & Attractive Product Name and Gold Accent Line Only */}

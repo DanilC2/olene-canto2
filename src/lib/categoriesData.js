@@ -71,16 +71,16 @@ export const CATEGORIES_SHOWCASE = [
     id: "rusk",
     slug: "rusk",
     title: "Rusks",
-    subtitle: "Twice-Baked Round Milk Rusk, Golden Cake Rusk Batons & Savory Herb Toast",
+    subtitle: "Twice-Baked Butter Rusk, Cake Rusk & Garlic Rusk",
     description: "Twice-baked golden toasts handcrafted in signature airtight Olene Canto canisters, featuring classic crunchy milk rusks, rich cake rusk fingers, and aromatic herb-seasoned savory crisps.",
     badge: "Airtight Canisters",
     tagline: "Twice-Baked Daily • 3 Signature Canisters",
     image: "/categories/rusk-showcase.jpg",
     accentColor: "#D97706",
     items: [
-      "Olene Canto Classic Round Milk Rusk",
-      "Olene Canto Golden Cake Rusk Batons",
-      "Olene Canto Herb Seasoned Toast Rusk",
+      "Butter rusk",
+      "Cake rusk",
+      "Garlic rusk",
     ],
   },
   {
@@ -123,7 +123,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Traditional flaky layered sweet pastries fried slowly in pure desi ghee and steeped in aromatic cardamom sugar syrup, with a crispy, micro-layered crust and a melt-in-mouth core. Certified ISO 9001:2015 quality by White Loaf Craft Bakers.",
       highlights: ["Multi-Layered Flaky Crumb", "Pure Desi Ghee & Cardamom Glaze", "ISO 9001:2015 Certified", "The Heavenly Source of Happiness"],
-      ingredients: ["Refined Wheat Flour", "Pure Desi Ghee", "Sugar Syrup", "Curd", "Cardamom Powder", "Saffron Essence"],
+      ingredients: ["Refined Flour", "Sugar", "Refined Oil (INS 202, INS 200)"],
       calories: "360 kcal / 100g",
     },
     {
@@ -138,7 +138,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Famous Banarasi-style flaky sweet made with roasted gram flour and pure desi ghee, hand-pulled into paper-thin golden filaments that dissolve instantly on the tongue, garnished with crunchy pistachios and California almonds.",
       highlights: ["Hand-Pulled Porous Fibers", "Topped with Almonds & Pistachios", "Pure Desi Ghee Aroma", "ISO 9001:2015 Certified"],
-      ingredients: ["Bengal Gram Flour (Besan)", "Refined Wheat Flour", "Pure Desi Ghee", "Sugar Syrup", "Almonds & Pistachios", "Green Cardamom"],
+      ingredients: ["Sugar", "Gram Flour (Besan)", "Refined Wheat Flour", "Ghee", "Almonds", "Pistachios", "Cardamom Powder"],
       calories: "390 kcal / 100g",
     },
     {
@@ -153,7 +153,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Glossy, melt-in-mouth Karachi-style Bombay halwa cooked to a translucent, chewy perfection in pure cow ghee, generously studded with crunchy melon seeds, almonds, and pistachios. Certified ISO 9001:2015 quality by White Loaf Craft Bakers.",
       highlights: ["Translucent Chewy Texture", "Loaded with Melon Seeds & Nuts", "Slow-Cooked in Pure Ghee", "ISO 9001:2015 Certified"],
-      ingredients: ["Corn Starch", "Pure Cow Ghee", "Cane Sugar", "Melon Seeds (Magaz)", "Almonds & Pistachios", "Cardamom & Saffron Essence"],
+      ingredients: ["Corn Flour", "Sugar", "Ghee", "Honey", "Edible Vegetable Oil", "Liquid Glucose", "Cashew Nut", "Cardamom"],
       calories: "375 kcal / 100g",
     },
     {
@@ -168,7 +168,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "A regal modern twist on the classic royal sweet: slow-roasted besan infused with the natural sweetness and vibrant ruby color of fresh farm beetroots, cooked with generous amounts of aromatic pure desi cow ghee.",
       highlights: ["Fresh Farm Beetroot Infusion", "Natural Ruby Red Color", "Porous Melt-In-Mouth Texture", "100% Pure Desi Ghee"],
-      ingredients: ["Fresh Beetroot Puree", "Gram Flour (Besan)", "100% Pure Desi Cow Ghee", "Sugar Syrup", "Cardamom"],
+      ingredients: ["Sugar", "Gram Flour (Besan)", "Ghee", "Beetroot", "Milk Solids", "Cardamom"],
       calories: "420 kcal / 100g",
     },
     {
@@ -183,7 +183,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Luscious confectionery rolls coated with crunchy caramelized butterscotch nut pralines and crushed almonds, offering an irresistible contrast of creamy sweet core and golden crunchy shell. Certified ISO 9001:2015 quality.",
       highlights: ["Butterscotch Nut Praline Crust", "Velvety Confectionery Core", "Golden Caramel Notes", "ISO 9001:2015 Certified"],
-      ingredients: ["Full Cream Milk Solids", "Caramelized Butterscotch Crunch", "Roasted Almonds & Cashews", "Pure Ghee", "Brown Sugar"],
+      ingredients: ["Wheat Flour (Maida)", "Sugar", "Vegetable Oil", "Butter", "Milk Solids", "Butterscotch Flavouring", "Salt"],
       calories: "385 kcal / 100g",
     },
     {
@@ -198,7 +198,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Slow-roasted besan enriched with fresh winter red carrot halwa and generous churns of pure desi cow ghee, baked to a porous, tender melt-in-the-mouth golden crumb studded with cashew nut halves.",
       highlights: ["Fresh Winter Carrots", "100% Pure Desi Cow Ghee", "Crunchy Cashew Topping", "ISO 9001:2015 Certified"],
-      ingredients: ["Fresh Carrot Puree", "Bengal Gram Flour (Besan)", "Pure Desi Cow Ghee", "Sugar Syrup", "Cashew Nuts", "Cardamom"],
+      ingredients: ["Sugar", "Gram Flour (Besan)", "Ghee", "Carrot", "Milk Solids", "Cardamom Powder"],
       calories: "410 kcal / 100g",
     },
     {
@@ -228,7 +228,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Classic celebration laddus prepared with micro-boondi pearls fried exclusively in pure desi cow ghee, scented with green cardamom, Kashmiri saffron, and crowned with whole roasted cashew nuts.",
       highlights: ["100% Pure Desi Cow Ghee", "Crowned with Whole Cashews", "Aromatic Green Cardamom", "Festive Favorite"],
-      ingredients: ["Gram Flour (Besan)", "Pure Desi Ghee", "Cane Sugar Syrup", "Whole Roasted Cashews", "Melon Seeds", "Cardamom & Saffron"],
+      ingredients: ["Gram Flour (Besan)", "Sugar", "Ghee", "Cardamom Powder", "Cashew Nuts", "Raisins"],
       calories: "390 kcal / 100g",
     },
     {
@@ -243,7 +243,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Nostalgic golden malted milk burfi squares slow-stirred with malt extract, full-cream milk fudge, and pure desi ghee, garnished with toasted almond slivers and pistachios.",
       highlights: ["Rich Malted Milk Flavor", "Slow-Cooked in Desi Ghee", "Almond & Pistachio Garnish", "Melt-In-Mouth Texture"],
-      ingredients: ["Malted Milk Solids", "Full Cream Khoya", "Pure Desi Ghee", "Cane Sugar", "Almonds & Pistachios", "Cardamom"],
+      ingredients: ["Sugar", "Milk Solids", "Horlicks Powder", "Ghee", "Gram Flour (Besan)", "Cardamom Powder"],
       calories: "380 kcal / 100g",
     },
     {
@@ -258,7 +258,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Decadent malt chocolate burfi squares slow-cooked with signature Boost malted beverage powder, full-cream milk khoya, and pure desi ghee, garnished with crunchy roasted cashews, pistachios, and almond slivers. Certified ISO 9001:2015 quality by White Loaf Craft Bakers.",
       highlights: ["Rich Boost Malt Flavor", "100% Pure Desi Ghee", "Almond & Pistachio Garnish", "ISO 9001:2015 Certified"],
-      ingredients: ["Boost Malted Drink Powder", "Full Cream Cow Milk Khoya", "Pure Desi Ghee", "Cane Sugar", "Roasted Cashews & Pistachios", "Cardamom"],
+      ingredients: ["Boost", "Gram Flour", "Refined Wheat Flour", "Sugar", "Cashew Nut", "Almond", "Ghee", "Refined Oil", "Cardamom Powder (INS 202, INS 200)"],
       calories: "390 kcal / 100g",
     },
     {
@@ -273,7 +273,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Exquisite diamond cuts crafted from 100% premium Goan cashew nuts slow-simmered into velvety paste, adorned with traditional edible pure silver vark and crunchy pistachio slivers.",
       highlights: ["100% Goan Cashew Nut Paste", "Edible Pure Silver Vark", "Delicate Diamond Cut", "Zero Artificial Essence"],
-      ingredients: ["Goan Cashew Nut Flour", "Refined Cane Sugar", "Edible Silver Foil (Vark)", "Pistachio Slivers", "Cardamom Essence"],
+      ingredients: ["Cashew Nuts", "Sugar", "Water", "Ghee", "Cardamom Powder"],
       calories: "440 kcal / 100g",
     },
     {
@@ -288,7 +288,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Golden, aromatic boondi laddus crafted with slow-simmered besan pearls, aromatic cardamom syrup, and pure cow ghee, offering the beloved traditional melt-in-mouth celebration sweet.",
       highlights: ["Classic Golden Boondi", "Aromatic Cardamom Syrup", "Pure Ghee Preparation", "ISO 9001:2015 Certified"],
-      ingredients: ["Bengal Gram Flour (Besan)", "Sugar Syrup", "Pure Cow Ghee", "Cardamom Powder", "Melon Seeds"],
+      ingredients: ["Gram Flour", "Sugar", "Ghee", "Refined Oil", "Raisins", "Cardamom (INS 202, INS 200)"],
       calories: "380 kcal / 100g",
     },
     {
@@ -303,7 +303,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Velvety ivory spheres hand-rolled from condensed full-cream milk fudge, packed with crunchy roasted cashew halves and plump golden raisins, dusted in fine crystal sugar.",
       highlights: ["Full Cream Condensed Milk", "Loaded with Cashews & Raisins", "Sugar Crystal Dusting", "Rich Velvety Texture"],
-      ingredients: ["Full Cream Milk Solids (Mawa)", "Roasted Cashew Nuts", "Golden Raisins", "Pure Desi Ghee", "Cane Sugar", "Cardamom"],
+      ingredients: ["Cashew Nuts", "Sugar", "Milk Powder", "Ghee", "Cardamom Powder"],
       calories: "410 kcal / 100g",
     },
     {
@@ -318,7 +318,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "An innovative fusion confection blending rich roasted milk boondi pearls with dark Belgian chocolate chips and crunchy chopped nuts, delivering a delightful blend of Indian tradition and modern chocolate decadence.",
       highlights: ["Belgian Chocolate Chips", "Milk Boondi Pearl Base", "Crunchy Nut Cluster", "Contemporary Sweet Innovation"],
-      ingredients: ["Gram Flour & Milk Solids", "Belgian Dark Chocolate Chips", "Pure Ghee", "Sugar Syrup", "Roasted Almonds & Cashews", "Cocoa"],
+      ingredients: ["Sugar", "Milk Powder", "Gram Flour (Besan)", "Chocolate Chips", "Ghee", "Cardamom Powder"],
       calories: "425 kcal / 100g",
     },
     {
@@ -333,7 +333,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "A bite of a moment of delight • The Heavenly Source of Happiness...!",
       description: "Wholesome, rustic whole wheat flour (atta) laddus slow-roasted to a nutty golden perfection in pure desi cow ghee, delicately sweetened and garnished with sliced pistachios and almond flakes.",
       highlights: ["Whole Stoneground Wheat", "Slow-Roasted in Desi Ghee", "Pistachio & Almond Garnish", "Nourishing Traditional Sweet"],
-      ingredients: ["Stoneground Whole Wheat Flour (Atta)", "100% Pure Desi Cow Ghee", "Demerara Sugar", "Slivered Pistachios & Almonds", "Green Cardamom"],
+      ingredients: ["Wheat Flour", "Sugar", "Ghee", "Cashew Nuts", "Cardamom Powder"],
       calories: "395 kcal / 100g",
     },
   ],
@@ -350,7 +350,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "'For a Healthier Slice of Your Life' • Sealed Keepsake Tin",
       description: "Our iconic celebration round cake packed with slow-caramelized fruits, sun-dried raisins, dates, and warm aromatic spices, presented in the signature Olene Canto emerald green and gold embossed collectible keepsake tin.",
       highlights: ["Signature Green Tin", "Slow-Caramelized Fruit Crumb", "Airtight Freshness Seal", "Pure Dairy Butter"],
-      ingredients: ["Sun-Dried Raisins & Dates", "Glazed Candied Cherries", "Pure Cultured Butter", "Demerara Sugar", "Stoneground Wheat Flour", "Cardamom & Cinnamon Infusion"],
+      ingredients: ["Soaked Mix Dry Fruits", "Wheat Flour", "Raisins", "Egg", "Sugar", "Ghee", "Mixed Fruit Jam", "Honey", "Dates"],
       calories: "205 kcal / slice",
     },
     {
@@ -365,7 +365,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Glazed Cherries, Whole Cashews, Almonds & Slow-Soaked Dry Fruits",
       description: "Our timeless festive recipe packed with plump soaked raisins, black currants, glazed red cherries, whole roasted cashew nuts, and California almonds, encased in a bespoke black carry-handle gift box.",
       highlights: ["Bespoke Black Handle Box", "Topped with Whole Cashews & Cherries", "Rich Spiced Plum Crumb", "Zero Artificial Preservatives"],
-      ingredients: ["Slow-Soaked Raisins & Currants", "Glazed Morello Cherries", "Whole Cashews & Almonds", "Cultured Farm Butter", "Caramelized Cane Sugar", "Cinnamon & Nutmeg"],
+      ingredients: ["Soaked Mix Dry Fruits", "Wheat Flour", "Raisins", "Egg", "Sugar", "Ghee", "Mixed Fruit Jam", "Honey", "Dates"],
       calories: "225 kcal / slice",
     },
     {
@@ -380,7 +380,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Decadent Cocoa Fudge, Silky Ganache & Rich Chocolate Chips",
       description: "An ultra-rich, velvety chocolate mud cake baked to moist perfection, coated with a glossy molten dark chocolate glaze and loaded with crunchy chocolate chips. Certified ISO 9001:2015 quality by White Loaf Craft Bakers.",
       highlights: ["ISO 9001:2015 Certified", "Dark Chocolate Chips Topping", "Silky Ganache Crust", "The Heavenly Source of Happiness"],
-      ingredients: ["Dutch Processed Dark Cocoa", "Belgian Chocolate Chips", "Pure Dairy Butter", "Farm Fresh Eggs", "Brown Cane Sugar", "Madagascar Vanilla"],
+      ingredients: ["Refined Wheat Flour", "Cocoa Powder", "Sugar", "Butter", "Milk", "Egg", "Honey", "Dark Compound", "Edible Vegetable Oil (INS 202, INS 200)"],
       calories: "260 kcal / slice",
     },
     {
@@ -395,14 +395,14 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Arabian Dates, Fresh Grated Carrots, Roasted Cashews & Walnuts",
       description: "Naturally moist, aromatic tea-time loaf cake packed with juicy Arabian dates, sweet winter carrots, and crunchy cashew nuts and walnuts. Slow-baked in a fluted presentation tray with window box by White Loaf Craft Bakers.",
       highlights: ["Arabian Dates & Farm Carrots", "Topped with Cashews & Walnuts", "ISO 9001:2015 Certified Quality", "Melt-in-Mouth Spiced Crumb"],
-      ingredients: ["Fresh Grated Carrots", "Arabian Dates", "Roasted Cashew Nuts & Walnuts", "Stoneground Wheat Flour", "Pure Butter", "Cardamom & Cinnamon Spice"],
+      ingredients: ["Refined Wheat Flour", "Sugar", "Carrot", "Dates", "Edible Vegetable Oil", "Egg", "Ghee", "Cashew Nut", "Milk Maid", "Caramel", "Baking Soda", "Cardamom Powder (INS 202, INS 200)"],
       calories: "195 kcal / slice",
     },
   ],
   "rusk": [
     {
       id: "canto-classic-round-rusk",
-      name: "Olene Canto Classic Round Milk Rusk",
+      name: "Butter rusk",
       category: "rusk",
       categoryName: "Rusk",
       badge: "Tea-Time Classic",
@@ -417,20 +417,12 @@ export const CATEGORY_PRODUCTS = {
         "Perfect Tea-Dunking Texture",
         "Traditional Taste Modern Happiness",
       ],
-      ingredients: [
-        "Refined Wheat Flour",
-        "Pure Dairy Milk",
-        "Cane Sugar",
-        "Refined Vegetable Oil",
-        "Yeast",
-        "Cardamom",
-        "Iodized Salt",
-      ],
+      ingredients: ["Wheat Flour (Maida)", "Sugar", "Butter", "Yeast", "Milk Solids", "Vegetable Oil", "Salt"],
       calories: "410 kcal / 100g",
     },
     {
       id: "canto-cake-rusk-batons",
-      name: "Olene Canto Golden Cake Rusk Batons",
+      name: "Cake rusk",
       category: "rusk",
       categoryName: "Rusk",
       badge: "Rich Cake Toast",
@@ -445,19 +437,12 @@ export const CATEGORY_PRODUCTS = {
         "Golden Batons Shape",
         "Zero Artificial Preservatives",
       ],
-      ingredients: [
-        "Refined Wheat Flour",
-        "Dairy Butter & Edible Fat",
-        "Farm Fresh Eggs",
-        "Cane Sugar",
-        "Madagascar Vanilla Essence",
-        "Baking Powder",
-      ],
+      ingredients: ["Wheat Flour (Maida)", "Sugar", "Vegetable Oil", "Eggs", "Milk Solids", "Salt"],
       calories: "445 kcal / 100g",
     },
     {
       id: "canto-herb-seasoned-rusk",
-      name: "Olene Canto Herb Seasoned Toast Rusk",
+      name: "Garlic rusk",
       category: "rusk",
       categoryName: "Rusk",
       badge: "Savory Crunch",
@@ -472,15 +457,7 @@ export const CATEGORY_PRODUCTS = {
         "Savory Gourmet Crunch",
         "100% Vegetarian Snack",
       ],
-      ingredients: [
-        "Whole Wheat & Refined Flour",
-        "Extra Virgin Olive Oil & Butter",
-        "Dried Oregano & Thyme",
-        "Roasted Garlic Granules",
-        "Cracked Black Pepper",
-        "Himalayan Pink Salt",
-        "Yeast",
-      ],
+      ingredients: ["Wheat Flour (Maida)", "Sugar", "Vegetable Oil", "Garlic", "Yeast", "Milk Solids", "Salt"],
       calories: "395 kcal / 100g",
     },
   ],
@@ -524,7 +501,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Generously Studded with Dark Chocolate Drops in Golden Butter Dough",
       description: "Golden, crumbly butter cookies loaded with rich dark chocolate chips. Every bite delivers a mouthwatering contrast between crisp caramelized butter cookie and smooth cocoa melt, sealed in an airtight chocolate-brown canister.",
       highlights: ["Loaded with Dark Choco Chips", "Pure Dairy Butter Crumb", "A Taste to Remember Forever", "ISO & HACCP Certified Quality"],
-      ingredients: ["Fine Wheat Flour", "Dark Chocolate Chips", "Pure Dairy Butter", "Brown Cane Sugar", "Madagascar Vanilla Extract", "Baking Powder", "Sea Salt"],
+      ingredients: ["Refined Wheat Flour", "Edible Vegetable Fat", "Sugar", "Egg", "Choco Chips", "Cocoa Powder", "Milk Powder", "Ghee", "Condensed Milk"],
       calories: "145 kcal / 2 pcs",
     },
     {
@@ -539,7 +516,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Hearty Rolled Oats, Blossom Honey & Butter Crisp Bakes",
       description: "Packed with whole grain rolled oats, wild blossom honey, and golden butter for a satisfying, fibrous, and golden-crisp tea-time companion. Sealed fresh in our signature airtight canister.",
       highlights: ["100% Rolled Whole Oats", "Rich in Dietary Fiber", "A Taste to Remember Forever", "ISO & HACCP Certified Quality"],
-      ingredients: ["Rolled Oats", "Stoneground Whole Wheat", "Pure Butter", "Blossom Honey", "Brown Cane Sugar", "Baking Soda", "Cinnamon"],
+      ingredients: ["Refined Wheat Flour", "Sugar", "Edible Vegetable Fat", "Oats", "Butter", "Milk", "Ghee", "Corn Flour", "Baking Soda", "Cardamom"],
       calories: "130 kcal / 2 pcs",
     },
     {
@@ -554,7 +531,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Crispy Golden Chunky Cookies Studded with Crushed Roasted Nuts & Cranberries",
       description: "American-style golden crisp butter cookies loaded with crushed roasted almonds, pistachios, cranberries, and rich butter vanilla aroma. Packed in a signature forest green airtight canister.",
       highlights: ["Roasted Almonds & Pistachios", "Studded with Dried Cranberries", "Signature American Gold Recipe", "Airtight Locking Canister"],
-      ingredients: ["Fine Wheat Flour", "Pure Cultured Butter", "Crushed Roasted Almonds", "Pistachios", "Dried Cranberries", "Golden Cane Sugar", "Bourbon Vanilla", "Sea Salt"],
+      ingredients: ["Refined Wheat Flour", "Sugar", "Edible Vegetable Fat", "Milk Powder", "Custard Powder", "Coconut Powder", "Cashew Nut", "Almond", "Milk", "Liquid Glucose", "Baking Powder"],
       calories: "145 kcal / 2 pcs",
     },
     {
@@ -569,7 +546,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Delicate Golden Shortbread with a Touch of Sea Salt Crystals",
       description: "Melt-in-mouth golden shortbread biscuits delicately balanced with mineral-rich sea salt and rich sweet cream butter. An addictive tea companion sealed in our signature golden yellow canister.",
       highlights: ["Sweet & Salty Flavour Balance", "Melt-In-Mouth Shortbread", "A Taste to Remember Forever", "ISO & HACCP Certified Quality"],
-      ingredients: ["Fine Wheat Flour", "Sweet Cream Butter", "Mineral Sea Salt", "Raw Cane Sugar", "Natural Vanilla"],
+      ingredients: ["Refined Wheat Flour", "Sugar", "Egg", "Butter", "Milk Powder", "Salt", "Edible Vegetable Fat"],
       calories: "135 kcal / 2 pcs",
     },
     {
@@ -584,7 +561,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Aromatic South-Indian Herb Spiced Fluted Butter Cookies",
       description: "A distinctive savory-sweet innovation featuring aromatic fresh curry leaf flecks, subtle green chilies, and creamy cultured butter. Crisp and fragrant, sealed in a signature olive-green canister.",
       highlights: ["Fresh Garden Curry Leaves", "Savory-Sweet Fusion", "ISO & HACCP Certified Quality", "A Taste to Remember Forever"],
-      ingredients: ["Wheat Flour", "Cultured Butter", "Fresh Curry Leaves", "Mild Green Chilli", "Cumin", "Sea Salt", "Raw Cane Sugar"],
+      ingredients: ["Refined Wheat Flour", "Salt", "Edible Vegetable Oil", "Vanilla Powder", "Curry Leaves", "Baking Powder", "Baking Soda"],
       calories: "135 kcal / 2 pcs",
     },
     {
@@ -599,7 +576,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Melt-in-the-Mouth Traditional Pure Cow Ghee Shortbread",
       description: "Slow-baked with 100% pure fragrant desi cow ghee and cardamom, producing a delicately ridged golden shortbread that melts effortlessly on the tongue. Sealed fresh in a signature royal plum airtight canister.",
       highlights: ["100% Pure Desi Cow Ghee", "Melt-In-Mouth Texture", "Cardamom Aroma", "The Most Trusted Brand"],
-      ingredients: ["Fine Wheat Flour", "100% Pure Desi Cow Ghee", "Cardamom Powder", "Icing Sugar", "Almonds & Pistachios"],
+      ingredients: ["Refined Wheat Flour", "Sugar", "Ghee", "Butter", "Milk Powder"],
       calories: "150 kcal / 2 pcs",
     },
     {
@@ -614,7 +591,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Cracked Black Pepper, Cumin & Toasted Sesame Spiced Biscuits",
       description: "Old-fashioned bakery masala biscuits crafted with stoneground whole wheat, crushed black peppercorns, roasted cumin, and fragrant herbs. Encased in a bright crimson airtight canister for authentic tea-time snacking.",
       highlights: ["Roasted Cumin & Black Pepper", "Savory Herb Infusion", "ISO & HACCP Certified", "A Taste to Remember Forever"],
-      ingredients: ["Whole Wheat Flour", "Pure Butter", "Black Peppercorns", "Roasted Cumin", "Curry Leaves & Herbs", "Spices", "Salt"],
+      ingredients: ["Refined Wheat Flour", "Coconut", "Edible Vegetable Fat", "Sugar", "Cashew Nut", "Ginger", "Garlic", "Sesame Seed", "Egg", "Curry Leaves", "Salt", "Coriander Leaves", "Spices"],
       calories: "140 kcal / 2 pcs",
     },
     {
@@ -629,7 +606,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Golden Butter Cookies Studded with Roasted Cashews & Fruit Gems",
       description: "Generously studded with oven-roasted cashews, California almonds, and sweet caramelized fruit gems. Sealed in a signature deep burgundy airtight canister to ensure every crunchy bite stays fresh.",
       highlights: ["Roasted Cashews & Almonds", "Candied Fruit Gems", "A Taste to Remember Forever", "Airtight Locking Canister"],
-      ingredients: ["Fine Wheat Flour", "Pure Cultured Butter", "Roasted Cashews", "California Almonds", "Candied Fruit Bits", "Cane Sugar", "Vanilla Infusion"],
+      ingredients: ["Refined Wheat Flour", "Coconut Powder", "Sugar", "Honey", "Curd", "Custard Powder", "Milk Powder", "Baking Powder", "Glucose Powder", "Vanilla Powder", "Raisins", "Milk", "Almonds", "Pista", "Cashew Nut", "Edible Vegetable Fat"],
       calories: "145 kcal / 2 pcs",
     },
   ],
@@ -1504,7 +1481,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "For a Healthier Slice of Your Life • Sealed Keepsake Tin",
       description: "A moist, aromatic celebration round cake packed with caramelized fruits and slow-infused spices, presented with our iconic collectible Olene Canto emerald green and gold embossed keepsake tin.",
       highlights: ["Signature Green Tin", "Slow-Caramelized Fruit Crumb", "Airtight Freshness Seal"],
-      ingredients: ["Sun-Dried Raisins & Dates", "Spiced Fruit Extracts", "Pure Dairy Butter", "Demerara Sugar", "Stoneground Flour", "Cardamom & Cinnamon"],
+      ingredients: ["Soaked Mix Dry Fruits", "Wheat Flour", "Raisins", "Egg", "Sugar", "Ghee", "Mixed Fruit Jam", "Honey", "Dates"],
       calories: "205 kcal / slice",
     },
     {
@@ -1931,7 +1908,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Royal Crimson Red & Gold Festive Gift Box with Assorted Sweets",
       description: "A grand festive celebration box in crimson red with gold filigree grid detailing, filled with traditional ghee mithai, handcrafted laddoos, and layered barfis crafted for joyful family occasions.",
       highlights: ["Crimson Red & Gold Gift Box", "Handcrafted Festive Mithai Assortment", "ISO Certified Clean Facility"],
-      ingredients: ["Pure Desi Ghee", "Whole Milk Mawa", "Gram Flour", "Cashews", "Cardamom", "Sugar", "Silver Vark"],
+      ingredients: ["Refined Flour", "Milk Solids", "Sugar", "Citric Acid", "Cocoa", "Vegetable Oil", "Wheat Starch", "Fruit Pulp (INS 202, INS 200)"],
       calories: "390 kcal / 100g",
     },
     {
@@ -1991,7 +1968,7 @@ export const CATEGORY_PRODUCTS = {
       tagline: "Embossed Traditional Khoya Pedas in Sealed Tray with Luxury Gift Box",
       description: "Handcrafted rich milk khoya pedas embossed with traditional floral motifs, sealed fresh in a food-grade presentation tray and packaged in an emerald green keepsake box.",
       highlights: ["100% Pure Milk Khoya", "Floral Embossed Traditional Pedas", "Sealed Tray & Luxury Box"],
-      ingredients: ["Pure Milk Solids (Mawa/Khoya)", "Cane Sugar", "Cardamom", "Pistachio Essence", "Pure Ghee"],
+      ingredients: ["Sugar", "Milk Solids", "Refined Edible Oil", "Cardamom Powder (INS 202, INS 200)"],
       calories: "370 kcal / 100g",
     },
     {
@@ -2211,7 +2188,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Crispy Spiced Ribbon Murukku with Roasted Garlic & Curry Leaves",
     description: "Authentic Kerala-style crispy ribbon pakoda infused with whole golden-roasted garlic cloves and aromatic curry leaves.",
     highlights: ["Whole Roasted Garlic", "Fresh Curry Leaves", "Airtight Keepsake Jar"],
-    ingredients: ["Rice Flour", "Gram Flour", "Crushed Garlic", "Curry Leaves", "Red Chili", "Cold-Pressed Oil", "Salt"],
+    ingredients: ["Beetroot", "Salt", "Edible Vegetable Oil", "Rice Flour", "Spices"],
     calories: "140 kcal / 30g",
   },
   {
@@ -2227,7 +2204,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Golden Hand-Crimped Spiced Crescent Pastries",
     description: "Crispy, flaky half-moon savory pastries with delicately crimped edges, slow-fried to a golden shatter crunch.",
     highlights: ["Hand-Crimped Edges", "Golden Flaky Crust", "Airtight Keepsake Jar"],
-    ingredients: ["Refined Wheat", "Roasted Spices", "Cold-Pressed Oil", "Cumin", "Himalayan Salt"],
+    ingredients: ["Flour", "Chicken", "Clove", "Edible Oil", "Onion", "Chilli Powder", "Turmeric Powder", "Cardamom", "Garlic", "Ginger", "Cinnamon", "Pepper", "Salt"],
     calories: "145 kcal / 30g",
   },
   {
@@ -2243,7 +2220,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Spiced Pearl Drops with Crunchy Peanuts & Curry Leaves",
     description: "Crispy seasoned gram flour droplets mingled with roasted crunchy peanuts and crispy fried curry leaves.",
     highlights: ["Crunchy Roasted Peanuts", "Fried Curry Leaves", "Airtight Keepsake Jar"],
-    ingredients: ["Bengal Gram Flour (Besan)", "Roasted Peanuts", "Curry Leaves", "Chili Powder", "Asafoetida", "Oil", "Salt"],
+    ingredients: ["Gram Flour", "Peanut", "Ginger", "Garlic", "Chilli Powder", "Salt", "Chicken Masala", "Water", "Sesame Seed", "Oil"],
     calories: "140 kcal / 30g",
   },
   {
@@ -2259,7 +2236,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Thin-Cut Raw Plantain Wafers Crisp-Fried in Pure Coconut Oil",
     description: "Classic golden South Indian banana chips prepared from hand-picked raw Kerala plantains, seasoned to perfection.",
     highlights: ["Raw Kerala Plantains", "Pure Cold-Pressed Oil", "Airtight Keepsake Jar"],
-    ingredients: ["Fresh Raw Plantains (Nendran)", "Pure Coconut Oil", "Turmeric", "Sea Salt"],
+    ingredients: ["Banana", "Edible Vegetable Oil", "Salt", "Indian Masala Seasonings"],
     calories: "150 kcal / 30g",
   },
   {
@@ -2275,7 +2252,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Spiced Round Rice Crackers with Roasted Gram & Crushed Pepper",
     description: "Traditional stoneground rice discs studded with roasted Bengal gram, crushed cumin, and mild red chili.",
     highlights: ["Stoneground Rice Discs", "Crushed Cumin & Chili", "Airtight Keepsake Jar"],
-    ingredients: ["Rice Flour", "Urad Dal Flour", "Roasted Chana Dal", "Crushed Cumin", "Chili Flakes", "Cold-Pressed Oil", "Salt"],
+    ingredients: ["Rice Flour", "Edible Vegetable Oil", "Water", "Bengal Gram", "Peanut", "Garlic", "Red Chilli", "Salt", "Pepper"],
     calories: "135 kcal / piece",
   },
   {
@@ -2291,7 +2268,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Crispy Golden Sev, Crunchy Peanuts, Fried Dal & Spiced Boondi",
     description: "Classic South Indian festival mixture blending crispy spiced chickpea sev, roasted peanuts, golden fried lentils, and aromatic curry leaves slow-seasoned with Kashmiri chili and asafoetida.",
     highlights: ["Crispy Sev & Spiced Boondi", "Roasted Peanuts & Fried Gram", "Airtight Keepsake Jar"],
-    ingredients: ["Gram Flour (Besan)", "Roasted Peanuts", "Split Chickpeas (Chana Dal)", "Curry Leaves", "Chili Powder", "Asafoetida", "Cold-Pressed Oil", "Salt"],
+    ingredients: ["Gram Flour", "Peanut", "Edible Oil", "Water", "Rice Flour", "Pudina", "Garlic", "Curry Leaves", "Spices & Condiments", "Salt"],
     calories: "148 kcal / 30g",
   },
   {
@@ -2307,7 +2284,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Crispy Golden Triangle Wafers with Ajwain & Crushed Cumin",
     description: "Delicately thin and flaky golden triangle crisps infused with aromatic ajwain seeds, cracked cumin, and mild savory spices, slow-fried to a light, airy crunch.",
     highlights: ["Flaky Layered Crisp", "Infused with Ajwain & Cumin", "Airtight Keepsake Jar"],
-    ingredients: ["Refined Wheat Flour", "Rice Flour", "Ajwain Seeds", "Cumin", "Cold-Pressed Vegetable Oil", "Sea Salt"],
+    ingredients: ["Rice Flour", "Gram Flour (Besan)", "Edible Vegetable Oil", "Red Chilli Powder", "Sesame Seeds", "Cumin Seeds", "Asafoetida", "Salt", "Curry Leaves", "Permitted Spices"],
     calories: "135 kcal / 30g",
   },
   {
@@ -2323,7 +2300,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Thin-Cut Raw Plantain Crisps Tossed in Fiery Kerala Masala",
     description: "Sun-ripened raw Kerala Nendran plantains cut paper-thin, crisp-fried in cold-pressed oil, and generously tossed in signature red chili, black pepper, and rock salt blend.",
     highlights: ["Raw Kerala Nendran Plantains", "Fiery Red Chili & Pepper Dust", "Airtight Keepsake Jar"],
-    ingredients: ["Raw Plantains (Nendran)", "Cold-Pressed Oil", "Red Chili Powder", "Crushed Black Pepper", "Turmeric", "Rock Salt"],
+    ingredients: ["Raw Banana", "Edible Vegetable Oil", "Tomato Seasoning", "Salt"],
     calories: "152 kcal / 30g",
   },
   {
@@ -2339,7 +2316,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Traditional Golden Spiral Rings with Roasted Sesame & Cumin",
     description: "Hand-coiled crunchy spiral murukku rings prepared from finely ground rice flour and urad dal, infused with nutty roasted sesame seeds, cumin, and fragrant asafoetida.",
     highlights: ["Authentic Spiral Coil Shape", "Roasted Sesame & Cumin Infusion", "Airtight Keepsake Jar"],
-    ingredients: ["Rice Flour", "Roasted Urad Dal Flour", "Sesame Seeds", "Cumin Seeds", "Cold-Pressed Oil", "Asafoetida", "Salt"],
+    ingredients: ["Rice Flour", "Edible Vegetable Oil", "Tomato Powder", "Red Chilli Powder", "Sesame Seeds", "Cumin Seeds", "Salt", "Asafoetida", "Permitted Spices and Seasonings"],
     calories: "142 kcal / 30g",
   },
   {
@@ -2355,7 +2332,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Melt-in-Mouth Fluted Murukku Batons with Cultured Butter",
     description: "Light and melt-in-mouth fluted murukku batons extruded with authentic cultured butter, rice flour, and roasted gram, offering an irresistible crispy snap with every bite.",
     highlights: ["Enriched with Pure Butter", "Fluted Star Baton Texture", "Airtight Keepsake Jar"],
-    ingredients: ["Rice Flour", "Roasted Bengal Gram Flour", "Pure Cultured Butter", "Cumin Seeds", "Cold-Pressed Oil", "Himalayan Salt"],
+    ingredients: ["Rice Flour", "Gram Flour (Besan)", "Butter", "Sesame Seeds", "Cumin Seeds", "Salt", "Asafoetida"],
     calories: "146 kcal / 30g",
   },
   {
@@ -2387,7 +2364,7 @@ export const SAVOURIES_PRODUCTS = [
     tagline: "Crispy Thin-Cut Raw Plantain Wafers Tossed with Tangy Cheese & Savory Spring Onion",
     description: "Crisp, golden South Indian banana chips prepared from premium raw Kerala plantains, seasoned with a rich blend of creamy cheese seasoning, savory toasted onion powder, and aromatic herbs.",
     highlights: ["Raw Kerala Plantains", "Tangy Cheese & Onion Dusting", "Airtight Keepsake Jar"],
-    ingredients: ["Raw Plantains (Nendran)", "Cold-Pressed Vegetable Oil", "Cheese Seasoning", "Toasted Onion Powder", "Sea Salt", "Spices & Herbs"],
+    ingredients: ["Raw Banana", "Vegetable Oil", "Cheese Seasoning", "Onion Powder", "Salt"],
     calories: "150 kcal / 30g",
   },
 ];
