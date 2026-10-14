@@ -13,7 +13,7 @@ export default function Hero({ onExploreClick, onStoryClick, onCategoryClick }) 
   return (
     <section className="relative min-h-screen w-full bg-zinc-950 text-white pt-16 sm:pt-20 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 flex flex-col justify-between overflow-hidden">
       <ViewportVideo
-        src="/hero-section-ai-video.mp4"
+        src="/videos/hero.mp4"
         rootMargin="0px"
         enabled={introStarted}
         preload={introStarted ? "auto" : "none"}

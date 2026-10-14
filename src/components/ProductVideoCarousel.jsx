@@ -10,37 +10,37 @@ const videos = [
   {
     id: 1,
     title: "Canto Butter",
-    src: "/canto-butter.webm",
+    src: "/videos/canto-butter.mp4",
     poster: "/posters/canto-butter.jpg",
   },
   {
     id: 2,
     title: "Canto Tin",
-    src: "/canto-tin.webm",
+    src: "/videos/canto-tin.mp4",
     poster: "/posters/canto-tin.jpg",
   },
   {
     id: 4,
     title: "Orange Sweets",
-    src: "/orange-sweets-orbit.mp4",
+    src: "/videos/orange-sweets-orbit.mp4",
     poster: "/posters/orange-sweets-orbit.jpg",
   },
   {
     id: 5,
     title: "Cookie Tin",
-    src: "/Canto_cookie_tin_product_showcase_202608281632.mp4",
+    src: "/videos/cookie-tin.mp4",
     poster: "/posters/cookie-tin.jpg",
   },
   {
     id: 6,
     title: "Nutty Buddy",
-    src: "/nutty-buddy-cookies-orbit.mp4",
+    src: "/videos/nutty-buddy-cookies-orbit.mp4",
     poster: "/posters/nutty-buddy-cookies-orbit.jpg",
   },
   {
     id: 7,
     title: "Milk Bread Package",
-    src: "/Milk_bread_package_rotating_202609021547.mp4",
+    src: "/videos/milk-bread.mp4",
     poster: "/posters/milk-bread.jpg",
   },
 ];
@@ -199,6 +199,9 @@ export default function ProductVideoCarousel() {
                       rootRef={trackRef}
                       rootMargin="0px 600px"
                       enabled={sectionInView}
+                      // Buffer the first set (the cards on screen when the carousel arrives) ahead of time;
+                      // later cards load as they approach the visible strip.
+                      preload={showPosters && index < videos.length ? "auto" : "none"}
                       poster={showPosters ? video.poster : undefined}
                       loop
                       disablePictureInPicture

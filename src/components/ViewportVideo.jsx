@@ -10,6 +10,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * @param {string} rootMargin - How far outside the root a video may be and still count as visible
  * @param {boolean} enabled - Extra gate (e.g. the parent section is on screen)
  * @param {string} posterSrc - First-frame image shown instantly, attached once the video is within `posterMargin`
+ * @param {boolean} preloadWhenNear - Start buffering once within `posterMargin`, so playback starts smoothly instead of mid-scroll
  */
 export default function ViewportVideo({
   rootRef,
@@ -18,6 +19,7 @@ export default function ViewportVideo({
   preload = "none",
   posterSrc,
   posterMargin = "1200px 0px",
+  preloadWhenNear = false,
   ...props
 }) {
   const videoRef = useRef(null);
@@ -62,7 +64,7 @@ export default function ViewportVideo({
   // Attach the poster only when the video is getting close, so it never competes with above-the-fold content
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !posterSrc) return undefined;
+    if (!video || (!posterSrc && !preloadWhenNear)) return undefined;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -76,9 +78,10 @@ export default function ViewportVideo({
     observer.observe(video);
 
     return () => observer.disconnect();
-  }, [posterSrc, posterMargin]);
+  }, [posterSrc, posterMargin, preloadWhenNear]);
 
   const poster = posterSrc && isNear && enabled ? posterSrc : props.poster;
+  const effectivePreload = preloadWhenNear && isNear && enabled ? "auto" : preload;
 
-  return <video ref={videoRef} muted playsInline preload={preload} {...props} poster={poster} />;
+  return <video ref={videoRef} muted playsInline preload={effectivePreload} {...props} poster={poster} />;
 }

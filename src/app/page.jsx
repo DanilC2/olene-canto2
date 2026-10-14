@@ -128,8 +128,9 @@ export default function Home() {
       <section className="w-full bg-black overflow-hidden flex items-center justify-center">
         <div className="relative w-full max-w-[1920px] mx-auto aspect-video">
           <ViewportVideo
-            src="/showcase-banner.mp4"
+            src="/videos/showcase-banner.mp4"
             posterSrc="/posters/showcase-banner.jpg"
+            preloadWhenNear
             rootMargin="400px 0px"
             enabled={introStarted}
             loop
