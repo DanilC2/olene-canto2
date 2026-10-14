@@ -134,15 +134,6 @@ export default function CategoryDetailPage() {
 
             {/* Banner Content */}
             <div className="relative z-10 max-w-3xl space-y-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-amber-200 border border-white/15">
-                  {category.badge}
-                </span>
-                <span className="text-xs text-zinc-300 font-medium">
-                  {category.tagline}
-                </span>
-              </div>
-
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-luxury font-normal text-white leading-tight tracking-tight uppercase">
                 {category.title}
               </h1>
@@ -239,13 +230,7 @@ export default function CategoryDetailPage() {
               </button>
             </div>
           ) : (
-            <div
-              className={`grid gap-3.5 sm:gap-6 lg:gap-8 ${
-                category.id === "savouries" && filteredProducts.length >= 5
-                  ? "grid-cols-2 md:grid-cols-3 xl:grid-cols-5"
-                  : "grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-              }`}
-            >
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
@@ -253,8 +238,8 @@ export default function CategoryDetailPage() {
                   className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl hover:border-zinc-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* 1. Pristine Product Photo — Completely text-free, un-obscured with soft hover zoom */}
-                  <div className="relative w-full aspect-[4/5] bg-white flex items-center justify-center p-2 sm:p-3 lg:p-4 overflow-hidden">
-                    <div className="relative h-[90%] w-[88%] max-w-[290px] sm:h-[92%] sm:w-[90%] lg:h-[94%] lg:w-[92%]">
+                  <div className="relative w-full aspect-[4/5] bg-white flex items-center justify-center p-1.5 sm:p-2.5 lg:p-3 overflow-hidden">
+                    <div className="relative w-full h-full">
                       <Image
                         src={product.image}
                         alt={product.name || "Product Image"}
@@ -267,8 +252,8 @@ export default function CategoryDetailPage() {
                   </div>
 
                   {/* 2. Prominent & Attractive Product Name and Gold Accent Line Only */}
-                  <div className="py-4 sm:py-6 px-3 sm:px-4 bg-white border-t border-zinc-100 flex flex-col items-center justify-center text-center">
-                    <h3 className="text-sm sm:text-lg lg:text-xl font-serif-luxury font-medium tracking-wide text-zinc-950 group-hover:text-[#9B1B22] transition-colors duration-300 line-clamp-2">
+                  <div className="py-4 sm:py-5 px-3 sm:px-4 bg-white border-t border-zinc-100 flex flex-col items-center justify-center text-center">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-serif-luxury font-medium tracking-wide text-zinc-950 group-hover:text-[#9B1B22] transition-colors duration-300 line-clamp-2">
                       {product.name}
                     </h3>
                     <div className="w-6 sm:w-8 h-[2px] bg-[#C59B4B]/80 group-hover:w-12 sm:group-hover:w-16 group-hover:bg-[#9B1B22] transition-all duration-300 rounded-full mt-2 sm:mt-2.5" />

@@ -47,7 +47,7 @@ export default function CategoriesPage() {
                 className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-2xl hover:border-zinc-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
               >
                 {/* 1. Pristine Product Photo — Completely text-free, un-obscured with soft hover zoom */}
-                <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+                <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center p-1.5 sm:p-3 overflow-hidden">
                   <Image
                     src={category.image}
                     alt={category.title}
