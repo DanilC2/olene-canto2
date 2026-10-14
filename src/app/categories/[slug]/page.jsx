@@ -134,7 +134,7 @@ export default function CategoryDetailPage() {
 
             {/* Banner Content */}
             <div className="relative z-10 max-w-3xl space-y-3">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-luxury font-normal text-white leading-tight tracking-tight uppercase">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-luxury font-bold text-white leading-tight tracking-tight uppercase">
                 {category.title}
               </h1>
 
@@ -181,7 +181,7 @@ export default function CategoryDetailPage() {
           {/* Subheader & Search Filter */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-zinc-200 mb-8">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-serif-luxury font-normal text-zinc-950">
+              <h2 className="text-2xl sm:text-3xl font-serif-luxury font-bold text-zinc-950">
                 Inside {category.title}
               </h2>
               <p className="text-xs sm:text-sm text-zinc-500 font-light mt-0.5">

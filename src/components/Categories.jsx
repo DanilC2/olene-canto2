@@ -97,7 +97,7 @@ export default function Categories({
                   </div>
 
                   <h3
-                    className={`text-sm sm:text-xl font-serif-luxury font-medium mb-1.5 sm:mb-2 line-clamp-2 ${
+                    className={`text-sm sm:text-xl font-serif-luxury font-bold mb-1.5 sm:mb-2 line-clamp-2 ${
                       isSelected ? "text-white" : "text-black group-hover:text-amber-900"
                     }`}
                   >

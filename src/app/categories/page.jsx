@@ -59,7 +59,7 @@ export default function CategoriesPage() {
 
                 {/* 2. Prominent & Attractive Category Name Only */}
                 <div className="py-5 sm:py-6 lg:py-7 px-4 bg-white border-t border-zinc-100 flex flex-col items-center justify-center text-center">
-                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif-luxury font-medium tracking-wide text-zinc-950 group-hover:text-[#9B1B22] transition-colors duration-300">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif-luxury font-bold tracking-wide text-zinc-950 group-hover:text-[#9B1B22] transition-colors duration-300">
                     {category.title}
                   </h2>
                   <div className="w-8 h-[2px] bg-[#C59B4B]/80 group-hover:w-16 group-hover:bg-[#9B1B22] transition-all duration-300 rounded-full mt-2.5" />
