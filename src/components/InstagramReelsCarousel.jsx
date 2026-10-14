@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import useInView from "@/lib/useInView";
 
@@ -92,12 +92,6 @@ export default function InstagramReelsCarousel() {
   const hasApproached = useInView(sectionRef, { rootMargin: "800px 0px", once: true });
   const [nearCardKeys, setNearCardKeys] = useState(() => new Set());
 
-  // Single active playing video state
-  const [activePlayingKey, setActivePlayingKey] = useState(null);
-  const [resetCounters, setResetCounters] = useState({});
-  const currentActiveKeyRef = useRef(null);
-  const hoveredCardKeyRef = useRef(null);
-
   // Multiply the reels array for a seamless, uninterrupted loop
   const repeatedReels = [
     ...reelsData,
@@ -105,75 +99,6 @@ export default function InstagramReelsCarousel() {
     ...reelsData,
     ...reelsData,
   ];
-
-  // Stop a specific reel or all reels
-  const handleStopReel = (key) => {
-    if (trackRef.current) {
-      const el = trackRef.current.querySelector(
-        `iframe[data-reel-key="${key}"]`
-      );
-      if (el) {
-        try {
-          el.src = el.src;
-        } catch (e) {
-          console.error(e);
-        }
-      }
-    }
-    setResetCounters((prev) => ({
-      ...prev,
-      [key]: (prev[key] || 0) + 1,
-    }));
-    if (currentActiveKeyRef.current === key) {
-      currentActiveKeyRef.current = null;
-      setActivePlayingKey(null);
-    }
-    if (typeof window !== "undefined") {
-      window.focus();
-    }
-    if (!isHoveredRef.current) {
-      isPausedRef.current = false;
-    }
-  };
-
-  // Check if an iframe received focus/click, and ensure only that single video plays
-  const checkActiveIframe = useCallback(() => {
-    if (typeof document === "undefined") return;
-    const active = document.activeElement;
-    let targetKey = null;
-
-    if (active && active.tagName === "IFRAME" && active.dataset.reelKey) {
-      targetKey = active.dataset.reelKey;
-    } else if (active && active.tagName === "IFRAME" && hoveredCardKeyRef.current) {
-      targetKey = hoveredCardKeyRef.current;
-    }
-
-    if (targetKey && targetKey !== currentActiveKeyRef.current) {
-      const prevKey = currentActiveKeyRef.current;
-      currentActiveKeyRef.current = targetKey;
-      setActivePlayingKey(targetKey);
-      isPausedRef.current = true;
-
-      if (prevKey && trackRef.current) {
-        // Immediately reset the previous iframe DOM element src to stop playback & audio synchronously
-        const prevIframe = trackRef.current.querySelector(
-          `iframe[data-reel-key="${prevKey}"]`
-        );
-        if (prevIframe) {
-          try {
-            prevIframe.src = prevIframe.src;
-          } catch (e) {
-            console.error(e);
-          }
-        }
-        // Increment reset counter to ensure fresh React key
-        setResetCounters((prev) => ({
-          ...prev,
-          [prevKey]: (prev[prevKey] || 0) + 1,
-        }));
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const container = trackRef.current;
@@ -199,23 +124,12 @@ export default function InstagramReelsCarousel() {
     scrollPosRef.current = initialPos;
     container.scrollLeft = initialPos;
 
-    // Listen for blur event when focus moves into an iframe
-    const handleBlur = () => {
-      setTimeout(checkActiveIframe, 30);
-      setTimeout(checkActiveIframe, 150);
-    };
-
-    window.addEventListener("blur", handleBlur);
-    window.addEventListener("focusin", checkActiveIframe);
-
     return () => {
-      window.removeEventListener("blur", handleBlur);
-      window.removeEventListener("focusin", checkActiveIframe);
       if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
-  }, [checkActiveIframe]);
+  }, []);
 
-  // Continuous auto-scroll and active-reel polling, only while the section is on screen
+  // Continuous auto-scroll, only while the section is on screen
   useEffect(() => {
     const container = trackRef.current;
     if (!container || !sectionInView) return;
@@ -230,7 +144,7 @@ export default function InstagramReelsCarousel() {
       // Cap delta to prevent leaps when tab is in background
       const safeDelta = Math.min(delta, 64);
 
-      // Continuous movement right-to-left while the arrow/cursor is not pointing to the video and no reel is actively playing
+      // Continuous movement right-to-left while the arrow/cursor is not pointing to the video
       if (!isPausedRef.current && container) {
         // High-precision float increment ensures continuous subpixel motion
         scrollPosRef.current += safeDelta * 0.055;
@@ -247,13 +161,11 @@ export default function InstagramReelsCarousel() {
     };
 
     animationFrameId = requestAnimationFrame(animate);
-    const intervalId = setInterval(checkActiveIframe, 120);
 
     return () => {
-      clearInterval(intervalId);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [checkActiveIframe, sectionInView]);
+  }, [sectionInView]);
 
   // Mark cards that come within reach of the visible track so their embeds can load
   useEffect(() => {
@@ -287,7 +199,7 @@ export default function InstagramReelsCarousel() {
       if (trackRef.current) {
         scrollPosRef.current = trackRef.current.scrollLeft;
       }
-      if (!currentActiveKeyRef.current && !isHoveredRef.current) {
+      if (!isHoveredRef.current) {
         isPausedRef.current = false;
       }
     }, duration);
@@ -324,7 +236,7 @@ export default function InstagramReelsCarousel() {
 
   return (
     <div ref={sectionRef} className="w-full bg-black py-8 sm:py-10 lg:py-12 flex flex-col justify-center select-none relative overflow-hidden text-white">
-      {/* Compact Section Header with Navigation Arrows positioned in header (NOT pointing/covering the video) */}
+      {/* Compact Section Header with Navigation Arrows positioned in header */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-4 sm:mb-5 w-full">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
           {/* Header Left: Badge, Title & Subtitle */}
@@ -339,7 +251,7 @@ export default function InstagramReelsCarousel() {
             </h3>
 
             <p className="mt-1 text-xs sm:text-sm text-zinc-300 max-w-xl leading-relaxed">
-              Watch our latest reels, behind-the-scenes bakery craft, retail collaborations, and tasting stories directly from Instagram.
+              Watch our latest reels, behind-the-scenes bakery craft, retail collaborations, and tasting stories directly on Instagram.
             </p>
           </div>
 
@@ -383,8 +295,8 @@ export default function InstagramReelsCarousel() {
 
       {/* 
         Continuous Right-to-Left Carousel Track
-        - Moves continuously from right to left while the mouse arrow is NOT pointing to the video
-        - Pauses when the mouse arrow points to the video or when a reel is actively playing
+        - Moves continuously from right to left while the mouse arrow is NOT hovering the track
+        - Pauses when the user hovers over the track so they can easily click any reel
       */}
       <div
         className="relative w-full"
@@ -397,9 +309,7 @@ export default function InstagramReelsCarousel() {
           if (trackRef.current) {
             scrollPosRef.current = trackRef.current.scrollLeft;
           }
-          if (!currentActiveKeyRef.current) {
-            isPausedRef.current = false;
-          }
+          isPausedRef.current = false;
         }}
         onTouchStart={() => {
           pauseTemporarily(3000);
@@ -422,84 +332,56 @@ export default function InstagramReelsCarousel() {
           {repeatedReels.map((reel, index) => {
             const isSquare = reel.aspect === "square";
             const cardKey = `${reel.id}-${index}`;
-            const isActive = activePlayingKey === cardKey;
 
             return (
-              <div
+              <a
                 key={cardKey}
+                href={reel.permalink}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-reel-card="true"
                 data-card-key={cardKey}
-                onMouseEnter={() => {
-                  hoveredCardKeyRef.current = cardKey;
-                }}
-                onMouseLeave={() => {
-                  if (hoveredCardKeyRef.current === cardKey) {
-                    hoveredCardKeyRef.current = null;
-                  }
-                }}
-                onPointerDown={() => {
-                  hoveredCardKeyRef.current = cardKey;
-                  setTimeout(checkActiveIframe, 30);
-                  setTimeout(checkActiveIframe, 120);
-                }}
-                className={`group/card relative shrink-0 overflow-hidden rounded-[20px] transition-all duration-300 ${
-                  isActive
-                    ? "border-2 border-[#c59a54] ring-4 ring-[#c59a54]/30 shadow-[0_16px_36px_rgba(197,154,84,0.28)] scale-[1.02] z-20"
-                    : "border border-zinc-800 bg-zinc-950 shadow-[0_8px_24px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_36px_rgba(217,181,120,0.15)] hover:border-amber-400/60"
-                } ${
+                aria-label={`${reel.title} - Watch on Instagram`}
+                className={`group/card relative shrink-0 block overflow-hidden rounded-[20px] transition-all duration-300 border border-zinc-800 bg-zinc-950 shadow-[0_8px_24px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_36px_rgba(217,181,120,0.25)] hover:border-amber-400 hover:scale-[1.02] cursor-pointer ${
                   isSquare
                     ? "w-[280px] sm:w-[325px] h-[280px] sm:h-[325px]"
                     : "w-[224px] sm:w-[260px] h-[280px] sm:h-[325px]"
                 }`}
               >
-                {/* Active Playing Badge & Stop Control */}
-                {isActive && (
-                  <div className="absolute top-2.5 left-2.5 right-2.5 z-30 flex items-center justify-between pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md text-[#d9b578] text-[10px] font-bold tracking-wider border border-[#d9b578]/50 shadow-md">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#d9b578] animate-ping" />
-                      PLAYING
-                    </span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleStopReel(cardKey);
-                      }}
-                      className="pointer-events-auto inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/85 hover:bg-black text-white hover:text-[#d9b578] text-[10px] font-semibold tracking-wide border border-white/30 hover:border-[#d9b578] backdrop-blur-md transition-all shadow-md cursor-pointer active:scale-95"
-                      title="Stop playback"
-                      aria-label="Stop playback"
-                    >
-                      <span>✕ Stop</span>
-                    </button>
-                  </div>
-                )}
-
                 {/* 
                   Precisely cropped embed frame:
-                  - Top is cropped by 56px to hide Instagram header (avatar, username, blue 'View profile' button)
-                  - Bottom likes, comments, and 'View more on Instagram' are cropped off by container overflow
+                  - pointer-events-none ensures any clicks anywhere on the card open Instagram directly via the anchor tag, instead of playing inside the website iframe
+                  - Top is cropped by 56px to hide Instagram header
                 */}
-                <div className="relative w-full h-full overflow-hidden rounded-[20px] bg-black">
+                <div className="relative w-full h-full overflow-hidden rounded-[20px] bg-black pointer-events-none">
                   {mounted && nearCardKeys.has(cardKey) && (
                     <iframe
-                      key={`${cardKey}-${resetCounters[cardKey] || 0}`}
                       data-reel-iframe="true"
                       data-reel-key={cardKey}
                       src={reel.embedUrl}
                       title={reel.title}
-                      className="w-full border-0 absolute left-0"
+                      className="w-full border-0 absolute left-0 pointer-events-none"
                       style={{
                         top: "-56px",
                         height: "calc(100% + 180px)",
                       }}
                       scrolling="no"
-                      allowFullScreen
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                      tabIndex={-1}
+                      aria-hidden="true"
                       loading="lazy"
                     />
                   )}
                 </div>
-              </div>
+
+                {/* Hover overlay with 'Watch on Instagram' button only */}
+                <div className="absolute inset-0 z-20 flex items-end justify-center p-4 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-400 text-black text-xs font-bold tracking-wide shadow-xl transition-transform duration-200 group-hover/card:scale-105">
+                    <InstagramIcon className="w-3.5 h-3.5" />
+                    <span>Watch on Instagram</span>
+                    <ExternalLink className="w-3 h-3 ml-0.5 opacity-80" />
+                  </div>
+                </div>
+              </a>
             );
           })}
         </div>
