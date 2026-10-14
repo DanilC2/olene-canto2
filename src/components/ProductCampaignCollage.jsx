@@ -15,7 +15,7 @@ export default function ProductCampaignCollage() {
           <div className="md:col-span-7 flex flex-col">
             <Link
               href="/categories/sweets"
-              className="group relative w-full flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_24px_55px_rgba(0,0,0,0.62)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
+              className="group relative w-full flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_16px_40px_rgba(0,0,0,0.9),0_0_24px_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,255,255,0.16)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(217,181,120,0.35),0_0_0_2px_rgba(217,181,120,0.85)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer select-none block active:translate-y-0 active:scale-[0.99]"
               title="Explore Sweets"
             >
               <Image
@@ -36,7 +36,7 @@ export default function ProductCampaignCollage() {
             {/* Top Right: White Loaf Cookies Poster -> Whiteloaf Cookies */}
             <Link
               href="/categories/cookies"
-              className="group relative w-full aspect-[1024/670] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_20px_50px_rgba(0,0,0,0.6)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
+              className="group relative w-full aspect-[1024/670] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_16px_40px_rgba(0,0,0,0.9),0_0_24px_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,255,255,0.16)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(217,181,120,0.35),0_0_0_2px_rgba(217,181,120,0.85)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer select-none block active:translate-y-0 active:scale-[0.99]"
               title="Explore White Loaf Cookies"
             >
               <Image
@@ -52,7 +52,7 @@ export default function ProductCampaignCollage() {
             {/* Bottom Right: Olene Canto - From Everyday Snacks to Festive Feasts Banner -> Savouries */}
             <Link
               href="/categories/savouries"
-              className="group relative w-full aspect-[1024/629] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_18px_44px_rgba(0,0,0,0.55)] ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer select-none block"
+              className="group relative w-full aspect-[1024/629] overflow-hidden rounded-2xl sm:rounded-3xl bg-zinc-950 shadow-[0_16px_40px_rgba(0,0,0,0.9),0_0_24px_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,255,255,0.16)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(217,181,120,0.35),0_0_0_2px_rgba(217,181,120,0.85)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer select-none block active:translate-y-0 active:scale-[0.99]"
               title="Explore Savouries"
             >
               <Image
